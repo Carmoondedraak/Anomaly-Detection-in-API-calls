@@ -1,0 +1,6 @@
+apiclarity:
+  logLevel: debug
+env:
+  plugins:
+     MODULES_ASSETS: /apiclarity/assets
+     STATS_MAX_SAMPLES: 100

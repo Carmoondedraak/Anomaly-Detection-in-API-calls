@@ -1,0 +1,6 @@
+.DS_Store
+env
+__bundle
+.idea/
+demo-scripts/001_demo_scn_setup/uninstall.sh
+demo-scripts/tools/__pycache__/

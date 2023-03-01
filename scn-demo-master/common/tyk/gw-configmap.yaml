@@ -1,0 +1,47 @@
+apiVersion: v1
+data:
+  tyk.conf: |
+    {
+      "listen_port": 8080,
+      "secret": "352d20ee67be67f6340b4c0605b044b7",
+      "template_path": "/opt/tyk-gateway/templates",
+      "tyk_js_path": "/opt/tyk-gateway/js/tyk.js",
+      "middleware_path": "/opt/tyk-gateway/middleware",
+      "app_path": "/opt/tyk-gateway/apps/",
+      "storage": {
+        "type": "redis",
+        "host": "tyk-redis",
+        "port": 6379,
+        "optimisation_max_idle": 2000,
+        "optimisation_max_active": 4000
+      },
+      "analytics_config": {
+        "type": "csv",
+        "csv_dir": "/tmp",
+        "purge_delay": -1
+      },
+      "health_check": {
+        "enable_health_checks": true,
+        "health_check_value_timeouts": 60
+      },
+      "optimisations_use_async_session_write": true,
+      "enable_non_transactional_rate_limiter": true,
+      "policies": {
+        "policy_source": "file",
+        "policy_record_name": "/opt/tyk-gateway/policies/policies.json"
+      },
+      "hash_keys": true,
+      "http_server_options": {
+        "enable_websockets": true
+      },
+      "allow_insecure_configs": true,
+      "coprocess_options": {
+        "enable_coprocess": true
+      },
+      "enable_bundle_downloader": true,
+      "global_session_lifetime": 100,
+      "max_idle_connections_per_host": 500
+    }
+kind: ConfigMap
+metadata:
+  name: tyk-gateway-conf

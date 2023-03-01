@@ -1,0 +1,35 @@
+{
+  "requestID": "req-id",
+  "scheme": "http",
+  "destinationAddress": "32.45.66.51:8000",
+  "destinationNamespace": "",
+  "sourceAddress": "10.116.207.197:8000",
+  "request": {
+    "method": "GET",
+    "path": "/weakbasicauth/SHORT_AND_KNOWN",
+    "host": "petstore.com",
+    "common": {
+      "version": "",
+      "time": 1654075944000,
+      "headers": [
+        {
+          "key": "authorization",
+          "value": "Basic dXNlcjE6cGFzcw=="
+        }
+      ],
+      "body": "",
+      "TruncatedBody": false
+    },
+    "body": "ewogICJkYXRhIjogW3sKICAgICJ0eXBlIjogImFydGljbGVzIiwKICAgICJpZCI6ICIxIiwKICAgICJhdHRyaWJ1dGVzIjogewogICAgICAidGl0bGUiOiAiSlNPTjpBUEkgcGFpbnRzIG15IGJpa2VzaGVkISIsCiAgICAgICJib2R5IjogIlRoZSBzaG9ydGVzdCBhcnRpY2xlLiBFdmVyLiIsCiAgICAgICJjcmVhdGVkIjogIjIwMTUtMDUtMjJUMTQ6NTY6MjkuMDAwWiIsCiAgICAgICJ1cGRhdGVkIjogIjIwMTUtMDUtMjJUMTQ6NTY6MjguMDAwWiIKICAgIH0sCiAgICAicmVsYXRpb25zaGlwcyI6IHsKICAgICAgImF1dGhvciI6IHsKICAgICAgICAiZGF0YSI6IHsiaWQiOiAiNDIiLCAidHlwZSI6ICJwZW9wbGUifQogICAgICB9CiAgICB9CiAgfV0sCiAgImluY2x1ZGVkIjogWwogICAgewogICAgICAidHlwZSI6ICJwZW9wbGUiLAogICAgICAiaWQiOiAiNDIiLAogICAgICAiYXR0cmlidXRlcyI6IHsKICAgICAgICAibmFtZSI6ICJKb2huIiwKICAgICAgICAiYWdlIjogODAsCiAgICAgICAgImdlbmRlciI6ICJtYWxlIgogICAgICB9CiAgICB9CiAgXQp9Cg=="
+  },
+  "response": {
+    "statusCode": "200",
+    "common": {
+      "time": 1654075944800,
+      "version": "1",
+      "headers": null,
+      "body": "ewogICJkYXRhIjogW3sKICAgICJ0eXBlIjogImFydGljbGVzIiwKICAgICJpZCI6ICIxIiwKICAgICJhdHRyaWJ1dGVzIjogewogICAgICAidGl0bGUiOiAiSlNPTjpBUEkgcGFpbnRzIG15IGJpa2VzaGVkISIsCiAgICAgICJib2R5IjogIlRoZSBzaG9ydGVzdCBhcnRpY2xlLiBFdmVyLiIsCiAgICAgICJjcmVhdGVkIjogIjIwMTUtMDUtMjJUMTQ6NTY6MjkuMDAwWiIsCiAgICAgICJ1cGRhdGVkIjogIjIwMTUtMDUtMjJUMTQ6NTY6MjguMDAwWiIKICAgIH0sCiAgICAicmVsYXRpb25zaGlwcyI6IHsKICAgICAgImF1dGhvciI6IHsKICAgICAgICAiZGF0YSI6IHsiaWQiOiAiNDIiLCAidHlwZSI6ICJwZW9wbGUifQogICAgICB9CiAgICB9CiAgfV0sCiAgImluY2x1ZGVkIjogWwogICAgewogICAgICAidHlwZSI6ICJwZW9wbGUiLAogICAgICAiaWQiOiAiNDIiLAogICAgICAiYXR0cmlidXRlcyI6IHsKICAgICAgICAibmFtZSI6ICJKb2huIiwKICAgICAgICAiYWdlIjogODAsCiAgICAgICAgImdlbmRlciI6ICJtYWxlIgogICAgICB9CiAgICB9CiAgXQp9Cg==",
+      "TruncatedBody": false
+    }
+  }
+}

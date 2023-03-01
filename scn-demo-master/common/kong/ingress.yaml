@@ -1,0 +1,154 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: catalogue
+  namespace: sock-shop
+spec:
+  ingressClassName: kong
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: front-end
+            port:
+              number: 80
+
+# ---
+# apiVersion: configuration.konghq.com/v1
+# kind: KongPlugin
+# metadata:
+#   name: add-response-header
+# config:
+#   add:
+#     headers:
+#     - "demo: injected-by-kong"
+# plugin: response-transformer
+# #kubectl patch ingress demo -p '{"metadata":{"annotations":{"konghq.com/plugins":"add-response-header"}}}'
+# ---
+# apiVersion: configuration.konghq.com/v1
+# kind: KongPlugin
+# metadata:
+#   name: httpbin-auth
+# plugin: key-auth
+# #kubectl patch ingress demo -p '{"metadata":{"annotations":{"konghq.com/plugins":"httpbin-auth"}}}'
+# ---
+# apiVersion: configuration.konghq.com/v1
+# kind: KongClusterPlugin
+# metadata:
+#   name: global-rate-limit
+#   annotations:
+#     kubernetes.io/ingress.class: kong
+#   labels:
+#     global: \"true\"
+# config:
+#   minute: 5
+#   limit_by: consumer
+#   policy: local
+# plugin: rate-limiting
+# ---
+# apiVersion: configuration.konghq.com/v1
+# kind: KongClusterPlugin
+# metadata:
+#   name: add-response-header
+#   annotations:
+#     kubernetes.io/ingress.class: kong
+#   labels:
+#     global: "true"
+# config:
+#   add:
+#     headers:
+#     - "demo: injected-by-kong"
+# plugin: response-transformer
+# ---
+# apiVersion: configuration.konghq.com/v1
+# kind: KongClusterPlugin
+# metadata:
+#   name: httpbin-auth
+#   annotations:
+#     kubernetes.io/ingress.class: kong
+#   labels:
+#     global: "true"
+# plugin: key-auth
+# ---
+# apiVersion: configuration.konghq.com/v1
+# kind: KongConsumer
+# metadata:
+#   name: aduminuc
+#   annotations:
+#     kubernetes.io/ingress.class: kong
+# username: aduminuc
+# =======
+#      - path: /carts
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: carts
+#            port:
+#              number: 80
+#      - path: /catalogue
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: catalogue
+#            port:
+#              number: 80
+#      - path: /orders
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: orders
+#            port:
+#              number: 80
+#      - path: /paymentAuth
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: payment
+#            port:
+#              number: 80
+#      - path: /transactions
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: payment
+#            port:
+#              number: 80
+#      -# path: /verify
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: payment
+#            port:
+#              number: 80
+#      - path: /shipping
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: shipping
+#            port:
+#              number: 80
+#      - path: /addresses
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: user
+#            port:
+#              number: 80
+#      - path: /cards
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: user
+#            port:
+#              number: 80
+#      - path: /customers
+#        pathType: Prefix
+#        backend:
+#          service:
+#            name: user
+#            port:
+#              number: 80
+#

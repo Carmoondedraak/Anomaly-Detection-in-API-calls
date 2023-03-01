@@ -1,0 +1,6 @@
+[submodule "api-clarity/cisco_live_2022/vapi"]
+	path = api-clarity/cisco_live_2022/vapi
+	url = https://github.com/roottusk/vapi.git
+[submodule "github-apiclarity"]
+	path = api-clarity/cisco_live_2022/apiclarity
+	url = https://github.com/openclarity/apiclarity.git

@@ -1,0 +1,666 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Paypal sandbox",
+    "description": "Paypal sandbox.",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "ntafie@cisco.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api-m.sandbox.paypal.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "token",
+      "description": "Everything about your token",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://developer.paypal.com/developer/accounts/"
+      }
+    },
+    {
+      "name": "order",
+      "description": "Everything about your Orders",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://developer.paypal.com/developer/accounts/"
+      }
+    },
+    {
+      "name": "checkout",
+      "description": "Everything about your checkout",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://developer.paypal.com/developer/accounts/"
+      }
+    }
+  ],
+  "paths": {
+    "/v2/oauth2/token": {
+      "post": {
+        "tags": [
+          "token"
+        ],
+        "summary": "Partner makes a request to the token endpoint by adding the following parameters describerd  below",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "grant_type"
+                ],
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "description": "Status values that need to be considered for filter",
+                    "enum": [
+                      "client_credentials"
+                    ]
+                  }
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "required": [
+                  "grant_type"
+                ],
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "description": "Status values that need to be considered for filter",
+                    "enum": [
+                      "client_credentials"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Authorisation token (Bearer)",
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "scope": {
+                      "type": "string",
+                      "description": "The access token value"
+                    },
+                    "access_token": {
+                      "type": "string",
+                      "description": "The access token value"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "description": "Type of the token is set to Bearer",
+                      "enum": [
+                        "Bearer"
+                      ]
+                    },
+                    "app_id": {
+                      "type": "string",
+                      "description": "The access token value"
+                    },
+                    "expires_in": {
+                      "type": "integer",
+                      "description": "The lifetime in seconds of the access token",
+                      "format": "int32"
+                    },
+                    "nonce": {
+                      "type": "string",
+                      "description": "The access token value"
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "scope": {
+                      "type": "string",
+                      "description": "The access token value"
+                    },
+                    "access_token": {
+                      "type": "string",
+                      "description": "The access token value"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "description": "Type of the token is set to Bearer",
+                      "enum": [
+                        "Bearer"
+                      ]
+                    },
+                    "app_id": {
+                      "type": "string",
+                      "description": "The access token value"
+                    },
+                    "expires_in": {
+                      "type": "integer",
+                      "description": "The lifetime in seconds of the access token",
+                      "format": "int32"
+                    },
+                    "nonce": {
+                      "type": "string",
+                      "description": "The access token value"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    },
+    "/v2/checkout/orders": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Checks out and places order",
+        "description": "Authorise Payment for placed order",
+        "requestBody": {
+          "description": "Intent Capture",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "intent": {
+                    "type": "string"
+                  },
+                  "purchase_units": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/models.Amount"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Link"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "debug_id": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Detail"
+                      }
+                    },
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Link"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "debug_id": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Detail"
+                      }
+                    },
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Link"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-codegen-request-body-name": "payment"
+      }
+    },
+    "/v2/checkout/orders/{id}": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Fetches (fake) Order by Id",
+        "description": "Queries (fake) Order",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of order returned",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "intent": {
+                      "type": "string"
+                    },
+                    "purchase_units": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Unit"
+                      }
+                    },
+                    "create_time": {
+                      "type": "string"
+                    },
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Link"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Patches (fake) Order by Id",
+        "description": "Updates (fake) Order",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of order returned",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "intent": {
+                      "type": "string"
+                    },
+                    "purchase_units": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Unit"
+                      }
+                    },
+                    "create_time": {
+                      "type": "string"
+                    },
+                    "links": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/models.Link"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "error_description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/checkoutnow": {
+      "get": {
+        "tags": [
+          "checkout"
+        ],
+        "summary": "Fetches (fake) Order by Id",
+        "description": "Queries (fake) Order",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Tags to filter by",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success and returns some html text",
+            "content": {
+              "text/html": {
+                "example": "<html><body>PayPal Content</body></html>"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "models.Amount": {
+        "type": "object",
+        "properties": {
+          "currencyCode": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        }
+      },
+      "models.Unit": {
+        "type": "object",
+        "properties": {
+          "reference_id": {
+            "type": "string"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/models.Amount"
+          },
+          "payee": {
+            "$ref": "#/components/schemas/models.Payee"
+          }
+        }
+      },
+      "models.Payee": {
+        "type": "object",
+        "properties": {
+          "merchant_id": {
+            "type": "string"
+          },
+          "email_address": {
+            "type": "string"
+          }
+        }
+      },
+      "models.Link": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "rel": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          }
+        }
+      },
+      "models.Detail": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "issue": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}

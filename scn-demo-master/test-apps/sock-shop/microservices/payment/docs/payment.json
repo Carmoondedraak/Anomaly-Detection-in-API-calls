@@ -1,0 +1,272 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Gateway to Paypal Sandbox",
+    "description": "This service acts as a gateway to Paypal Sandbox (a simulator to actual PayPal Service).",
+    "termsOfService": "https://swagger.io/terms/",
+    "contact": {
+      "name": "API Support",
+      "url": "https://www.swagger.io/support",
+      "email": "ntafie@cisco.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://payment"
+    }
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "paths": {
+    "/transactions": {
+      "get": {
+        "tags": [
+          "transactions"
+        ],
+        "description": "FetchTransactions Retrieves executed Transaction for placed order",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Transaction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/verify": {
+      "post": {
+        "tags": [
+          "verify500"
+        ],
+        "description": "Verifies executed Transaction for placed order",
+        "requestBody": {
+          "description": "Transaction details",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.Transaction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Transaction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payment"
+      }
+    },
+    "/paymentAuth": {
+      "post": {
+        "tags": [
+          "payment"
+        ],
+        "description": "Authorise Payment for placed order",
+        "requestBody": {
+          "description": "Payment details",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/models.Payment"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Feedback"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/models.Feedback"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payment"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "models.Address": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "postcode": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          }
+        }
+      },
+      "models.Card": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "models.Customer": {
+        "type": "object",
+        "properties": {
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/models.Address"
+            }
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/models.Card"
+            }
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          }
+        }
+      },
+      "models.Feedback": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          }
+        }
+      },
+      "models.Payment": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/models.Address"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "card": {
+            "$ref": "#/components/schemas/models.Card"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/models.Customer"
+          }
+        }
+      },
+      "models.Transaction": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "$ref": "#/components/schemas/models.Feedback"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/models.Payment"
+          }
+        }
+      }
+    }
+  }
+}

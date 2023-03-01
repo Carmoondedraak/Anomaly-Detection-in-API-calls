@@ -1,0 +1,4 @@
+POST http://apiclarity-apiclarity.apiclarity:9000/api/telemetry
+Content-Type: application/json
+Accept: application/json
+@telemetry_payload.json

@@ -1,0 +1,37 @@
+{
+  "address": {
+    "city": "Duisburg",
+    "country": "Germany",
+    "id": "7745-334-rr3r2-445rt-0039r",
+    "number": 128,
+    "postcode": "89232",
+    "street": "Bayreuthstr"
+  },
+  "amount": 25.00,
+  "card": {
+    "id": "3243-5454-232-53ggf",
+    "message": "none"
+  },
+  "customer": {
+    "addresses": [
+      {
+        "city": "string",
+        "country": "string",
+        "id": "string",
+        "number": 0,
+        "postcode": "string",
+        "street": "string"
+      }
+    ],
+    "cards": [
+      {
+        "id": "string",
+        "message": "none"
+      }
+    ],
+    "firstName": "James",
+    "id": "234-32345-454-3243",
+    "lastName": "Sparks",
+    "userName": "jsparks"
+  }
+}

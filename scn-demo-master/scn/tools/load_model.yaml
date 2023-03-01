@@ -1,0 +1,41 @@
+# List of states with emission probability to another state.
+logout:
+  login: 7
+  register: 2
+  end: 1
+register:
+  login: 1
+login:
+  logout: 1
+  get-catalogue: 7
+  get-cart: 2
+get-catalogue:
+  logout: 1
+  get-catalogue: 1
+  get-cart: 1
+  get-item: 7
+get-item:
+  logout: 1
+  get-catalogue: 3
+  get-cart: 2
+  add-to-cart: 4
+add-to-cart:
+  get-cart: 8
+  logout: 2
+remove-from-cart:
+  get-cart: 8
+  logout: 2
+get-cart:
+  logout: 1
+  get-catalogue: 1
+  remove-from-cart: 1
+  checkout: 6
+  empty-cart: 1
+empty-cart:
+  get-cart: 1
+  logout: 1
+checkout:
+  get-catalogue: 1
+  logout: 9
+
+

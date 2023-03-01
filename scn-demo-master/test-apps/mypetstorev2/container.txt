@@ -1,0 +1,2 @@
+docker build -t mypetstorev2 .
+docker run -dp 5000:5000 mypetstorev2
