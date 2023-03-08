@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: openapi
+spec:
+   containers:
+   - name: openapi-tmqpb
+     image: weaveworksdemos/openapi
+     ports:
+     - containerPort: 6379

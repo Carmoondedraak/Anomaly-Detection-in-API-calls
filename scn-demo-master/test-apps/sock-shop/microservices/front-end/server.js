@@ -1,3 +1,10 @@
+
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./api/swagger-output.json')
+const bodyParser = require('body-parser')
+const express = require('express')
+
+const app = express()
 var request      = require("request")
   , express      = require("express")
   , morgan       = require("morgan")
@@ -56,3 +63,14 @@ var server = app.listen(process.env.PORT || 8079, function () {
   var port = server.address().port;
   console.log("App now running in %s mode on port %d", app.get("env"), port);
 });
+
+
+/*app.use(bodyParser.json())*/
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+app.listen(172.18.0.4:30001, () => {
+  console.log("Server is running!\nAPI documentation: http://172.18.0.4:30001/doc")
+})
+
+/* Endpoints */
+require('./api/endpoints')(app)
