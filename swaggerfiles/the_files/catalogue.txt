@@ -1,0 +1,19 @@
+===44 ==========
+GET http://172.18.0.4:30001/catalogue/customers/param1/c:%252FWindows%252Fsystem.ini HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; x64; rv:105.0esr) Gecko/20010101 Firefox/105.0esr
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+Content-Length: 0
+
+
+HTTP/1.1 200 OK
+x-powered-by: Express
+date: Tue, 21 Mar 2023 18:07:27 GMT
+x-envoy-upstream-service-time: 34
+server: istio-envoy
+x-envoy-decorator-operation: front-end.sock-shop.svc.cluster.local:80/*
+Content-Length: 84
+
+{"id":"","name":"","description":"","imageUrl":null,"price":0,"count":0,"tag":null}

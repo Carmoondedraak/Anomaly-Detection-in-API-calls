@@ -1,0 +1,33 @@
+===2595 ==========
+GET http://172.18.0.4:30001/orders/search/customerId?custId=custId&sort=sort HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; x64; rv:105.0esr) Gecko/20010101 Firefox/105.0esr
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+x-forwarded-proto: "John Doe"
+x-request-id: "John Doe"
+Content-Length: 0
+
+
+HTTP/1.1 200 OK
+x-powered-by: Express
+x-application-context: orders:8082
+content-type: application/hal+json;charset=UTF-8
+date: Tue, 21 Mar 2023 17:50:09 GMT
+x-envoy-upstream-service-time: 5213
+server: istio-envoy
+set-cookie: md.sid=s%3AWaGHbi6N6yiBrjbU8badqzIw3XPCyw8u.2nGuRQbBdmCj5XRLbNwZNzlCbHOyACFfq1jmBvIsJ0s; Path=/; HttpOnly
+x-envoy-decorator-operation: front-end.sock-shop.svc.cluster.local:80/*
+Content-Length: 173
+
+{
+  "_embedded" : {
+    "customerOrders" : [ ]
+  },
+  "_links" : {
+    "self" : {
+      "href" : "http://orders/orders/search/customerId?custId=custId&sort=sort"
+    }
+  }
+}

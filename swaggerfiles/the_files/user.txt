@@ -1,0 +1,24 @@
+===4 ==========
+GET http://172.18.0.4:30001/customers/param1/addresses HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; x64; rv:105.0esr) Gecko/20010101 Firefox/105.0esr
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+x-forwarded-proto: "John Doe"
+x-request-id: "John Doe"
+Content-Length: 0
+
+
+HTTP/1.1 404 Not Found
+x-powered-by: Express
+x-content-type-options: nosniff
+content-type: text/html; charset=utf-8
+content-length: 39
+set-cookie: md.sid=s%3ArwrpL6uTqhnlQ5aQsVDpnssTPV3Hr8ap.AYPSgdeeB%2BGg2yHrWfDDWQ8%2FnsSEywp13fhv6%2B6Yslw; Path=/; HttpOnly
+date: Tue, 21 Mar 2023 18:02:49 GMT
+x-envoy-upstream-service-time: 7
+server: istio-envoy
+x-envoy-decorator-operation: front-end.sock-shop.svc.cluster.local:80/*
+
+Cannot GET /customers/param1/addresses
