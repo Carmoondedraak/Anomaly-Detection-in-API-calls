@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "8af42c21-3e31-49c1-8b27-d6e60623a180",
-    "name": "Kubeshop",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "name": "sockshop",
+    "schema": "http://172.18.0.4:30001/catalogue"
   },
   "item": [
     {
@@ -24,10 +24,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://kubeshop.io/",
-          "protocol": "https",
-          "host": ["kubeshop", "io"],
-          "path": [""]
+          "raw": "http://172.18.0.4:30001/catalogue",
+          "protocol": "http",
+          "host": [""],
+          "path": ["/catalogue"]
         }
       },
       "response": []
@@ -51,10 +51,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://kubeshop.io/our-team",
-          "protocol": "https",
-          "host": ["kubeshop", "io"],
-          "path": ["our-team"]
+          "raw": "http://172.18.0.4:30001/catalogue",
+          "protocol": "http",
+          "host": [""],
+          "path": ["catalogue"]
         }
       },
       "response": []
