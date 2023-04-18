@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "apiclarity.name" . }}
+  namespace: '{{ .Release.Namespace }}'
+  labels:
+    {{ include "apiclarity.labels" . }}
+  annotations:
+    helm.sh/hook: pre-install
+spec:
+  ports:
+    - name: http-trace-server
+      port: 9000
+      protocol: TCP
+      targetPort: 9000
+{{- if .Values.apiclarity.tls.enabled }}
+    - name: https-trace-server
+      port: 9443
+      protocol: TCP
+      targetPort: 9443
+{{- end }}
+{{- if and .Values.apiclarity.tls.enabled (not .Values.supportExternalTraceSource.enabled) }}
+    - name: https-authenticated-trace-server
+      port: 10443
+      protocol: TCP
+      targetPort: 10443
+{{- end }}
+    - name: http-backend
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+{{- if .Values.apiclarity.tls.enabled }}
+    - name: https-backend
+      port: 8443
+      protocol: TCP
+      targetPort: 8443
+    - name: https-trace-sampling-manager-server
+      port: 9943
+      protocol: TCP
+      targetPort: 9943
+{{- end }}
+    - name: http-trace-sampling-manager-server
+      port: 9990
+      protocol: TCP
+      targetPort: 9990
+    - name: grpc-trace-sampling-manager-server
+      port: 9991
+      protocol: TCP
+      targetPort: 9991
+  selector:
+    app: {{ include "apiclarity.name" . }}

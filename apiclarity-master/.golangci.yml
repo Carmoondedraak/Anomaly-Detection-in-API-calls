@@ -1,0 +1,74 @@
+run:
+  skip-dirs:
+    - api
+    - ui
+    - dist
+  skip-files:
+    - ".*\\.gen\\.go$"
+  timeout: 5m
+
+linters-settings:
+  golint:
+    min-confidence: 0.1
+  goimports:
+    local-prefixes: github.com/openclarity
+  errorlint:
+    # Check whether fmt.Errorf uses the %w verb for formatting errors. See the readme for caveats
+    errorf: false
+  gomoddirectives:
+    # List of allowed `replace` directives. Default is empty.
+    replace-allow-list:
+      - github.com/jensneuse/graphql-go-tools
+      - github.com/up9inc/mizu/tap/api
+      - github.com/up9inc/mizu/shared
+      - github.com/openclarity/trace-sampling-manager/api
+      - github.com/labstack/echo/v4
+    # Allow local `replace` directives. Default is false.
+    replace-local: true
+  gosec:
+    # To specify a set of rules to explicitly exclude.
+    # Available rules: https://github.com/securego/gosec#available-rules
+    excludes:
+      - G404 # Insecure random number source (rand)
+  gomnd:
+    settings:
+      mnd:
+        ignored-files: fake.go
+  forbidigo:
+    # Forbid the following identifiers (identifiers are written using regexp):
+    forbid:
+      - ^print.*$
+
+linters:
+  enable-all: true
+  disable:
+    - maligned
+    - funlen
+    - dupl
+    - nestif
+    - wsl
+    - lll
+    - interfacer
+    - exhaustivestruct
+    - nlreturn
+    - gocritic
+    - gochecknoglobals
+    - testpackage
+    - scopelint # deprecated
+    - golint # deprecated
+    # TODO:(fixme)
+    - gocognit
+    - godox
+    - cyclop
+    - goerr113
+    - tagliatelle
+    - prealloc
+    - paralleltest
+
+issues:
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  exclude-rules:
+    # Exclude some linters from running on tests files.
+    - path: _test\.go
+      linters:
+        - govet

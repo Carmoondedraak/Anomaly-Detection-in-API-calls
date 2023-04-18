@@ -1,0 +1,10 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: apiclarity-plugin
+plugin: kong-plugin
+config:
+  host: {{UPSTREAM_TELEMETRY_HOST}}
+  trace_sampling_enabled: {{TRACE_SAMPLING_ENABLED}}
+  enable_tls: {{ENABLE_TLS}}
+  trace_source_token: {{TRACE_SOURCE_TOKEN}}

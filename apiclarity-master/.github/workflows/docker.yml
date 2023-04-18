@@ -1,0 +1,105 @@
+name: Docker
+on:
+  push:
+    branches:
+      - master
+
+env:
+  OTEL_COLLECTOR_VERSION: 0.60.0
+
+jobs:
+  docker:
+    name: Docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.ref }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Get current timestamp
+        id: timestamp
+        run: echo "::set-output name=timestamp::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build APIClarity
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          tags: ghcr.io/openclarity/apiclarity:latest
+          file: Dockerfile
+          push: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: |
+            VERSION=latest
+            BUILD_TIMESTAMP=${{ steps.timestamp.outputs.timestamp }}
+            COMMIT_HASH=${{ github.sha }}
+
+      - name: Build Kong Plugin
+        uses: docker/build-push-action@v2
+        with:
+          context: plugins
+          tags: ghcr.io/openclarity/kong-plugin:latest
+          file: plugins/Dockerfile.kong
+          push: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Fix Tyk Plugin API dep
+        id: tyk-dep
+        run: |
+          cd plugins/gateway/tyk/v3.2.2
+          go mod edit -replace github.com/openclarity/apiclarity/plugins/api@v0.0.0=./../api
+          go mod edit -replace github.com/openclarity/apiclarity/plugins/common@v0.0.0=./../common
+
+      - name: Build Tyk Plugin
+        uses: docker/build-push-action@v2
+        with:
+          context: plugins
+          tags: ghcr.io/openclarity/tyk-plugin-v3.2.2:latest
+          file: plugins/Dockerfile.tyk.v3.2.2
+          push: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Build passive taper
+        uses: docker/build-push-action@v2
+        with:
+          context: plugins
+          tags: ghcr.io/openclarity/passive-taper:latest
+          file: plugins/Dockerfile.taper
+          push: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: |
+            VERSION=latest
+
+      - name: Build OpenTelemetry Collector with APIClarity plugin
+        uses: docker/build-push-action@v2
+        with:
+          context: plugins
+          tags: ghcr.io/openclarity/otel-apiclarityexporter:latest
+          file: plugins/Dockerfile.otel-collector
+          push: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: |
+            OTEL_COLLECTOR_VERSION=${{ env.OTEL_COLLECTOR_VERSION }}

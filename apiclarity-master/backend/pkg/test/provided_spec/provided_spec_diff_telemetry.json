@@ -1,0 +1,60 @@
+{
+  "destinationAddress": "10.116.207.196:8000",
+  "request": {
+    "common": {
+      "headers": [
+        {
+          "key": "host",
+          "value": "httpbin:8000"
+        },
+        {
+          "key": "user-agent",
+          "value": "curl/7.35.0"
+        },
+        {
+          "key": "accept",
+          "value": "application/json"
+        },
+        {
+          "key": "x-forwarded-proto",
+          "value": "http"
+        },
+        {
+          "key": "x-request-id",
+          "value": "e34fe93d-ba40-9467-baa3-97936eb57478"
+        }
+      ]
+    },
+    "method": "POST",
+    "path": "/api/dashboard/apiUsage/mostUsed"
+  },
+  "requestID": "e34fe93d-ba40-9467-baa3-97936eb57471",
+  "response": {
+    "common": {
+      "headers": [
+        {
+          "key": "host",
+          "value": "httpbin:8000"
+        },
+        {
+          "key": "user-agent",
+          "value": "curl/7.35.0"
+        },
+        {
+          "key": "accept",
+          "value": "application/json"
+        },
+        {
+          "key": "x-forwarded-proto",
+          "value": "http"
+        },
+        {
+          "key": "x-request-id",
+          "value": "e34fe93d-ba40-9467-baa3-97936eb57478"
+        }
+      ]
+    },
+    "statusCode": "200"
+  },
+  "sourceAddress": "10.116.207.197:8000"
+}

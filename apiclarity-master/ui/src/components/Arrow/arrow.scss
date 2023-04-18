@@ -1,0 +1,33 @@
+@import 'utils/scss_variables.module.scss';
+
+.arrow-icon {
+    transition: transform .2s ease-in-out;
+
+    &:not(.small) {
+        &.right-arrow {
+            transform: rotate(180deg);
+        }
+
+        &.bottom-arrow {
+            transform: rotate(-90deg);
+        }
+
+        &.top-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+    &.small {
+        &.right-arrow {
+            transform: rotate(180deg);
+        }
+
+        &.bottom-arrow {
+            transform: rotate(-90deg);
+        }
+
+        &.top-arrow {
+            transform: rotate(90deg);
+        }
+    }
+}

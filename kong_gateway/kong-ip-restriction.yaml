@@ -1,0 +1,11 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongClusterPlugin
+metadata:
+  name: ip-restriction-example
+  annotations:
+    kubernetes.io/ingress.class: kong
+config: 
+  allow:
+  - 144.254.200.116
+plugin: ip-restriction
+

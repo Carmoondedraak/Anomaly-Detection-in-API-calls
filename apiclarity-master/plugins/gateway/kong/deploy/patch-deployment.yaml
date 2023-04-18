@@ -1,0 +1,41 @@
+spec:
+  template:
+    spec:
+      volumes:
+      - name: kong-api-trace-plugin
+        emptyDir: {}
+# {{CERT VOLUME START}}
+      - name: trace-root-ca
+        configMap:
+          name: api-trace-root-ca
+# {{CERT VOLUME END}}
+      containers:
+      - name: {{KONG_PROXY_CONTAINER_NAME}}
+        volumeMounts:
+        - mountPath: /plugins/
+          name: kong-api-trace-plugin
+# {{CERT MOUNT START}}
+        - mountPath: /etc/traces/certs
+          name: trace-root-ca
+          readOnly: true
+# {{CERT MOUNT END}}
+        env:
+        - name: KONG_PLUGINS
+          value: bundled, kong-plugin
+        - name: KONG_PLUGINSERVER_NAMES
+          value: kong-plugin
+        - name: KONG_PLUGINSERVER_KONG_PLUGIN_START_CMD
+          value: /plugins/kong-plugin
+        - name: KONG_PLUGINSERVER_KONG_PLUGIN_QUERY_CMD
+          value: /plugins/kong-plugin -dump
+      initContainers:
+      - command:
+        - cp
+        - /kong-plugin
+        - /plugin/.
+        image: ghcr.io/openclarity/kong-plugin:latest
+        imagePullPolicy: Always
+        name: apiclarity-kong-plugin-injector
+        volumeMounts:
+        - mountPath: /plugin
+          name: kong-api-trace-plugin
