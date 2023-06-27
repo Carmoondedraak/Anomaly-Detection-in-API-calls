@@ -2,6 +2,8 @@ import copy
 import math
 import argparse
 import pandas as pd
+from flows import *
+
 
 class Data_Preprocess():
     '''
@@ -18,45 +20,53 @@ class Data_Preprocess():
     def __init__(self, data_n, data_a, health=True, even=True, cosine = False, to_keep=set(), data_remove=set(),continuous=[],numerical=[]):
         self.to_keep = to_keep
         self.data_remove = data_remove
-        self.data_n = data_n
-        self.data_a = data_a
-        self.data = [data_n,data_a]
+        self.data_n = copy.deepcopy(data_n)
+        self.data_a = copy.deepcopy(data_a)
+        self.data = [self.data_n,self.data_a]
         self.continuous = continuous
         self.numerical = numerical 
         
-        self.specific_preprocessing
-        if len(self.to_keep) > 0:
-            self.remove_specific_data
+    def create_dataset():
+        data = self.data
+        self.specific_preprocessing(data)
         if len(self.data_remove) > 0:
-            self.remove_unessecary_data
+            data = self.remove_unessecary_data(data)
+            
+        if len(self.to_keep) > 0:
+            data = self.remove_specific_data(data)
+
         if health == True:
-            self.remove_health_calls
+            data = self.remove_health_calls(data)
+            
         if even == True:
-            self.even_dataset
-        self.change_values
-        
-        
-    def remove_unessecary_data(self):
+            data = self.even_dataset(data)
+        if len(self.continuous) > 0 and len(self.numeric) > 0:
+
+            for i in range(2)
+                data[i] = self.change_values(data[i])
+        return data
+
+    def remove_unessecary_data(self, data):
         '''remove data that has no changing values or needs to be removed'''
+        for i in range(len(data)):
+            data[i] = data[i].fillna(0)
+            print('hallo')
+            for col in data[i].columns:
+                if col in data_remove or len(data[i][col].value_counts()) == 1:
+                    print('dataset', i, 'removed', col,'with only',len(data[i][col].value_counts()), 'specific values')
+                    data[i].pop(col)
+        print('done removing unnessecary data')
+        return data
 
-        for i in range(len(self.data)):
-            self.data[i] = self.data[i].fillna(0)
 
-            for col in self.data[i].columns:
-                if col in self.data_remove or len(self.data[i][col].value_counts()) == 1:
-                    print('dataset', i, 'removed', col,'with only',len(self.data[i][col].value_counts()), 'specific values')
-                    self.data[i].pop(col)
-
-
-
-    def even_dataset(self):
+    def even_dataset(self, data):
         '''create even datasets and remove columns that are not present in either one'''
-        if len(self.data_n) > len(self.data_a):
-            self.data_n = self.data_n.sample(n=len(self.data_a))
+        if len(data[0]) > len(data[1]):
+            data[0] = data[0].sample(n=len(data[1]))
 
         else:
-            self.data_a = self.data_a.sample(n=len(data_n))
-
+            data[1] = data[1].sample(n=len(data[0]))
+        return data
 
     def cosine_similarity(self, df):
         '''calculate cosine similarity of all the features'''
@@ -94,56 +104,120 @@ class Data_Preprocess():
                 else:
                     data.pop(key[0])
                     removed.add(key[0])
-        print(removed)
+
+
+    def specific_preprocessing(self, data):
+        '''remove features specifically (only for this dataset useful)'''
+        for j in range(2):
+            
+            data_p_n = copy.deepcopy(data[j])
+            data_p_n.cookie.fillna(data_p_n.set_cookie, inplace=True)
+
+            for i in range(len(sdata[j]['response_line'])):
+                if data_p_n['response_line'][i][0] != 'x':
+                    data_p_n['response_line'][i] = 0
+                    
+            data[j]['response_line'] = data_p_n['response_line']
         return data
 
 
-    def specific_preprocessing(self):
-        '''remove features specifically (only for this dataset useful)'''
-        for i in range(2):
-            data_p_n = copy.deepcopy(self.data)
-            data_p_n.cookie.fillna(data_p_n.set_cookie, inplace=True)
-
-            for i in range(len(self.data['response_line'])):
-                if data_p_n['response_line'][i][0] != 'x':
-                    data_p_n['response_line'][i] = 0
-        self.data[i] = data_p_n
-
-    def remove_specific_data(self):
+    def remove_specific_data(self,data):
         ''' removes all column but a specific set that it is to keep '''
 
         for i in range(2):
-            for col in self.data[i].columns:
+            for col in data[i].columns:
                 if col not in self.to_keep:
-                    self.data[i].pop(col)
-        self.data =  [self.data[0], self.data[1]]
+                    data[i].pop(col)
+        data =  [data[0], data[1]]
+        return data
 
-
-    def change_values(self, continuous, categorical):
-        '''changes the values from type pyshark field to float or str'''
-
-        print('cont',self.continuous,'cat',self.categorical)
-        for i in range(2):
-            for col in self.data[i].columns:
-                if col in self.continuous: 
-                    self.data[i][col] = self.data[i][col].astype('float')
-                    print('string',col)
-                elif col in self.categorical:
-                    print('num',col)
-                    self.data[i][col] = self.data[i][col].astype('str')
-
-    def remove_health_calls(self):
+    
+    
+    def remove_health_calls(self,data ):
         '''removes the health calls that are made within  the kubernetes environment'''
 
-        data_n1 = copy.deepcopy(self.data_n)
-        data_a1 = copy.deepcopy(self.data_a)
+        data_n1 = copy.deepcopy(data[0])
+        data_a1 = copy.deepcopy(data[1])
         data_n2 = data_n1.where(data_n1['user_agent'] != 'kube-probe/1.25')
         data_a2 =  data_a1.where(data_a1['user_agent'] != 'kube-probe/1.25')
         data_n2 = data_n2.dropna()
         data_a2 = data_a2.dropna()
         display(data_n2)
         display(data_a2)
+        data[1] = data_a2
+        data[0] = data_n2
+        return data
+
+    def change_values(self, data, continuous, categorical):
+        '''changes the values from type pyshark field to float or str'''
+        
+        for col in data.columns:
+            if col in continuous: 
+                data[col] = data[col].map(float)
+                
+            elif col in categorical:
+                data[col] = data[col].map(str)
+                
+        print('halloooo', type(data['response_code'].iloc[0]))
+        return data
+
+    def Adding_flow_feature(data, flow):
+        '''This function adds the flow functions to the dataset
+            flow: the object containing the flow information'''
+        for i in range(len(data)):
+            flow.flowdict[(data[''])]
+        return data
+
+
     
+class Train_Val_Test_split():
+    '''splits the data into train, validation and test'''
+    def __init__(data,percentages = '0.70:0.20:0.10'):
+        '''split the data into 70-20-10'''
+        self.percentage = percentage
+        self.train_set, self.train_targets = self.train(data[0], data[1])
+        self.val_set, self.val_targets = self.val(data[0],data[1])
+        self.test_set, self.test_targets = self.test(data[0],data[1])
+    
+    def train(data_n, data_a):
+        perc = float(self.percentage.split(':')[0])
+        self.train_n = data_n.sample(frac=perc)
+        self.train_n['target'] = [0 * i for i in range(len(self.train_n))]
+        self.train_a = data_a.sample(frac=perc)
+        self.train_a['target'] = [i**0 for i in range(len(self.train_a))]
+        
+        train = pd.concat([self.train_n,self.train_a], ignore_index=True)
+        train = train.fillna(0)
+        targets = train['target']
+        train = train.drop(['target'])
+        return train, targets
+
+    def val(data_n, data_a):
+        perc = float(self.percentage.split(':')[1])
+        self.val_n = int_n.sample(frac=perc)
+        self.val_n['target'] = [0 * i for i in range(len(self.val_n))]
+        self.val_a = int_a.sample(frac=perc)  
+        self.val_a['target'] = [i**0 for i in range(len(self.val_a))]
+
+        validation = pd.concat([val_n,val_a], ignore_index=True)
+        validation = validation.fillna(0)
+        targets = validation['target']
+        validation = validation.drop(['target'])
+        return validation,targets 
+
+    def test(data_n, data_a):
+        self.test_n = int_n.drop(self.val_n.index)
+        self.test_n['target'] = [0 * i for i in range(len(self.test_n))]
+        self.test_a = int_a.drop(self.val_a.index)
+        self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
+
+        test = pd.concat([self.test_n,self.test_a], ignore_index=True)
+        test = test.fillna(0)
+        targets = test['target']
+        test = test.drop(['target'])
+        return test
+
+
 if __name__=="__main__":
     # the parser
     parser = argparse.ArgumentParser(
@@ -171,5 +245,5 @@ if __name__=="__main__":
 
     print("starting preprocessing..")
     Data_p = Data_Preprocess(data_n, data_a, args.health, args.even, args.cosine, args.to_keep, args.data_remove,args.continuous,args.numerical)
-    
+
 
