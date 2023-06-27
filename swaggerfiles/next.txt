@@ -1,0 +1,21 @@
+==== 7 ==========
+POST http://172.18.0.4:30001/carts/param1/items HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; x64; rv:105.0esr) Gecko/20010101 Firefox/105.0esr
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+Content-Type: application/json
+Content-Length: 37
+
+{"itemId":"John Doe","unitPrice":1.2}
+HTTP/1.1 404 Not Found
+X-Powered-By: Express
+X-Content-Type-Options: nosniff
+Content-Type: text/html; charset=utf-8
+Content-Length: 32
+set-cookie: md.sid=s%3Ayx7aeU_HLnrQPrVZPO9WOyZlch77xLXU.GVgkN3AWXMQLDB7yP8uV13vBNfUjiaPZQ2h%2BoErfRZQ; Path=/; HttpOnly
+Date: Wed, 12 Apr 2023 18:47:48 GMT
+Connection: keep-alive
+
+Cannot POST /carts/param1/items

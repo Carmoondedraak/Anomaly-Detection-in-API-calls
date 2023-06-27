@@ -1,0 +1,67 @@
+===5 ==========
+GET http://172.18.0.4:30001/carts/param1/items HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+Content-Length: 0
+
+
+HTTP/1.1 404 Not Found
+x-powered-by: Express
+x-content-type-options: nosniff
+content-type: text/html; charset=utf-8
+content-length: 31
+set-cookie: md.sid=s%3AKxFnrdalOCZNf6UWlykk0EAAjNr7qVW3.UQaCi6mB6no2XvpPd9aPrbveh%2FbB6r1%2B9YoHAmbcDhc; Path=/; HttpOnly
+date: Tue, 21 Mar 2023 17:32:52 GMT
+x-envoy-upstream-service-time: 2
+server: istio-envoy
+x-envoy-decorator-operation: front-end.sock-shop.svc.cluster.local:80/*
+
+Cannot GET /carts/param1/items
+===7 ==========
+POST http://172.18.0.4:30001/carts/param1/items HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+Content-Type: application/json
+Content-Length: 37
+
+{"itemId":"John Doe","unitPrice":1.2}
+HTTP/1.1 404 Not Found
+x-powered-by: Express
+x-content-type-options: nosniff
+content-type: text/html; charset=utf-8
+content-length: 32
+set-cookie: md.sid=s%3A0F0DMLuzQJA2y8bUnNHJ9sZlp57DRWaA.b1TUSVYV07Dc7W6xswuz0p%2BbSJ6iJP9C9GhmMyPaaLU; Path=/; HttpOnly
+date: Tue, 21 Mar 2023 17:32:52 GMT
+x-envoy-upstream-service-time: 24
+server: istio-envoy
+x-envoy-decorator-operation: front-end.sock-shop.svc.cluster.local:80/*
+
+Cannot POST /carts/param1/items
+===8 ==========
+GET http://172.18.0.4:30001/carts/param1/merge?sessionId=sessionId HTTP/1.1
+Host: 172.18.0.4:30001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:105.0) Gecko/20100101 Firefox/105.0
+Pragma: no-cache
+Cache-Control: no-cache
+Accept: */*
+Content-Length: 0
+
+
+HTTP/1.1 404 Not Found
+x-powered-by: Express
+x-content-type-options: nosniff
+content-type: text/html; charset=utf-8
+content-length: 51
+set-cookie: md.sid=s%3AvPtHXAqInY2gFPztdP16JxTd4nK9fhzg.dCy%2BeSepuo%2BjMkHd%2B7QV4guqiKu%2FcKmhYTb8XI1Dc9U; Path=/; HttpOnly
+date: Tue, 21 Mar 2023 17:32:53 GMT
+x-envoy-upstream-service-time: 2
+server: istio-envoy
+x-envoy-decorator-operation: front-end.sock-shop.svc.cluster.local:80/*
+
+Cannot GET /carts/param1/merge?sessionId=sessionId
