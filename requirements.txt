@@ -1,0 +1,12 @@
+numpy
+matplotlib
+pandas
+seaborn
+scikit-learn
+texttable
+plotly
+tabulate
+requests-toolbelt
+
+# APPS
+locust

@@ -1,0 +1,67 @@
+@import 'utils/scss_variables.module.scss';
+
+.events-page {
+    .events-filters-wrapper {
+        position: relative;
+
+        .time-filter-wrapper {
+            position: absolute;
+            top: 0;
+            right: 90px;
+        }
+        .general-filter-wrapper {
+            .filter-form-wrapper {
+                position: relative;
+
+                .custom-filter-display-wrapper {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
+    }
+    .events-tab-title {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            margin-right: 7px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .page-container {
+        position: relative;
+        // min-height: 500px;
+
+        .table-wrapper {
+            .pagination-container {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+            }
+            .specs-diff-alert-icon {
+                width: 14px;
+                height: 14px;
+                color: $color-warning;
+            }
+            .table-columns-class {
+                position: absolute;
+                top: -47px;
+                right: 0px;
+            }
+        }
+        .events-chart-wrapper {
+            width: 100%;
+            height: 500px;
+        }
+
+        .alerts-column {
+            display: flex;
+            .risk-tag-wrapper {
+                margin-right: 3px;
+            }
+        }
+    }
+}

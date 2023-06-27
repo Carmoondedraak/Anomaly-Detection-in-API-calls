@@ -1,0 +1,13 @@
+@import 'utils/scss_variables.module.scss';
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    color: $color-main;
+    cursor: pointer;
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+        color: $color-main;
+    }
+}
