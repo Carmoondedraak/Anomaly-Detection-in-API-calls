@@ -93,7 +93,7 @@ class Feature_Selection():
         print('where here')
         score = clf.score(X_test,y_test)
         print(filt[0], score)
-        return score, clf.get_feature_names_out()
+        return score, clf[:-1].get_feature_names_out()
 
 
 if __name__=="__main__":
