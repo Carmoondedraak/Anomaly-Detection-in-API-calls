@@ -144,8 +144,6 @@ class Data_Preprocess():
         data_a2 =  data_a1.where(data_a1['user_agent'] != 'kube-probe/1.25')
         data_n2 = data_n2.dropna()
         data_a2 = data_a2.dropna()
-        display(data_n2)
-        display(data_a2)
         data[1] = data_a2
         data[0] = data_n2
         return data
@@ -178,10 +176,10 @@ class Data_Preprocess():
         self.data = data
         return data
 
-    def save_dataset(self, savefile):
+    def save_dataset(self, savefile, data):
         '''saves the dataframe to a list of two file <savefile>'''
         for i in range(2):
-            self.data[i].to_pickle(savefile[i])  
+            data[i].to_pickle(savefile[i])  
 
 
     def print_dataset(self):
@@ -276,7 +274,7 @@ if __name__=="__main__":
     flows_n =  APIflows2(Data_p.data[0])
     flows = [flows_n,flows_a]
     Data_p.Adding_flow_feature(Data_p.data, flows)
-    Data_p.create_dataset(interesting_to_keep, data_remove, args.health, args.even, args.cosine,args.continuous,args.numerical)
+    data = Data_p.create_dataset(interesting_to_keep, data_remove, args.health, args.even, args.cosine,args.continuous,args.numerical)
     filenames = ['../../Dataset/Mixed/final_normal_dataset.pkl','../../Dataset/Mixed/final_abnormal_dataset.pkl']
     print('Saving the files in', filenames)
-    Data_p.save_dataset(filenames)
+    Data_p.save_dataset(filenames,data)
