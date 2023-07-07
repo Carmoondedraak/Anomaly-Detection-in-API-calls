@@ -10,6 +10,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import f_classif
 from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score
 
 from category_encoders import *
 from flows import *
@@ -29,6 +30,10 @@ class Feature_Selection():
         filters = self.filters()
         model = self.models()
         
+        accuracy = {}
+        precision = {}
+        recall = {}
+        auc = {}
         # loop over each model to be used as a classifier
         for classifier in model.items():
             # try every encoding method
@@ -47,16 +52,19 @@ class Feature_Selection():
                     print('this filter is being used:',filt)
                     # feats = filter_obj.choose_filter(filt, X, y, k)
                     # print('these features are being used:', feats)
-                    self.pipes_filt(X, y,X_test,y_test, filt, classifier, k)
-
+                    prediction,feature_names, pred_prob = self.pipes_filt(X, y,X_test,y_test, filt, classifier, k)
+                    accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob)
                 # see which model works the best using sfs selection 
                 for fs in model.items():
                     print(fs, classifier)
                     # make sure the feature selection model and classifier are not the same
                     if classifier != fs:
-                        self.pipes_model(X,y,X_test,y_test,fs,classifier,5, 'forward')
-       
-        
+                        prediction, feature_names, pred_prob = self.pipes_model(X,y,X_test,y_test,fs,classifier,5, 'forward')
+                        accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob)
+                        accuracy[(fs,classifier)] = accuracy
+                        precision[(fs,classifier)] = precision
+                        recall[(fs,classifier)] = recall
+                        auc[(fs,classifier)] = auc
     def models(self):
         '''initiate the different models '''
         lr = LogisticRegression(max_iter=1000)
@@ -76,25 +84,52 @@ class Feature_Selection():
     def pipes_model(self, X, y,X_test,y_test, model, classifier, k, direction):
         '''pipeline for feature selection using sfs and a classifier'''
         clf = Pipeline([(model[0], SequentialFeatureSelector(model[1],n_features_to_select=5)),
-                        (classify[0], classify[1])])
+                        (classifier[0], classifier[1])])
         clf.fit(X, y)
-        score = clf.score(X_test,y_test)
-        print(model[0], score)
-        print(clf.get_feature_names_out())
-        return score, clf.get_feature_names_out()
+        prediction = clf.predict(X_test)
+        pred_prob = clf.predict_proba(X)
+        print('the model used and the classifier used:', model[0],classifier[0], prediction)
+        print('the best features:',clf[:-1].get_feature_names_out())
+        return prediction, clf.get_feature_names_out(), pred_prob
     
     def pipes_filt(self, X, y,X_test,y_test, filt, classifier, k):
         '''pipeline for feature selection using filter and classifier'''
-        print('ghello')
         clf = Pipeline([(filt[0], SelectKBest(filt[1],k=k)),
                         (classifier[0], classifier[1])])
-        print("whoopwhoop")
         clf.fit(X, y)
-        print('where here')
-        score = clf.score(X_test,y_test)
-        print(filt[0], score)
-        return score, clf[:-1].get_feature_names_out()
+        prediction = clf.predict(X_test)
+        pred_prob = clf.predict_proba(X)
+        print('the filter used and the classifier used:',filt[0],classifier[0], prediction, y_test)
+        print('the best features', clf[:-1].get_feature_names_out())
+        return prediction, clf[:-1].get_feature_names_out(), pred_prob
 
+    def scores(self, y_pred,y_true, pred_prob):
+        accuracy = accuracy_score(y_true, y_pred)
+        precision = precision_score(y_true, y_pred)
+        recall = recall_score(y_true, y_pred)
+        auc = roc_auc_score(y_true,pred_prob)
+        print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall,'\n auc',auc)
+
+        return accuracy, precision, recall, auc
+
+    def visualise(self,):
+        pass
+
+    # def extra(self):
+    #     pipe = Pipeline([('selector', SelectKBest(filt, k=5)),
+    #              ('classifier', LogisticRegression())])
+
+    #     search_space = [{'selector__k': [5, 10, 20, 30]},
+    #             {'classifier': [LogisticRegression(max_iter=1000)],
+    #              'classifier__C': [0.01, 0.1, 1.0]},
+    #             {'classifier': [RandomForestClassifier(n_estimators=100)],
+    #              'classifier__max_depth': [5, 10, None]},
+    #             {'classifier': [KNeighborsClassifier()],
+    #              'classifier__n_neighbors': [3, 7, 11],
+    #              'classifier__weights': ['uniform', 'distance']}]
+    #             {'classifier':[SVC()],'classifier__'}]
+            
+        # dt = DecisionTreeClassifier(random_state=0)   
 
 if __name__=="__main__":
     # the parser
