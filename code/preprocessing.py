@@ -199,14 +199,15 @@ class Train_Val_Test_split():
         self.train_set, self.train_targets = self.train(data[0], data[1])
         self.val_set, self.val_targets = self.val(data[0],data[1])
         self.test_set, self.test_targets = self.test(data[0],data[1])
-    
+        print('Length of train data:', len(self.train_set), sum(self.train_targets),' \n length of validation data', len(self.val_set), sum(self.val_targets), '\n length of the test data', len(self.test_set),sum(self.test_targets))
+
     def train(self, data_n, data_a):
         perc = float(self.percentage.split(':')[0])
         self.train_n = data_n.sample(frac=perc)
         self.train_n['target'] = [0 * i for i in range(len(self.train_n))]
         self.train_a = data_a.sample(frac=perc)
         self.train_a['target'] = [i**0 for i in range(len(self.train_a))]
-        
+        print('this here',len(self.train_a), len(self.train_n))
         train = pd.concat([self.train_n,self.train_a], ignore_index=True)
         train = train.fillna(0)
         train = shuffle(train)
