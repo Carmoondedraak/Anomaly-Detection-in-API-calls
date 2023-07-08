@@ -10,12 +10,13 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import f_classif
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, precision_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
 
 from category_encoders import *
 from flows import *
 from feature_encodings import *
 from preprocessing import *
+from visualising_dataset import *
 
 class Feature_Selection():
     '''This object performs feature selection using various machine learning models'''
@@ -26,6 +27,7 @@ class Feature_Selection():
         encoder_obj = Encoders()
         encoders = encoder_obj.encoders
         filter_obj = Filters()
+        visualiser = create_visualisations()
         splitter = Train_Val_Test_split()
         filters = self.filters()
         model = self.models()
@@ -43,6 +45,7 @@ class Feature_Selection():
                 X_a = encoder_obj.choose_encoding(data[1],encoder)
                 splitter.split_dataset([X_n,X_a])
                 X = splitter.train_set
+                visualiser.data_tabling(X_n,X_a)
                 y = splitter.train_targets
                 X_test  = splitter.test_set
                 y_test = splitter.test_targets
@@ -87,8 +90,9 @@ class Feature_Selection():
                         (classifier[0], classifier[1])])
         clf.fit(X, y)
         prediction = clf.predict(X_test)
-        pred_prob = clf.predict_proba(X)
+        pred_prob = clf.predict_proba(X_test)
         print('the model used and the classifier used:', model[0],classifier[0], prediction)
+
         print('the best features:',clf[:-1].get_feature_names_out())
         return prediction, clf.get_feature_names_out(), pred_prob
     
@@ -98,7 +102,7 @@ class Feature_Selection():
                         (classifier[0], classifier[1])])
         clf.fit(X, y)
         prediction = clf.predict(X_test)
-        pred_prob = clf.predict_proba(X)
+        pred_prob = clf.predict_proba(X_test)
         print('the filter used and the classifier used:',filt[0],classifier[0], prediction, y_test)
         print('the best features', clf[:-1].get_feature_names_out())
         return prediction, clf[:-1].get_feature_names_out(), pred_prob
@@ -107,7 +111,8 @@ class Feature_Selection():
         accuracy = accuracy_score(y_true, y_pred)
         precision = precision_score(y_true, y_pred)
         recall = recall_score(y_true, y_pred)
-        auc = roc_auc_score(y_true,pred_prob)
+        # auc = roc_auc_score(y_true,pred_prob)
+        auc = 0
         print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall,'\n auc',auc)
 
         return accuracy, precision, recall, auc

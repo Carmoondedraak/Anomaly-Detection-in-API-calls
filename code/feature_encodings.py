@@ -2,7 +2,7 @@ from category_encoders import *
 import pandas as pd
 class Encoders():
     def __init__(self):
-        self.encoders = ['one_hot', 'woe', 'freq', 'cat']
+        self.encoders = ['cat','one_hot', 'woe', 'freq']
         
     def choose_encoding(self, data, name):
         if name == 'one_hot':

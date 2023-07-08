@@ -22,6 +22,7 @@ class create_visualisations():
         classes_n = []
         total_n = []
         data = [data[: int(len(data)/2)], data[int(len(data)/2):]]
+        
         for i in range(2):
             # the amount of times a feature class is present in the data
             feature_classes = [len(data[i][column].unique()) if len(data[i][column].unique()) != 0 else [0] for column in data[i].columns]
@@ -37,6 +38,7 @@ class create_visualisations():
         
         columns = [[data[0].columns[i], max_n[0][i], min_n[0][i], avg_n[0][i], classes_n[0][i],total_n[0][i],max_n[1][i], min_n[1][i], avg_n[1][i], classes_n[1][i],total_n[1][i]] for i in range(len(data[0].columns))] 
         df = pd.DataFrame(columns, columns=names)
+        print(df)
     #     display(df)
         return(df)
 

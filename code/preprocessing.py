@@ -208,7 +208,7 @@ class Train_Val_Test_split():
         print('this here',len(self.train_a), len(self.train_n))
         train = pd.concat([self.train_n,self.train_a], ignore_index=True)
         train = train.fillna(0)
-        train = shuffle(train)
+        train = shuffle(train).reset_index(drop=True)
         targets = train['target']
         train = train.drop(['target'],axis=1)
         return train, targets
@@ -222,20 +222,22 @@ class Train_Val_Test_split():
 
         validation = pd.concat([self.val_n,self.val_a], ignore_index=True)
         validation = validation.fillna(0)
-        validation = shuffle(validation)
+        validation = shuffle(validation).reset_index(drop=True)
         targets = validation['target']
         validation = validation.drop(['target'],axis=1)
         return validation,targets 
 
     def test(self, data_n, data_a):
+        self.test_n = data_n.drop(self.train_n.index)
         self.test_n = data_n.drop(self.val_n.index)
         self.test_n['target'] = [0 * i for i in range(len(self.test_n))]
+        self.test_a = data_a.drop(self.train_a.index)
         self.test_a = data_a.drop(self.val_a.index)
         self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
 
         test = pd.concat([self.test_n,self.test_a], ignore_index=True)
         test = test.fillna(0)
-        test = shuffle(test)
+        test = shuffle(test).reset_index(drop=True)
         targets = test['target']
         test = test.drop(['target'],axis=1)
         return test, targets
