@@ -18,7 +18,7 @@ istioctl install --set profile=demo -y
 # install sock-shop (vulnerable webshop) environment
 kubectl create namespace sock-shop
 kubectl label namespaces sock-shop istio-injection=enabled
-kubectl apply -f  ~/Documents/Anomaly-Detection-in-API-calls/scn-demo-master/test-apps/sock-shop/deploy/kubernetes/sock-shop.yaml
+kubectl apply -f  ~/Documents/Anomaly-Detection-in-API-calls/scn-v2-demo/test-apps/sock-shop/deploy/kubernetes/sock-shop.yaml
 
 # install api clarity
 helm repo add apiclarity https://openclarity.github.io/apiclarity

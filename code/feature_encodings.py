@@ -1,5 +1,13 @@
 from category_encoders import *
 import pandas as pd
+import copy
+
+
+from category_encoders import *
+from flows import *
+from feature_encodings import *
+from preprocessing import *
+from visualising_dataset import *
 class Encoders():
     def __init__(self):
         self.encoders = ['cat','one_hot', 'woe', 'freq']
@@ -14,7 +22,7 @@ class Encoders():
         elif name == 'freq':
             n_data = self.freq(data)
         elif name == 'cat':
-            n_data == self.categorical_encoding(data)
+            n_data = self.categorical_encoding(data)
         return n_data
             
     def one_hot(self, data):

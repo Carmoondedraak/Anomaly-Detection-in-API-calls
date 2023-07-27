@@ -1,0 +1,48 @@
+this enocoder is being used: cat
+this here 1212 1212
+is this a thing Empty DataFrame
+Columns: [response_code, response_line, content_type, content_length, server, time, file_data, dst, src, src_p, dst_p, request_method, request_uri, x_forwarded_for, user_agent, referer, cache_control, cookie, transfer_encoding, request_uri_query, target, authorization, authbasic]
+Index: []
+Length of train data: 2424 1212  
+ length of validation data 692 346 
+ length of the test data 2770 1385
+             Features  ...  Total calls abnormal
+0       response_code  ...                  1212
+1       response_line  ...                  1212
+2       cache_control  ...                  1212
+3        content_type  ...                  1212
+4      content_length  ...                  1212
+5              server  ...                  1212
+6                time  ...                  1212
+7           file_data  ...                  1212
+8                 dst  ...                  1212
+9                 src  ...                  1212
+10              src_p  ...                  1212
+11              dst_p  ...                  1212
+12     request_method  ...                  1212
+13        request_uri  ...                  1212
+14  request_uri_query  ...                  1212
+15    x_forwarded_for  ...                  1212
+16         user_agent  ...                  1212
+17             cookie  ...                  1212
+18  transfer_encoding  ...                  1212
+19            referer  ...                  1212
+20      authorization  ...                  1212
+21          authbasic  ...                  1212
+
+[22 rows x 11 columns]
+this filter is being used: ('mutinf', <function mutual_info_classif at 0x15fcd2e80>)
+training accuracy: 1.0
+the filter used and the classifier used: mutinf lr [1 1 0 ... 0 0 1] 0       1
+1       1
+2       0
+3       1
+4       1
+       ..
+2765    1
+2766    0
+2767    0
+2768    0
+2769    1
+Name: target, Length: 2770, dtype: int64
+the best features ['response_code' 'content_type' 'file_data' 'authorization' 'authbasic']

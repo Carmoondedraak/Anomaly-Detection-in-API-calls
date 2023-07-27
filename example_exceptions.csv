@@ -1,5 +1,5 @@
 Count,Message,Traceback,Nodes
-41,[Errno Expecting value] : 0,"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+11,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -14,82 +14,10 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 313, in remove_from_cart
     raise Exception(f""Failed to remove {item} from cart: {res} {res.json()}"")
                                                                 ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 917, in json
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 975, in json
     raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
 ",local
-5,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 218, in browse
-    data1 = client.browse_to_item(self.item['id'])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 371, in browse_to_item
-    res = self._s.get(self._build_url(f'/detail.html?id={id}'))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 542, in get
-    return self.request('GET', url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
-    raise ConnectionError(err, request=request)
-",local
-2,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 105, in browse
-    data1 = client.browse_to_item(self.item['id'])
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 371, in browse_to_item
-    res = self._s.get(self._build_url(f'/detail.html?id={id}'))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 542, in get
-    return self.request('GET', url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
-    raise ConnectionError(err, request=request)
-",local
-4,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 280, in get_catalogue
-    return res.json(), dump.dump_all(res).decode('utf-8')
-           ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 899, in json
-    return complexjson.loads(
-           ^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/__init__.py"", line 346, in loads
-    return _default_decoder.decode(s)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/decoder.py"", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/decoder.py"", line 355, in raw_decode
-    raise JSONDecodeError(""Expecting value"", s, err.value) from None
-",local
-9,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+2,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -101,199 +29,10 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 280, in get_catalogue
     return res.json(), dump.dump_all(res).decode('utf-8')
            ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 899, in json
-    return complexjson.loads(
-           ^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/__init__.py"", line 346, in loads
-    return _default_decoder.decode(s)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/decoder.py"", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/decoder.py"", line 355, in raw_decode
-    raise JSONDecodeError(""Expecting value"", s, err.value) from None
-",local
-7,[Errno Expecting value] upstream connect error or disconnect/reset before headers. reset reason: connection termination: 0,"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
-    _,data = self.client.add_to_cart(self.item['id'])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 307, in add_to_cart
-    raise Exception(f""Failed to add {item} to cart: {res} {res.json()}"")
-                                                           ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 917, in json
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 968, in json
     raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
 ",local
-7,"[Errno Expecting value] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111: 0","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 279, in get_catalogue
-    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
-                                                      ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 917, in json
-    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
-",local
-84,Failed to get catalogue: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 279, in get_catalogue
-    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
-",local
-188,Failed to get catalogue: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 279, in get_catalogue
-    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
-",local
-119,Failed to add 808a2de1-1aaa-4c25-a9b9-6612e8f29a38 to cart: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
-    _,data = self.client.add_to_cart(self.item['id'])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 307, in add_to_cart
-    raise Exception(f""Failed to add {item} to cart: {res} {res.json()}"")
-",local
-5,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 112, in get_cart
-    self.cart, data = self.client.get_cart()
-                      ^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 283, in get_cart
-    res = self._s.get(self._build_url('/cart'))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 542, in get
-    return self.request('GET', url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
-    raise ConnectionError(err, request=request)
-",local
-7,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 112, in get_cart
-    self.cart, data = self.client.get_cart()
-                      ^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 285, in get_cart
-    raise Exception(f""failed to get cart: {res} {res.json()}"")
-                                                 ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 899, in json
-    return complexjson.loads(
-           ^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/__init__.py"", line 346, in loads
-    return _default_decoder.decode(s)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/decoder.py"", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/json/decoder.py"", line 355, in raw_decode
-    raise JSONDecodeError(""Expecting value"", s, err.value) from None
-",local
-1,"[Errno Expecting value] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111: 0","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 279, in get_catalogue
-    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
-                                                      ^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 917, in json
-    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
-",local
-13,"('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
-    _,data = self.client.add_to_cart(self.item['id'])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 305, in add_to_cart
-    res = self._s.post(self._build_url('/cart'), data=json.dumps(data))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 577, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
-    raise ConnectionError(err, request=request)
-",local
-45,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /catalogue?tags=red%2Csport%2Cgeek%2Cformal%2Cskin%2Cskin%2Cgreen%2Caction%2Cskin%2Cgreen&page=1&size=100 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x163411d50>: Failed to establish a new connection: [Errno 61] Connection refused'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
-    res = requests.get(self._build_url('/catalogue'), params=params)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 75, in get
-    return request('get', url, params=params, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 519, in send
-    raise ConnectionError(e, request=request)
-",local
-143,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /catalogue?tags=skin%2Cgeek%2Cblack&page=1&size=100 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15b6ea710>: Failed to establish a new connection: [Errno 61] Connection refused'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+2,"HTTPConnectionPool(host='34.132.55.157', port=80): Max retries exceeded with url: /catalogue?tags=black%2Cgeek%2Cred%2Cred%2Cskin&page=1&size=100 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x1652bcf10>, 'Connection to 34.132.55.157 timed out. (connect timeout=None)'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -305,22 +44,103 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
     res = requests.get(self._build_url('/catalogue'), params=params)
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 75, in get
-    return request('get', url, params=params, **kwargs)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 73, in get
+    return request(""get"", url, params=params, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 61, in request
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 59, in request
     return session.request(method=method, url=url, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
     resp = self.send(prep, **send_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
     r = adapter.send(request, **kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 519, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 508, in send
+    raise ConnectTimeout(e, request=request)
+",local
+2,"HTTPConnectionPool(host='34.132.55.157', port=80): Max retries exceeded with url: /catalogue?tags=action%2Cblue%2Cblue%2Cmagic%2Cred%2Cblack%2Cblack%2Cred%2Csport%2Csport&page=1&size=100 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x1652bf1d0>, 'Connection to 34.132.55.157 timed out. (connect timeout=None)'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
+    res = requests.get(self._build_url('/catalogue'), params=params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 73, in get
+    return request(""get"", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 508, in send
+    raise ConnectTimeout(e, request=request)
+",local
+18,"HTTPConnectionPool(host='34.132.55.157', port=80): Max retries exceeded with url: /catalogue?tags=formal%2Cbrown&page=1&size=100 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15c8bee90>: Failed to establish a new connection: [Errno 51] Network is unreachable'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
+    res = requests.get(self._build_url('/catalogue'), params=params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 73, in get
+    return request(""get"", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 520, in send
     raise ConnectionError(e, request=request)
 ",local
-45,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /cart (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x168939290>: Failed to establish a new connection: [Errno 61] Connection refused'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+2,"HTTPConnectionPool(host='34.132.55.157', port=80): Max retries exceeded with url: /catalogue?tags=blue%2Csport%2Csport%2Cmagic%2Caction%2Cblue&page=1&size=100 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1652bd550>: Failed to establish a new connection: [Errno 51] Network is unreachable'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
+    res = requests.get(self._build_url('/catalogue'), params=params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 73, in get
+    return request(""get"", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 520, in send
+    raise ConnectionError(e, request=request)
+",local
+2,"HTTPConnectionPool(host='34.132.55.157', port=80): Read timed out. (read timeout=None)","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -332,19 +152,19 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 305, in add_to_cart
     res = self._s.post(self._build_url('/cart'), data=json.dumps(data))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 577, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 635, in post
+    return self.request(""POST"", url, data=data, json=json, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
     resp = self.send(prep, **send_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
     r = adapter.send(request, **kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 519, in send
-    raise ConnectionError(e, request=request)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 533, in send
+    raise ReadTimeout(e, request=request)
 ",local
-29,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /orders (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15b6ea0d0>: Failed to establish a new connection: [Errno 61] Connection refused'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+2,"HTTPConnectionPool(host='34.132.55.157', port=80): Max retries exceeded with url: /orders (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1652be550>: Failed to establish a new connection: [Errno 51] Network is unreachable'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -356,19 +176,118 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 318, in checkout
     res = self._s.post(self._build_url('/orders'))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 577, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 635, in post
+    return self.request(""POST"", url, data=data, json=json, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
     resp = self.send(prep, **send_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
     r = adapter.send(request, **kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 519, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 520, in send
     raise ConnectionError(e, request=request)
 ",local
-5,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /cart/819e1fbf-8b7e-4f6d-811f-693534916a8b (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x15fedc750>: Failed to establish a new connection: [Errno 61] Connection refused'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+27,Failed to add a0a4f044-b040-410d-8ead-4de0446aec7e to cart: <Response [403]> {'message': 'Your IP address is not allowed'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
+    _,data = self.client.add_to_cart(self.item['id'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 307, in add_to_cart
+    raise Exception(f""Failed to add {item} to cart: {res} {res.json()}"")
+",local
+102,Failed to get catalogue: <Response [403]> {'message': 'Your IP address is not allowed'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 279, in get_catalogue
+    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
+",local
+46,Failed to get catalogue: <Response [403]> {'message': 'Your IP address is not allowed'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 99, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 279, in get_catalogue
+    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
+",local
+5,failed to get cart: <Response [403]> {'message': 'Your IP address is not allowed'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 112, in get_cart
+    self.cart, data = self.client.get_cart()
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 285, in get_cart
+    raise Exception(f""failed to get cart: {res} {res.json()}"")
+",local
+11,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
+    _,data = self.client.add_to_cart(self.item['id'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 305, in add_to_cart
+    res = self._s.post(self._build_url('/cart'), data=json.dumps(data))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 635, in post
+    return self.request(""POST"", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
+    raise ConnectionError(err, request=request)
+",local
+4,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
+    res = requests.get(self._build_url('/catalogue'), params=params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 73, in get
+    return request(""get"", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
+    raise ConnectionError(err, request=request)
+",local
+2,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -383,19 +302,43 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 311, in remove_from_cart
     res = self._s.delete(self._build_url(f'/cart/{item}'))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 611, in delete
-    return self.request('DELETE', url, **kwargs)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 669, in delete
+    return self.request(""DELETE"", url, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
     resp = self.send(prep, **send_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
     r = adapter.send(request, **kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 519, in send
-    raise ConnectionError(e, request=request)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
+    raise ConnectionError(err, request=request)
 ",local
-4,Failed to remove 819e1fbf-8b7e-4f6d-811f-693534916a8b from cart: <Response [404]> {'message': 'no Route matched with those values'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+10,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 142, in checkout
+    data = self.client.checkout()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 318, in checkout
+    res = self._s.post(self._build_url('/orders'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 635, in post
+    return self.request(""POST"", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
+    raise ConnectionError(err, request=request)
+",local
+2,Failed to remove 510a0d7e-8e83-4193-b483-e27e09ddc34d from cart: <Response [403]> {'message': 'Your IP address is not allowed'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -410,123 +353,7 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 313, in remove_from_cart
     raise Exception(f""Failed to remove {item} from cart: {res} {res.json()}"")
 ",local
-1,"(""Connection broken: InvalidChunkLength(got length b'', 0 bytes read)"", InvalidChunkLength(got length b'', 0 bytes read))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
-    res = requests.get(self._build_url('/catalogue'), params=params)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 75, in get
-    return request('get', url, params=params, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 687, in send
-    r.content
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 838, in content
-    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 763, in generate
-    raise ChunkedEncodingError(e)
-",local
-8,failed to get cart: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 112, in get_cart
-    self.cart, data = self.client.get_cart()
-                      ^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 285, in get_cart
-    raise Exception(f""failed to get cart: {res} {res.json()}"")
-",local
-10,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 142, in checkout
-    data = self.client.checkout()
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 318, in checkout
-    res = self._s.post(self._build_url('/orders'))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 577, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
-    raise ConnectionError(err, request=request)
-",local
-2,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /catalogue?tags=sport%2Cblue&page=1&size=100 (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x15f08b390>, 'Connection to 34.172.227.228 timed out. (connect timeout=None)'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
-    res = requests.get(self._build_url('/catalogue'), params=params)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 75, in get
-    return request('get', url, params=params, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 507, in send
-    raise ConnectTimeout(e, request=request)
-",local
-1,"HTTPConnectionPool(host='34.172.227.228', port=80): Read timed out. (read timeout=None)","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
-    _,data = self.client.add_to_cart(self.item['id'])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 305, in add_to_cart
-    res = self._s.post(self._build_url('/cart'), data=json.dumps(data))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 577, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 532, in send
-    raise ReadTimeout(e, request=request)
-",local
-8,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /cart (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x165197bd0>: Failed to establish a new connection: [Errno 51] Network is unreachable'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+2,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
@@ -538,93 +365,39 @@ Count,Message,Traceback,Nodes
   File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 283, in get_cart
     res = self._s.get(self._build_url('/cart'))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 542, in get
-    return self.request('GET', url, **kwargs)
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 600, in get
+    return self.request(""GET"", url, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
     resp = self.send(prep, **send_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
     r = adapter.send(request, **kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 519, in send
-    raise ConnectionError(e, request=request)
-",local
-1,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 131, in empty_cart
-    data,times = self.client.empty_cart(self.cart)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 296, in empty_cart
-    res, data1 = self.remove_from_cart(item['itemId'])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 311, in remove_from_cart
-    res = self._s.delete(self._build_url(f'/cart/{item}'))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 611, in delete
-    return self.request('DELETE', url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
     raise ConnectionError(err, request=request)
 ",local
-3,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+2,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
     self.execute_next_task()
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
     self.execute_task(self._task_queue.pop(0))
   File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
     task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 212, in browse
-    self.catalogue, data = client.get_catalogue(_tags)
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 276, in get_catalogue
-    res = requests.get(self._build_url('/catalogue'), params=params)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 75, in get
-    return request('get', url, params=params, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/api.py"", line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 218, in browse
+    data1 = client.browse_to_item(self.item['id'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 371, in browse_to_item
+    res = self._s.get(self._build_url(f'/detail.html?id={id}'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 600, in get
+    return self.request(""GET"", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
     resp = self.send(prep, **send_kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
     r = adapter.send(request, **kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 501, in send
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
     raise ConnectionError(err, request=request)
-",local
-1,"HTTPConnectionPool(host='34.172.227.228', port=80): Max retries exceeded with url: /cart (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x15ef52910>, 'Connection to 34.172.227.228 timed out. (connect timeout=None)'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
-    self.execute_next_task()
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
-    self.execute_task(self._task_queue.pop(0))
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
-    task(self.user)
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 123, in add_to_cart
-    _,data = self.client.add_to_cart(self.item['id'])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/user-traffic-load.py"", line 305, in add_to_cart
-    res = self._s.post(self._build_url('/cart'), data=json.dumps(data))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 577, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 529, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 645, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 507, in send
-    raise ConnectTimeout(e, request=request)
 ",local

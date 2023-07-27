@@ -4,6 +4,8 @@ import argparse
 import pandas as pd
 from flows import *
 from sklearn.utils import shuffle
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 
 class Data_Preprocess():
@@ -193,7 +195,8 @@ class Train_Val_Test_split():
         '''split the data into 70-20-10'''
         self.percentage = percentages
 
-    def split_dataset(self, data):
+    def split_dataset(self, data): 
+        print('lenght of total data', len(data[0]), len(data[1]))
         self.train_set, self.train_targets = self.train(data[0], data[1])
         self.val_set, self.val_targets = self.val(data[0],data[1])
         self.test_set, self.test_targets = self.test(data[0],data[1])
@@ -206,39 +209,50 @@ class Train_Val_Test_split():
         self.train_a = data_a.sample(frac=perc)
         self.train_a['target'] = [i**0 for i in range(len(self.train_a))]
         print('this here',len(self.train_a), len(self.train_n))
+
         train = pd.concat([self.train_n,self.train_a], ignore_index=True)
         train = train.fillna(0)
         train = shuffle(train).reset_index(drop=True)
         targets = train['target']
+        self.train_set_t = train
         train = train.drop(['target'],axis=1)
         return train, targets
 
     def val(self, data_n, data_a):
         perc = float(self.percentage.split(':')[1])
-        self.val_n = data_n.sample(frac=perc)
+       
+        self.val_n = data_n.drop(self.train_n.index)
+        perc = ((len(data_n) * perc) /len(self.val_n))
+        print(perc, len(self.val_n))
+        self.val_n = self.val_n.sample(frac=perc)
+        
         self.val_n['target'] = [0 * i for i in range(len(self.val_n))]
-        self.val_a = data_a.sample(frac=perc)  
+        self.val_a = data_a.drop(self.train_a.index)
+
+        self.val_a = self.val_a.sample(frac=perc)  
         self.val_a['target'] = [i**0 for i in range(len(self.val_a))]
 
         validation = pd.concat([self.val_n,self.val_a], ignore_index=True)
         validation = validation.fillna(0)
         validation = shuffle(validation).reset_index(drop=True)
         targets = validation['target']
+        self.val_set_t = validation
         validation = validation.drop(['target'],axis=1)
         return validation,targets 
 
     def test(self, data_n, data_a):
         self.test_n = data_n.drop(self.train_n.index)
-        self.test_n = data_n.drop(self.val_n.index)
+        self.test_n = self.test_n.drop(self.val_n.index)
         self.test_n['target'] = [0 * i for i in range(len(self.test_n))]
         self.test_a = data_a.drop(self.train_a.index)
-        self.test_a = data_a.drop(self.val_a.index)
+        self.test_a = self.test_a.drop(self.val_a.index)
         self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
 
         test = pd.concat([self.test_n,self.test_a], ignore_index=True)
         test = test.fillna(0)
         test = shuffle(test).reset_index(drop=True)
         targets = test['target']
+        self.test_set_t = test
         test = test.drop(['target'],axis=1)
         return test, targets
 
@@ -250,34 +264,35 @@ if __name__=="__main__":
                     description='This program preprocesses the data according to a couple of different options',
                     epilog='Text at the bottom of help')
 
-    parser.add_argument('filename',metavar= 'filename of normal dataset')           # positional argument
-    parser.add_argument('filename1',metavar= 'filename of abnormal dataset')
-    parser.add_argument('savefile', metavar= 'the file to save the prerocessed dataset')
+    parser.add_argument('filename',metavar= '<filename - normal dataset>')           # positional argument
+    parser.add_argument('filename1',metavar= '<filename - abnormal dataset>')
+    parser.add_argument('savefile', metavar= '<savefilename1 - to save the prerocessed normal dataset>')
     
     parser.add_argument('-he', '--health',help='remove health calls from dataset', dest='health', default=False, action='store_true')      # option that takes a value
-    parser.add_argument('-e', '--even', help='the create even dataset of normal and abnormal data (True or False)',default='False',action='store_true')
+    parser.add_argument('-e', '--even', help='the create even dataset of normal and abnormal data (True or False)',default='True',action='store_true')
     parser.add_argument('-c','--cosine', help='use cosine similarity to remove features', default=False,action='store_true')
     parser.add_argument('-d','--data_remove', help='set of data to be removed',nargs=1, default=set(), type=set)
     parser.add_argument('-k','--to_keep', metavar='set of data to be kept',nargs=1, default=set(), type=set)
     parser.add_argument('-co','--continuous',metavar='list of continuous features', nargs=1, default=[], type=list)
     parser.add_argument('-n','--numerical', metavar='list of numerical features',nargs=1, default=[], type=list)
-    parser.add_argument('savefile', metavar= 'the file to save the prerocessed dataset')
+    parser.add_argument('savefile', metavar= '<savefilename2 - to save the prerocessed abnormal dataset>')
     
-    interesting_to_keep = set(('user_agent','response_code','response_line','cache_control','content_type' ,'content_length','server','time','file_data','dst','src','src_p','dst_p','request_method','request_uri','request_uri_query','x_forwarded_for','user_agent','cookie','transfer_encoding','referer','authorization','authbasic'))
+    interesting_to_keep = set(('flow_freq','user_agent','response_code','response_line','cache_control','content_type' ,'content_length','server','time','file_data','dst','src','src_p','dst_p','request_method','request_uri','request_uri_query','x_forwarded_for','user_agent','cookie','transfer_encoding','referer','authorization','authbasic'))
     data_remove = set(('_ws_expert', 'chat', '_ws_expert_message'))
     args = parser.parse_args()
     print("loading in the dataset..")
-    data_n = pd.read_pickle(args.filename)
-    data_a = pd.read_pickle(args.filename1)
-
+    data_n = pd.read_pickle(args.filename).reset_index()
+    data_a = pd.read_pickle(args.filename1).reset_index()
+    
     print("starting preprocessing..")
     Data_p = Data_Preprocess(data_n, data_a)
-
+    print(Data_p.data[1][10:])
     flows_a = APIflows2(Data_p.data[1])
     flows_n =  APIflows2(Data_p.data[0])
     flows = [flows_n,flows_a]
     Data_p.Adding_flow_feature(Data_p.data, flows)
     data = Data_p.create_dataset(interesting_to_keep, data_remove, args.health, args.even, args.cosine,args.continuous,args.numerical)
-    filenames = ['../../Dataset/Mixed/final_normal_dataset.pkl','../../Dataset/Mixed/final_abnormal_dataset.pkl']
+    # filenames = ['../../Dataset/Mixed/final_normal_dataset_with_health.pkl','../../Dataset/Mixed/final_abnormal_dataset_with_health.pkl']
+    filenames = ['../../Dataset/New/final_preprocessed_all_together_normal.pkl', '../../Dataset/New/final_preprocessed_all_togheter_abnormal.pkl']
     print('Saving the files in', filenames)
     Data_p.save_dataset(filenames,data)
