@@ -45,11 +45,16 @@ class APIflows2:
                 idx = idx[0]
                 self.add_flow_to_dict(cate[idx], cate[i])
                 self.idxperflow[i] = (cate[idx],cate[i])
-                # print(frames[self.data['frame']], idx)
-                
-                frames[self.data['frame'][idx]].append(((cate[idx],cate[i])))
-                frames[self.data['frame'][i]] = frames[self.data['frame'][idx]] 
-                del frames[self.data['frame'][idx]]
+                # print('idx',idx)
+                # print(frames[self.data['frame'][idx]], idx)
+                # some times the index of the frame is not present in the frames than we want to skip this
+                if self.data['frame'][idx] not in frames:
+                    print('hello')
+                    pass
+                else:
+                    frames[self.data['frame'][idx]].append(((cate[idx],cate[i])))
+                    frames[self.data['frame'][i]] = frames[self.data['frame'][idx]] 
+                    del frames[self.data['frame'][idx]]
         self.paths = list(frames.values())
 
 

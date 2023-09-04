@@ -162,65 +162,82 @@ def visualise_distribution(data_n,data_a, folder):
             combined_df[column] = combined_df[column].astype(str).str[:10]
 
     sety = smallset | medium_set | num_set 
-    fig, axs = plt.subplots(4,4, figsize=(20,20))
-    count=0
-    for j in range(4):
-        for i in range(4):
-            # if count < len(sety):
-            at = sns.histplot(data=combined_df, x=list(sety)[count], hue='target',kde=True,  color=sns.color_palette('pastel')[0], ax=axs[i,j])
-            for k, cont in enumerate(at.containers):
-                if k %2 == 0:
-                    at.bar_label(cont,label_type='edge',color='red')
-                else:
-                    at.bar_label(cont,label_type='edge',color='black')
+    # fig, axs = plt.subplots(4,4, figsize=(20,20))
+    # count=0
+    # for j in range(4):
+    #     for i in range(4):
+    #         # if count < len(sety):
+    #         at = sns.histplot(data=combined_df, x=list(sety)[count], hue='target',kde=True,  color=sns.color_palette('pastel')[0], ax=axs[i,j])
+    #         at.tick_params(axis='x', rotation=90)
+    #         for k, cont in enumerate(at.containers):
+    #             if k %2 == 0:
+    #                 at.bar_label(cont,label_type='edge',color='red')
+    #             else:
+    #                 at.bar_label(cont,label_type='edge',color='black')
 
-                    # if k+1 == len(at.containers):
-                    #     break
-                    # for l,label in enumerate(at.bar_label(cont)):
+    #                 # if k+1 == len(at.containers):
+    #                 #     break
+    #                 # for l,label in enumerate(at.bar_label(cont)):
 
-                    #     if at.bar_label(cont)[l].__getattribute__('_text') > at.bar_label(at.containers[k+1])[l].__getattribute__('_text'):
-                    #         at.bar_label(cont[l],label_type='edge')
+    #                 #     if at.bar_label(cont)[l].__getattribute__('_text') > at.bar_label(at.containers[k+1])[l].__getattribute__('_text'):
+    #                 #         at.bar_label(cont[l],label_type='edge')
 
-                    #     else:
-                    #         at.bar_label(cont[l],label_type='center')
+    #                 #     else:
+    #                 #         at.bar_label(cont[l],label_type='center')
 
 
-            plt.ylabel('Count')
-            count+=1
+    #         plt.ylabel('Count')
+    #         count+=1
 
-            # else:
-            #     xmax = [ 1000,0.5]
-            #     sns.histplot(data=combined_df, x=num_set[count-len(sety)],hue='target',kde=True, palette='pastel', ax=axs[i,j])
-            #     plt.xlim(0, xmax[count-len(sety)])
-            #     plt.ylim(0,max(combined_df[num_set[count-len(sety)]].value_counts().to_dict().values()))
+    #         # else:
+    #         #     xmax = [ 1000,0.5]
+    #         #     sns.histplot(data=combined_df, x=num_set[count-len(sety)],hue='target',kde=True, palette='pastel', ax=axs[i,j])
+    #         #     plt.xlim(0, xmax[count-len(sety)])
+    #         #     plt.ylim(0,max(combined_df[num_set[count-len(sety)]].value_counts().to_dict().values()))
                     
-        fig.suptitle('Distribution of categories for each feature')
-        fig.savefig(folder + 'distribution of amount of each category in each feature'+'.png')
-        # plt.show()
-    fig, axs = plt.subplots(1,2, figsize=(10,5))
-    for i in range(2):
-        xmax = [ 1000,0.5]
-        sns.histplot(data=combined_df, x=list(num_set)[i],hue='target',kde=True, palette='pastel', ax=axs[i])
-        plt.xlim(0, xmax[i])
-        plt.ylim(0,max(combined_df[list(num_set)[i]].value_counts().to_dict().values()))
-    fig.legend(['normal','abnormal'])
-    fig.suptitle('Distribution of categories for each feature')
-    fig.savefig(folder + 'distribution of amount of each category in each feature'+'timeandcont'+'.png')
+    #     fig.suptitle('Distribution of categories for each feature')
+    #     fig.savefig(folder + 'distribution of amount of each category in each feature'+'.png')
+    #     # plt.show()
+    # fig, axs = plt.subplots(1,2, figsize=(10,5))
+    # for i in range(2):
+    #     xmax = [ 1000,0.5]
+    #     sns.histplot(data=combined_df, x=list(num_set)[i],hue='target',kde=True, palette='pastel', ax=axs[i])
+    #     plt.xlim(0, xmax[i])
+    #     plt.ylim(0,max(combined_df[list(num_set)[i]].value_counts().to_dict().values()))
+    # fig.legend(['normal','abnormal'])
+    # fig.suptitle('Distribution of categories for each feature')
+    # fig.savefig(folder + 'distribution of amount of each category in each feature'+'timeandcont'+'.png')
 
-    fig, axs = plt.subplots(3,2, figsize=(20,60))
-    count = 0
-    for i in range(3):
-        for j in range(2):
-            if count >= len(list(long_set)):
-                pass
+    # fig, axs = plt.subplots(3,2, figsize=(20,60))
+    # count = 0
+    # for i in range(3):
+    #     for j in range(2):
+    #         if count >= len(list(long_set)):
+    #             pass
+    #         else:
+    #             sns.histplot(data=combined_df, y=list(long_set)[count],hue='target',kde=True, palette='pastel', ax=axs[i,j])
+    #             count+= 1
+    #     # plt.xlim(0, xmax[i])
+    #     # plt.ylim(0,max(combined_df[num_set[i]].value_counts().to_dict().values()))
+    # fig.legend(['normal','abnormal'])
+    # fig.suptitle('Distribution of categories for each feature')
+    # fig.savefig('distribution of amount of each category in each feature'+'longsets'+'.png')        
+
+    for i in range(len(list(sety))):
+        fig = plt.plot(figsize=(10,40))
+        feat = list(sety)[i]
+        fig = sns.histplot(data=combined_df, x=feat, hue='target',kde=True,  color=sns.color_palette('pastel')[0])
+        plt.tick_params(axis='x', rotation=90)
+        for k, cont in enumerate(fig.containers):
+            if k %2 == 0:
+                fig.bar_label(cont,label_type='edge',color='red')
             else:
-                sns.histplot(data=combined_df, y=list(long_set)[count],hue='target',kde=True, palette='pastel', ax=axs[i,j])
-                count+= 1
-        # plt.xlim(0, xmax[i])
-        # plt.ylim(0,max(combined_df[num_set[i]].value_counts().to_dict().values()))
-    fig.legend(['normal','abnormal'])
-    fig.suptitle('Distribution of categories for each feature')
-    fig.savefig('distribution of amount of each category in each feature'+'longsets'+'.png')        
+                fig.bar_label(cont,label_type='edge',color='black')
+        plt.ylabel('Count')
+        plt.subplots_adjust(bottom=0.15)
+        plt.title('Distribution of categories for '+ feat)
+        plt.savefig(folder + 'distribution of amount of each category in each feature'+str(i)+'.png', bbox_inches="tight")
+        plt.clf()
 
 
 def visualizing_overlap_and_NANS(data_n,data_a):

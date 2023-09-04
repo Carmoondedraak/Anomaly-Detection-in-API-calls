@@ -15,6 +15,7 @@ from sklearn.model_selection import LearningCurveDisplay, learning_curve
 import matplotlib.pyplot as plt
 import os
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.model_selection import GridSearchCV
 
 
 
@@ -44,9 +45,10 @@ class Feature_Selection():
         result_scores = []
         # loop over each model to be used as a classifier
         for classifier in model.items():
+            
             # try every encoding method
-
             for encoder in encoders:
+                self.encoder = encoder
                 print('this enocoder is being used:',encoder)
                 X_n = encoder_obj.choose_encoding(data[0],encoder)
                 X_a = encoder_obj.choose_encoding(data[1],encoder)
@@ -60,11 +62,12 @@ class Feature_Selection():
                 # see which filter works the best
                 for filt in filters.items():
                     print('this filter is being used:',filt)
-                    prediction,feature_names, pred_prob = self.pipes_filt(X, y,X_test,y_test, filt, classifier, k)
+                    # prediction,feature_names, pred_prob = self.pipes_filt(X, y,X_test,y_test, filt, classifier, k)
+                    prediction,feature_names, pred_prob = self.extra( X, y,X_test,y_test, filt[1])
                     accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob,filt[0],classifier[0])
-                    result_scores.append([filt[0],classifier[0],feature_names,accuracy,precision, recall])
+                    result_scores.append([filt[0],classifier[0],feature_names,accuracy,precision, recall,self.encoder])
 
-                    df = pd.DataFrame(result_scores,columns = ['filter/model', 'classifier', 'feature_names','accuracy', 'precision', 'recall'])
+                    df = pd.DataFrame(result_scores,columns = ['filter/model', 'classifier', 'feature_names','accuracy', 'precision', 'recall','encoder'])
 
                     # save pandas dataframe to pickle and add to existing pickle when new user is spawned
                     file = self.savefolder+'/scores.pkl'
@@ -109,13 +112,21 @@ class Feature_Selection():
                         (classifier[0], classifier[1])])
         clf.fit(X, y)
         print('training accuracy:',accuracy_score(y, clf.predict(X)))
+       
+
         prediction = clf.predict(X_test)
         pred_prob = clf.predict_proba(X_test)
         print('the model used and the classifier used:', model[0],classifier[0], prediction)
-
+        
         print('the best features:',clf[:-1].get_feature_names_out())
         self.visualise(clf,X,y,model[0],classifier[0],np.linspace(0.1,1.0,10),'')
         self.visualise(clf,X,y,model[0],classifier[0], np.arange(1,2181,100),'ext')
+
+        f = open(self.savefile +"/scores.txt", "a")
+        f.write('the model used and the classifier used:' + model[0] + classifier[0] + prediction + '\n')
+        f.write('the best features:'  + clf[:-1].get_feature_names_out() + '\n')
+        f.write('training accuracy:' + accuracy_score(y, clf.predict(X)) + '\n')
+        f.write('validation accuracy:' + '\n')
 
         return prediction, clf[:-1].get_feature_names_out(), pred_prob
     
@@ -134,6 +145,11 @@ class Feature_Selection():
         self.visualise(clf,X,y,filt[0],classifier[0], np.linspace(0.1,1.0,10),'')
         self.visualise(clf,X,y,filt[0],classifier[0], np.arange(1,2181,100),'ext')
 
+        f = open(self.savefile +"/scores.txt", "a")
+        f.write('the filter used and the classifier used:' + filt[0] + classifier[0] + prediction + y_test + '\n')
+        f.write('the best features:'  + clf[:-1].get_feature_names_out() + '\n')
+        f.write('training accuracy:' + accuracy_score(y, clf.predict(X)) + '\n')
+        f.write('validation accuracy:' + '\n')
         return prediction, clf[:-1].get_feature_names_out(), pred_prob
 
     def scores(self, y_pred,y_true, pred_prob, model, classifier):
@@ -150,6 +166,8 @@ class Feature_Selection():
 
 
         print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall,'\n auc',auc)
+        f = open(self.savefile +"/scores.txt", "a")
+        f.write('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall,'\n auc',auc + '\n\n')
 
         return accuracy, precision, recall, auc
 
@@ -213,23 +231,43 @@ class Feature_Selection():
         plt.savefig(self.savefolder + '/'+ filt + '_' + classifier +'fit'+ '.png' )
         plt.clf()
 
-    # def extra(self):
-    #     pipe = Pipeline([('selector', SelectKBest(filt, k=5)),
-    #              ('classifier', LogisticRegression())])
+    def extra(self, X, y,X_test,y_test, filt):
+        pipe = Pipeline([('selector', SelectKBest(filt, k=5)),
+                 ('classifier', LogisticRegression(max_iter=10000))])
 
-    #     search_space = [{'selector__k': [5, 10, 20, 30]},
-    #             {'classifier': [LogisticRegression(max_iter=1000)],
-    #              'classifier__C': [0.01, 0.1, 1.0]},
-    #             {'classifier': [RandomForestClassifier(n_estimators=100)],
-    #              'classifier__max_depth': [5, 10, None]},
-    #             {'classifier': [KNeighborsClassifier()],
-    #              'classifier__n_neighbors': [3, 7, 11],
-    #              'classifier__weights': ['uniform', 'distance']},
-    #             {'classifier':[SVC()],
-    #              'classifier__kernel': ['linear', 'poly']},
-    #             {'classifier': [DecisionTreeClassifier(random_state=0)],
-    #              'classifier__criterion': ['entropy', 'log_loss']}]
-            
+        search_space = [{'selector__k': [2, 5, 10, 15]},
+                {'classifier': [LogisticRegression(max_iter=10000)],
+                 'classifier__C': [0.01, 0.1, 1.0]},
+                {'classifier': [RandomForestClassifier(n_estimators=100)],
+                 'classifier__max_depth': [5, 10, None]},
+                {'classifier': [KNeighborsClassifier()],
+                 'classifier__n_neighbors': [3, 7, 11],
+                 'classifier__weights': ['uniform', 'distance']},
+                {'classifier':[SVC()],
+                 'classifier__kernel': ['linear', 'poly']},
+                {'classifier': [DecisionTreeClassifier(random_state=0)],
+                 'classifier__criterion': ['entropy', 'log_loss']}]
+
+        search = GridSearchCV(pipe, search_space,cv=5, scoring='accuracy', n_jobs=5)
+        search.fit(X,y)
+        print('training accuracy:',accuracy_score(y, search.predict(X)))
+
+        prediction = search.predict(X_test)
+        pred_prob = search.predict_proba(X_test)
+        print('the filter used and the classifier used:',filt[0],classifier[0], prediction, y_test)
+        print('the best features', search[:-1].get_feature_names_out())
+
+        self.visualise(search,X,y,filt[0],classifier[0], np.linspace(0.1,1.0,10),'')
+        self.visualise(search,X,y,filt[0],classifier[0], np.arange(1,2181,100),'ext')
+
+        f = open(self.savefile +"/scores.txt", "a")
+        f.write('the filter used and the classifier used:' + filt[0] + classifier[0] + prediction + y_test + '\n')
+        f.write('the best features:'  + search[:-1].get_feature_names_out() + '\n')
+        f.write('training accuracy:' + accuracy_score(y, search.predict(X)) + '\n')
+        f.write('validation accuracy:' + '\n')
+        f.write('the encoder used is:' + self.encoder)
+        return prediction, search[:-1].get_feature_names_out(), pred_prob
+           
 
 if __name__=="__main__":
     # the parser

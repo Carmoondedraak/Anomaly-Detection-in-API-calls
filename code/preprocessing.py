@@ -21,7 +21,6 @@ class Data_Preprocess():
         numerical: list of numerical data
     '''
     def __init__(self, data_n, data_a):
-        
         self.data_n = copy.deepcopy(data_n)
         self.data_a = copy.deepcopy(data_a)
         self.data = [self.data_n,self.data_a]
@@ -118,7 +117,10 @@ class Data_Preprocess():
             data_p_n.cookie.fillna(data_p_n.set_cookie, inplace=True)
 
             for i in range(len(data[j]['response_line'])):
-                if data_p_n['response_line'][i][0] != 'x':
+                print(data_p_n['response_line'][i])
+                if pd.isna(data_p_n['response_line'][i]):
+                    data_p_n['response_line'][i] = 0
+                elif data_p_n['response_line'][i][0] != 'x':
                     data_p_n['response_line'][i] = 0
                     
             data[j]['response_line'] = data_p_n['response_line']
@@ -286,13 +288,12 @@ if __name__=="__main__":
     
     print("starting preprocessing..")
     Data_p = Data_Preprocess(data_n, data_a)
-    print(Data_p.data[1][10:])
     flows_a = APIflows2(Data_p.data[1])
     flows_n =  APIflows2(Data_p.data[0])
     flows = [flows_n,flows_a]
     Data_p.Adding_flow_feature(Data_p.data, flows)
     data = Data_p.create_dataset(interesting_to_keep, data_remove, args.health, args.even, args.cosine,args.continuous,args.numerical)
     # filenames = ['../../Dataset/Mixed/final_normal_dataset_with_health.pkl','../../Dataset/Mixed/final_abnormal_dataset_with_health.pkl']
-    filenames = ['../../Dataset/New/final_preprocessed_all_together_normal.pkl', '../../Dataset/New/final_preprocessed_all_togheter_abnormal.pkl']
+    filenames = ['../../Dataset/TheLastOFUs/preprocessed_normal.pkl', '../../Dataset/TheLastOFUs/preprocessed_abnormal.pkl']
     print('Saving the files in', filenames)
     Data_p.save_dataset(filenames,data)

@@ -1,0 +1,214 @@
+Count,Message,Traceback,Nodes
+25,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 128, in empty_cart
+    data,times = self.client.empty_cart(self.cart)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 285, in empty_cart
+    res, data1 = self.remove_from_cart(item['itemId'])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 302, in remove_from_cart
+    raise Exception(f""Failed to remove {item} from cart: {res} {res.json()}"")
+                                                                ^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+",local
+8,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 121, in add_to_cart
+    _,data = self.client.add_to_cart(self.item['id'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 296, in add_to_cart
+    raise Exception(f""Failed to add {item} to cart: {res} {res.json()}"")
+                                                           ^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+",local
+9,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 201, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 268, in get_catalogue
+    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
+                                                      ^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+",local
+10,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 100, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 268, in get_catalogue
+    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
+                                                      ^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+",local
+7,Failed to get catalogue: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 100, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 268, in get_catalogue
+    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
+",local
+15,Failed to get catalogue: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 201, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 268, in get_catalogue
+    raise Exception(f""Failed to get catalogue: {res} {res.json()}"")
+",local
+6,Failed to add a0a4f044-b040-410d-8ead-4de0446aec7e to cart: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 121, in add_to_cart
+    _,data = self.client.add_to_cart(self.item['id'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 296, in add_to_cart
+    raise Exception(f""Failed to add {item} to cart: {res} {res.json()}"")
+",local
+3,failed to get cart: <Response [503]> {'message': 'failure to get a peer from the ring-balancer'},"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 112, in get_cart
+    self.cart, data = self.client.get_cart()
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 274, in get_cart
+    raise Exception(f""failed to get cart: {res} {res.json()}"")
+",local
+1,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 206, in browse
+    data1 = client.browse_to_item(self.item['id'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 360, in browse_to_item
+    res = self._s.get(self._build_url(f'/detail.html?id={id}'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 600, in get
+    return self.request(""GET"", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
+    raise ConnectionError(err, request=request)
+",local
+1,failed to browse to item 808a2de1-1aaa-4c25-a9b9-6612e8f29a38: <Response [503]> ,"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 206, in browse
+    data1 = client.browse_to_item(self.item['id'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 362, in browse_to_item
+    raise Exception(f""failed to browse to item {id}: {res} "")
+",local
+4,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 201, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 269, in get_catalogue
+    return res.json(), dump.dump_all(res).decode('utf-8')
+           ^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 968, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+",local
+2,Expecting value: line 1 column 1 (char 0),"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 100, in browse
+    self.catalogue, data = client.get_catalogue(_tags)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 269, in get_catalogue
+    return res.json(), dump.dump_all(res).decode('utf-8')
+           ^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/models.py"", line 968, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+",local
+1,failed to browse to item 837ab141-399e-4c1f-9abc-bace40296bac: <Response [503]> ,"  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 106, in browse
+    data1 = client.browse_to_item(self.item['id'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 362, in browse_to_item
+    raise Exception(f""failed to browse to item {id}: {res} "")
+",local
+1,"('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))","  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 347, in run
+    self.execute_next_task()
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 372, in execute_next_task
+    self.execute_task(self._task_queue.pop(0))
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/locust/user/task.py"", line 493, in execute_task
+    task(self.user)
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 139, in checkout
+    data = self.client.checkout()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/Documents/Anomaly-Detection-in-API-calls/code/import http.py"", line 307, in checkout
+    res = self._s.post(self._build_url('/orders'))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 635, in post
+    return self.request(""POST"", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/sessions.py"", line 701, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/cveenker/anaconda3/envs/thesis/lib/python3.11/site-packages/requests/adapters.py"", line 502, in send
+    raise ConnectionError(err, request=request)
+",local
