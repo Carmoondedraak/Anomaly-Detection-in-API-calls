@@ -158,10 +158,12 @@ class Feature_Selection():
     def pipe_test(self,pipe):
         results = []
         for i in range(len(self.perc)):
-            test_a = self.splitter.test_a.drop(['target'],axis=1).sample(frac=self.perc[i])
-            test_n = self.splitter.test_n.drop(['target'],axis=1)
+            test_a = self.splitter.test_a.sample(frac=self.perc[i])
+            test_n = self.splitter.test_n
             test_X = pd.concat([test_n,test_a], ignore_index=True)
-            predction = pipe.score(test_X)
+            test_targets = test_X['target']
+            test_X = test_X.drop(['target'],axis=1)
+            prediction = pipe.score(test_X,test_targets)
             results.append(prediction)
         return results
 
