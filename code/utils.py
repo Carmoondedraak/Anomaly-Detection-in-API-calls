@@ -1,7 +1,7 @@
 ################################################################################
 # MIT License
 #
-# Copyright (c) 2022
+# Copyright (c) 2023
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -10,7 +10,7 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to conditions.
 #
-# Author: 
+# Author: Carmen Veenker
 # Date Created: 2023-09-12
 ################################################################################
 
@@ -35,7 +35,6 @@ def sample_reparameterize(mean, std):
 
     epsilon = torch.randn(size=(mean.shape)).to(device)
     z = mean + epsilon * std
-
     return z
 
 
@@ -51,7 +50,6 @@ def KLD(mean, log_std):
               The values represent the Kullback-Leibler divergence to unit Gaussians.
     """
     KLD = (1/2) *  torch.sum(torch.exp(2 * log_std) + mean**2 - 1 - 2 * log_std,axis=1)
-    # print(KLD.shape, KLD)
 
     return KLD
 

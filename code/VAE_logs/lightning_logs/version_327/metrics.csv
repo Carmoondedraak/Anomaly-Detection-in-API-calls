@@ -1,0 +1,2 @@
+validation_reconstruction_loss,validation_adversarial_loss,validation_encoder_loss,validation_discriminator_loss,validation_bpd,epoch,step
+0.003463724860921502,0.9996362924575806,0.01373773068189621,9.216491889674217e-05,-32.08155822753906,0,482

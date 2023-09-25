@@ -180,10 +180,13 @@ class Data_Preprocess():
         self.data = data
         return data
 
-    def save_dataset(self, savefile, data):
+    def save_dataset(self, savefile, data, flag=False):
         '''saves the dataframe to a list of two file <savefile>'''
-        for i in range(2):
-            data[i].to_pickle(savefile[i])  
+        if flag == True:
+            data.to_pickle(savefile)
+        else:
+            for i in range(2):
+                data[i].to_pickle(savefile[i])  
 
 
     def print_dataset(self):
@@ -296,3 +299,6 @@ if __name__=="__main__":
     filenames = ['../../Dataset/TheLastOFUs/preprocessed_normal.pkl', '../../Dataset/TheLastOFUs/preprocessed_abnormal.pkl']
     print('Saving the files in', filenames)
     Data_p.save_dataset(filenames,data)
+
+
+    

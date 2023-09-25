@@ -1,7 +1,7 @@
 ################################################################################
 # MIT License
 #
-# Copyright (c) 2022
+# Copyright (c) 2023
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -10,8 +10,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to conditions.
 #
-# Author: Deep Learning Course | Autumn 2022
-# Date Created: 2022-11-25
+# Author: Carmen Veenker
+# Date Created: 2023-09-11
 ################################################################################
 
 import torch
@@ -41,98 +41,29 @@ random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 torch.use_deterministic_algorithms(True) # Needed for reproducible results
 
-class Decoder(nn.Module):
-    def __init__(self, ngpu):
-        super(Generator, self).__init__()
-        self.ngpu = ngpu
-        self.net = nn.Sequential(
-            # input is Z, going into a convolution 1
-            nn.ConvTranspose2d(nz, ngf * 8, kernel_size=4, stride=1, padding=0, bias=False),
-            nn.BatchNorm2d(ngf * 8),
-            nn.ReLU(True),
-            # state size. ``(ngf*8) x 4 x 4`` conv2
-            nn.ConvTranspose2d(ngf * 8, ngf * 4, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(ngf * 4),
-            nn.ReLU(True),
-            # state size. ``(ngf*4) x 8 x 8`` conv3
-            nn.ConvTranspose2d( ngf * 4, ngf * 2, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(ngf * 2),
-            nn.ReLU(True),
-            # state size. ``(ngf*2) x 16 x 16`` conv4
-            nn.ConvTranspose2d( ngf * 2, ngf, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(ngf),
-            nn.ReLU(True),
-            # state size. ``(ngf) x 32 x 32`` conv 5
-            nn.ConvTranspose2d( ngf, nc,kernel_size=4, stride=2, padding=1, bias=False),
-            # nn.Tanh()
-            # state size. ``(nc) x 64 x 64``
-        )
-
-    def forward(self, input):
-        return self.net(input)
-
-class Discriminator(nn.Module):
-    def __init__(self, ngpu):
-        super(Discriminator, self).__init__()
-        self.ngpu = ngpu
-        self.net = nn.Sequential(
-            # input is ``(nc) x 64 x 64``
-            nn.Conv2d(nc, ndf, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.LeakyReLU(0.2, inplace=True),
-            # state size. ``(ndf) x 32 x 32``
-            nn.Conv2d(ndf, ndf * 2, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(ndf * 2),
-            nn.LeakyReLU(0.2, inplace=True),
-            # state size. ``(ndf*2) x 16 x 16``
-            nn.Conv2d(ndf * 2, ndf * 4, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(ndf * 4),
-            nn.LeakyReLU(0.2, inplace=True),
-            # state size. ``(ndf*4) x 8 x 8``
-            nn.Conv2d(ndf * 4, ndf * 8, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(ndf * 8),
-            nn.LeakyReLU(0.2, inplace=True),
-            # state size. ``(ndf*8) x 4 x 4``
-            nn.Conv2d(ndf * 8, 1, kernel_size=4, stride=1, padding=0, bias=False),
-            nn.Sigmoid()
-        )
-
-    def forward(self, input):
-        return self.main(input)
-
 
 class Encoder(nn.Module):
-    def __init__(self, size_feature_map, size_latent_vector, ):
-        super(Generator, self).__init__()
-        self.ngpu = ngpu
+    def __init__(self, num_features,num_filters, z_dim ):
+        super(Encoder,self).__init__()
+        # self.ngpu = ngpu
         self.net = nn.Sequential(
-            nn.Conv2d(ngf, nc, kernel_size=4, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(),
-            nn.ReLU(True),
+            nn.Conv1d(1,num_filters, kernel_size=3, stride=1, padding=1, bias=False),
+            nn.BatchNorm1d(num_filters),
+            nn.LeakyReLU(0.1),            
             
             # state size. 
-            nn.Conv2d(ngf * 2, ngf, kernel_size=4, stride=2, padding=1,bias=False),
-            nn.BatchNorm2d(),
-            nn.ReLU(True),
+            nn.Conv1d(num_filters, num_filters * 2, kernel_size=3, stride=2, padding=1,bias=False),
+            nn.BatchNorm1d(num_filters*2),
+            nn.LeakyReLU(0.1),
 
             # state size. 
-            nn.Conv2d(ngf * 4, ngf * 2, kernel_size=4, stride=2, padding=1,bias=False),
-            nn.BatchNorm2d(),
-            nn.ReLU(True),
+            nn.Conv1d(num_filters * 2, num_filters * 2, kernel_size=3, stride=1, padding=0,bias=False),
+            nn.LeakyReLU(0.1),
 
-            # state size.
-            nn.Conv2d(ngf * 8, ngf * 4, kernel_size=4, stride=2, padding=1,, bias=False),
-            nn.BatchNorm2d(),
-            nn.ReLU(True),
-
-            # state size. 
-            nn.Conv2d(nz, ngf * 8, kernel_size=4, stride=1, padding= 0,bias=False),
-            nn.BatchNorm2d(),
-            nn.ReLU(True),
-            # state size.
-            nn.flatten()
+            nn.Flatten()
         )
-        self.linear1 = nn.Linear()
-        self.linear2 = nn.Linear()
+        self.linear1 = nn.Linear(num_filters *2*10,z_dim)
+        self.linear2 = nn.Linear(num_filters *2*10,z_dim)
 
     def forward(self, input):
         x = self.net(input)
@@ -140,10 +71,65 @@ class Encoder(nn.Module):
         log_std = self.linear2(x)
         return mean, log_std
 
-    @property
-    def device(self):
-        """
-        Property function to get the device on which the decoder is.
-        Might be helpful in other functions.
-        """
-        return next(self.parameters()).device
+class Decoder(nn.Module):
+    def __init__(self, num_features,num_filters,z_dim):
+        super(Decoder, self).__init__()
+        # self.ngpu = ngpu
+        self.linear = nn.Sequential(
+            nn.Linear(z_dim, num_filters *2*10 ),
+            nn.LeakyReLU(0.1)
+        )
+        self.net = nn.Sequential(
+            # input is Z, going into a convolution 1
+            nn.ConvTranspose1d(num_filters*2, num_filters * 2, kernel_size=3, stride=1, padding=0, bias=False),
+            
+            nn.LeakyReLU(0.1),
+            nn.BatchNorm1d(num_filters*2 ),
+            # state size. ``(ngf*8) x 4 x 4`` conv2
+            nn.ConvTranspose1d(num_filters * 2, num_filters, kernel_size=3, stride=2, padding=1, bias=False),
+            
+            nn.LeakyReLU(0.1),
+            nn.BatchNorm1d(num_filters),
+            # state size. ``(num_filters*4) x 8 x 8`` conv3
+            nn.ConvTranspose1d(num_filters,1, kernel_size=3, stride=1, padding=1, bias=False))
+            # nn.BatchNorm1d(num_features * 2),
+     
+
+    def forward(self, input, batch_size):
+        z = self.linear(input)
+        z = z.reshape(batch_size,40,10)
+
+        new = self.net(z)
+        return new
+
+class Discriminator(nn.Module):
+    def __init__(self, num_features,num_filters,z_dim):
+        super(Discriminator, self).__init__()
+        # self.ngpu = ngpu
+        self.net = nn.Sequential(
+
+            nn.Conv1d(1, num_filters, kernel_size=3, stride=1, padding=1, bias=False),
+            nn.BatchNorm1d(num_filters),
+            nn.LeakyReLU(0.2, inplace=True),
+
+            nn.Conv1d(num_filters,num_filters *2, kernel_size=3, stride=2, padding=1, bias=False),
+            nn.BatchNorm1d(num_filters*2 ),
+            nn.LeakyReLU(0.2, inplace=True),
+            
+            nn.Conv1d(num_filters *2,num_filters*2, kernel_size=3, stride=1, padding=0, bias=False),
+            # nn.BatchNorm1d(num_filters*2),
+            nn.LeakyReLU(0.2, inplace=True),
+
+            # nn.Conv1d(num_filters *2,1, kernel_size=3, stride=1, padding=0, bias=False),
+            # nn.LeakyReLU(0.2,inplace=True),
+            nn.Flatten(),
+            nn.Linear(400, 1), # Output layer with a single neuron
+            nn.Sigmoid()
+        )
+
+    def forward(self, input, batch_size):
+        # print('Discriminator',self.net)
+        input = input.reshape(batch_size,1,23)
+        new = self.net(input)
+        return new
+

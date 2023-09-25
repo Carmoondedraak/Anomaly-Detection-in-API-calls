@@ -10,7 +10,7 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to conditions.
 #
-# Author: 
+# Author: Carmen Veenker
 # Date Created: 2023-09-18
 ################################################################################
 
@@ -25,13 +25,13 @@ from torchvision.utils import make_grid, save_image
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
 
-from mnist import mnist
 from encoder_decoder import Encoder, Decoder, Discriminator
 from utils import *
-
+from dataloader_sockshop import sock_data
+from vae_discriminator import VAEE
 class GenerateCallback(pl.Callback):
 
-    def __init__(self, batch_size=64, every_n_epochs=5, save_to_disk=False):
+    def __init__(self, batch_size=50, every_n_epochs=5, save_to_disk=False):
         """
         Inputs:
             batch_size - Number of images to generate
@@ -87,7 +87,6 @@ def train_vae(args):
     gen_callback = GenerateCallback(save_to_disk=True)
     save_callback = ModelCheckpoint(save_weights_only=True, mode="min", monitor="val_bpd")
     trainer = pl.Trainer(default_root_dir=args.log_dir,
-                         gpus=1 if torch.cuda.is_available() else 0,
                          max_epochs=args.epochs,
                          callbacks=[save_callback, gen_callback],
                          enable_progress_bar=args.progress_bar)
@@ -99,16 +98,18 @@ def train_vae(args):
 
     # Create model
     pl.seed_everything(args.seed)  # To be reproducible
-    model = VAE(num_filters=args.num_filters,
+    model = VAEE(num_features= args.num_features,num_filters=args.num_filters,
                 z_dim=args.z_dim,
-                lr=args.lr)
+                args=args)
 
     # Training
-    gen_callback.sample_and_save(trainer, model, epoch=0)  # Initial sample
+    # gen_callback.sample_and_save(trainer, model, epoch=0)  # Initial sample
     trainer.fit(model, train_loader, val_loader)
 
+    
+
     # Testing
-    model = VAE.load_from_checkpoint(trainer.checkpoint_callback.best_model_path)
+    model = VAEE.load_from_checkpoint(trainer.checkpoint_callback.best_model_path)
     test_result = trainer.test(model, dataloaders=test_loader, verbose=True)
 
     # Manifold generation
@@ -127,9 +128,9 @@ if __name__ == '__main__':
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Model hyperparameters
-    parser.add_argument('--z_dim', default=20, type=int,
+    parser.add_argument('--z_dim', default=100, type=int,
                         help='Dimensionality of latent space')
-    parser.add_argument('--num_filters', default=32, type=int,
+    parser.add_argument('--num_filters', default=20, type=int,
                         help='Number of channels/filters to use in the CNN encoder/decoder.')
 
     # Optimizer hyperparameters
@@ -137,9 +138,10 @@ if __name__ == '__main__':
                         help='Learning rate to use')
     parser.add_argument('--batch_size', default=128, type=int,
                         help='Minibatch size')
-
+    parser.add_argument('--b1', default=0.5, type=int,help='b1 size')
+    parser.add_argument('--b2', default=0.5, type=int, help='b2 size')
     # Other hyperparameters
-    parser.add_argument('--data_dir', default='../data/', type=str,
+    parser.add_argument('--data_dir', default='../Data/', type=str,
                         help='Directory where to look for the data. For jobs on Lisa, this should be $TMPDIR.')
     parser.add_argument('--epochs', default=80, type=int,
                         help='Max number of epochs')
@@ -153,7 +155,7 @@ if __name__ == '__main__':
     parser.add_argument('--progress_bar', action='store_true',
                         help=('Use a progress bar indicator for interactive experimentation. '
                               'Not to be used in conjuction with SLURM jobs'))
-
+    parser.add_argument('--num_features', default=128, help='number of features in the dataset')
     args = parser.parse_args()
 
     train_vae(args)
