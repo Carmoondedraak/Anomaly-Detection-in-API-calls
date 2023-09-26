@@ -36,7 +36,7 @@ from torch.nn.functional import normalize
 class Data(Dataset):
     def __init__(self, dirr, transform=None, target_transform=None):
         self.data = pd.read_pickle(dirr)
-        self.targets= pd.read_pickle('../Data/train_targets.pkl')
+        self.targets= pd.read_pickle("/".join(dirr.split('/')[:-1]) + '/train_targets.pkl')
         self.dirr = dirr
         self.transform = transform
         self.target_transform = target_transform

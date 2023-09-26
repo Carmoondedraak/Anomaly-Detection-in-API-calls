@@ -24,11 +24,24 @@ import torch.nn.functional as F
 from torchvision.utils import make_grid, save_image
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
-
+import math
 from encoder_decoder import Encoder, Decoder, Discriminator
 from utils import *
 from dataloader_sockshop import sock_data
 from vae_discriminator import VAEE
+
+def xavier_init(model):
+    for name, param in model.named_parameters():
+        if name.endswith(".bias"):
+            param.data.fill_(0)
+        else:
+            print(param.shape)
+            if len(param.shape) > 1:
+                bound = math.sqrt(6) / math.sqrt(param.shape[0] + param.shape[1])
+            else:
+                bound = math.sqrt(6) / math.sqrt(param.shape[0])
+            param.data.uniform_(-bound, bound)
+
 class GenerateCallback(pl.Callback):
 
     def __init__(self, batch_size=50, every_n_epochs=5, save_to_disk=False):
@@ -101,7 +114,7 @@ def train_vae(args):
     model = VAEE(num_features= args.num_features,num_filters=args.num_filters,
                 z_dim=args.z_dim,
                 args=args)
-
+    xavier_init(model)
     # Training
     # gen_callback.sample_and_save(trainer, model, epoch=0)  # Initial sample
     trainer.fit(model, train_loader, val_loader)
@@ -120,6 +133,8 @@ def train_vae(args):
                    normalize=False)
 
     return test_result
+    
+
 
 
 if __name__ == '__main__':
@@ -141,7 +156,7 @@ if __name__ == '__main__':
     parser.add_argument('--b1', default=0.5, type=int,help='b1 size')
     parser.add_argument('--b2', default=0.5, type=int, help='b2 size')
     # Other hyperparameters
-    parser.add_argument('--data_dir', default='../Data/', type=str,
+    parser.add_argument('--data_dir', default='~/Anomaly-Detection-in-API-calls/data/', type=str,
                         help='Directory where to look for the data. For jobs on Lisa, this should be $TMPDIR.')
     parser.add_argument('--epochs', default=80, type=int,
                         help='Max number of epochs')
