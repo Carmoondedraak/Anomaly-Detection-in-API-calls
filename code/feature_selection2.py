@@ -69,7 +69,8 @@ class Feature_Selection():
                     pipe = self.pipe()
                     prediction,feature_names, pred_prob, predictions = self.pipes_train(X, y,X_test,y_test, search_space, pipe)
                     accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob)
-                    self.save_results([filt[0],classifier[0],self.encoder ,feature_names,accuracy,precision, recall] + [x for x in predictions])
+                    res = [filt[0],classifier[0],self.encoder ,feature_names,accuracy,precision, recall] + [x for x in predictions]
+                    self.save_results(res)
                     
                 # see which model works the best using sfs selection 
                 for fs in model.items():
@@ -82,7 +83,8 @@ class Feature_Selection():
                         pipe = self.pipe()
                         prediction, feature_names, pred_prob,predictions = self.pipes_train(X,y,X_test,y_test, search_space,pipe)
                         accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob)
-                        self.save_results([fs[0],classifier[0],self.encoder,feature_names, accuracy,precision, recall]+[x for x in predictions])
+                        res = [fs[0],classifier[0],self.encoder,feature_names, accuracy,precision, recall]+[x for x in predictions]
+                        self.save_results(res)
     
     def models(self):
         '''initiate the different models '''

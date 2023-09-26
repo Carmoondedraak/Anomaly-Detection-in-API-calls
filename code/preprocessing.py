@@ -196,9 +196,10 @@ class Data_Preprocess():
 class Train_Val_Test_split():
     '''splits the data into train, validation and test'''
 
-    def __init__(self,percentages = '0.70:0.20:0.10'):
+    def __init__(self,percentages = '0.70:0.20:0.10', only_normal = False):
         '''split the data into 70-20-10'''
         self.percentage = percentages
+        self.only_normal = only_normal
 
     def split_dataset(self, data): 
         print('lenght of total data', len(data[0]), len(data[1]))
@@ -215,7 +216,12 @@ class Train_Val_Test_split():
         self.train_a['target'] = [i**0 for i in range(len(self.train_a))]
         print('this here',len(self.train_a), len(self.train_n))
 
-        train = pd.concat([self.train_n,self.train_a], ignore_index=True)
+        if self.only_normal == True:
+            train = self.train_n
+
+        else:    
+            train = pd.concat([self.train_n,self.train_a], ignore_index=True)
+        
         train = train.fillna(0)
         train = shuffle(train).reset_index(drop=True)
         targets = train['target']
@@ -237,7 +243,11 @@ class Train_Val_Test_split():
         self.val_a = self.val_a.sample(frac=perc)  
         self.val_a['target'] = [i**0 for i in range(len(self.val_a))]
 
-        validation = pd.concat([self.val_n,self.val_a], ignore_index=True)
+        if self.only_normal == True:
+            validation = self.val_n
+
+        else:    
+            validation = pd.concat([self.val_n,self.val_a], ignore_index=True)
         validation = validation.fillna(0)
         validation = shuffle(validation).reset_index(drop=True)
         targets = validation['target']
@@ -253,7 +263,11 @@ class Train_Val_Test_split():
         self.test_a = self.test_a.drop(self.val_a.index)
         self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
 
-        test = pd.concat([self.test_n,self.test_a], ignore_index=True)
+        if self.only_normal == True:
+            test = self.test_n
+
+        else:    
+            test = pd.concat([self.test_n,self.test_a], ignore_index=True)
         test = test.fillna(0)
         test = shuffle(test).reset_index(drop=True)
         targets = test['target']

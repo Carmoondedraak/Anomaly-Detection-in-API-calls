@@ -94,12 +94,12 @@ if __name__ == '__main__':
     data_n = data_preprocessor.change_values(data_n,numerical,categorical_feats)
     data_a = data_preprocessor.change_values(data_a,numerical,categorical_feats)
     data = [data_n,data_a]
-    filenames = ['../Data/train.pkl', '../Data/val.pkl','../Data/test.pkl']
-    filenames_t = ['../Data/train_targets.pkl','../Data/val_targets.pkl','../Data/test_targets.pkl']
+    filenames = ['~/Anomaly-Detection-in-API-calls/data/train.pkl', '~/Anomaly-Detection-in-API-calls/data/val.pkl','~/Anomaly-Detection-in-API-calls/data/test.pkl']
+    filenames_t = ['~/Anomaly-Detection-in-API-calls/data/train_targets.pkl','~/Anomaly-Detection-in-API-calls/data/val_targets.pkl','~/Anomaly-Detection-in-API-calls/data/test_targets.pkl']
     encoder_obj = Encoders()
     encoders = encoder_obj.encoders
 
-    splitter = Train_Val_Test_split()
+    splitter = Train_Val_Test_split(only_normal=True)
         
     if not os.path.exists(args.dirrr):
     # If it doesn't exist, create it

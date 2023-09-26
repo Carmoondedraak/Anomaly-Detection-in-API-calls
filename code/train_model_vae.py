@@ -35,7 +35,6 @@ def xavier_init(model):
         if name.endswith(".bias"):
             param.data.fill_(0)
         else:
-            print(param.shape)
             if len(param.shape) > 1:
                 bound = math.sqrt(6) / math.sqrt(param.shape[0] + param.shape[1])
             else:
