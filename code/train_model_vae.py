@@ -82,7 +82,6 @@ class GenerateCallback(pl.Callback):
             save_image(grid,
                         os.path.join(trainer.logger.log_dir, f"epoch_{epoch}_samples.png"))
 
-
 def train_vae(args):
     """
     Function for training and testing a VAE model.
@@ -116,12 +115,20 @@ def train_vae(args):
     xavier_init(model)
     # Training
     # gen_callback.sample_and_save(trainer, model, epoch=0)  # Initial sample
-    trainer.fit(model, train_loader, val_loader)
+    if args.only_test == False:
+        trainer.fit(model, train_loader, val_loader)
 
     
 
     # Testing
-    model = VAEE.load_from_checkpoint(trainer.checkpoint_callback.best_model_path)
+    # torch.save(model.state_dict(), args.log_dir + args.savefile)
+    if args.only_test == True:
+        model = VAEE.load_from_checkpoint(args.best_model_checkpoint)
+    else:
+        model = VAEE.load_from_checkpoint(trainer.checkpoint_callback.best_model_path)
+    # with open('my_model.pth', 'rb') as f:
+        # buffer = io.BytesIO(f.read())
+    # model = torch.load(args.log_dir + args.savefile)
     test_result = trainer.test(model, dataloaders=test_loader, verbose=True)
 
     # Manifold generation
@@ -166,11 +173,15 @@ if __name__ == '__main__':
                              'For your assignment report, you can use multiple workers (e.g. 4) and do not have to set it to 0.')
     parser.add_argument('--log_dir', default='VAE_logs', type=str,
                         help='Directory where the PyTorch Lightning logs should be created.')
+    parser.add_argument('--savefile',default='/model.pt')
     parser.add_argument('--progress_bar', action='store_true',
                         help=('Use a progress bar indicator for interactive experimentation. '
                               'Not to be used in conjuction with SLURM jobs'))
     parser.add_argument('--num_features', default=128, help='number of features in the dataset')
+    parser.add_argument('--only_test', default=False, help='train and test or only test')
+    parser.add_argument('--best_model_checkpoint', default='VAE_logs/lightning_logs/version_3956971/checkpoints/epoch=79-step=38720.ckpt', help='checkpoint for the trained model')
     args = parser.parse_args()
 
     train_vae(args)
 
+# version_3956971

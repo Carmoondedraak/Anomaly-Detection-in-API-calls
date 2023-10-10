@@ -34,9 +34,9 @@ from torch.utils.data import DataLoader
 from torch.nn.functional import normalize
 
 class Data(Dataset):
-    def __init__(self, dirr, transform=None, target_transform=None):
+    def __init__(self, dirr,filename, transform=None, target_transform=None):
         self.data = pd.read_pickle(dirr)
-        self.targets= pd.read_pickle("/".join(dirr.split('/')[:-1]) + '/train_targets.pkl')
+        self.targets= pd.read_pickle("/".join(dirr.split('/')[:-1]) + '/' + filename.split('.')[0]+  '_targets.pkl')
         self.dirr = dirr
         self.transform = transform
         self.target_transform = target_transform
@@ -58,15 +58,15 @@ class Data(Dataset):
 def sock_data(batch_size,num_workers,root, transform=ToTensor(), target_transform=False):
     names = ['train.pkl', 'val.pkl','test.pkl']
     filenames = [os.path.join(root, i) for i in names]
-    train_set = Data(filenames[0], transform,target_transform)    
-    val_set = Data(filenames[1], transform,target_transform)
-    test_set = Data(filenames[2], transform,target_transform)
+    train_set = Data(filenames[0],names[0], transform,target_transform)    
+    val_set = Data(filenames[1],names[1], transform,target_transform)
+    test_set = Data(filenames[2], names[2], transform,True)
 
     train_dataloader =  DataLoader(train_set, batch_size=batch_size,
                         shuffle=True, num_workers=0)
     val_dataloader =  DataLoader(val_set, batch_size=batch_size,
                         shuffle=True, num_workers=0)
-    test_dataloader =  DataLoader(test_set, batch_size=batch_size,
+    test_dataloader =  DataLoader(test_set,batch_size=batch_size,
                         shuffle=True, num_workers=0)
     return train_dataloader, val_dataloader, test_dataloader
 

@@ -263,11 +263,7 @@ class Train_Val_Test_split():
         self.test_a = self.test_a.drop(self.val_a.index)
         self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
 
-        if self.only_normal == True:
-            test = self.test_n
-
-        else:    
-            test = pd.concat([self.test_n,self.test_a], ignore_index=True)
+        test = pd.concat([self.test_n,self.test_a], ignore_index=True)
         test = test.fillna(0)
         test = shuffle(test).reset_index(drop=True)
         targets = test['target']

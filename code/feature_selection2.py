@@ -68,7 +68,7 @@ class Feature_Selection():
                     search_space = self.hyperparameters()
                     pipe = self.pipe()
                     prediction,feature_names, pred_prob, predictions = self.pipes_train(X, y,X_test,y_test, search_space, pipe)
-                    accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob)
+                    accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob, 0.5, test=False)
                     res = [filt[0],classifier[0],self.encoder ,feature_names,accuracy,precision, recall] + [x for x in predictions]
                     self.save_results(res)
                     
@@ -82,7 +82,7 @@ class Feature_Selection():
                         search_space = self.hyperparameters()
                         pipe = self.pipe()
                         prediction, feature_names, pred_prob,predictions = self.pipes_train(X,y,X_test,y_test, search_space,pipe)
-                        accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob)
+                        accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob, 0.5, test=False)
                         res = [fs[0],classifier[0],self.encoder,feature_names, accuracy,precision, recall]+[x for x in predictions]
                         self.save_results(res)
     
@@ -153,7 +153,7 @@ class Feature_Selection():
         predictions = self.pipe_test(search)
         self.visualise(search,X,y, np.linspace(0.1,1.0,10),'')
         self.visualise(search,X,y, np.arange(1,2181,100),'ext')
-        print('created the visualisations')
+
         self.save_model(search)
         return prediction, X.columns[search.best_estimator_.named_steps['selector'].get_support()], pred_prob, predictions
 
@@ -165,24 +165,36 @@ class Feature_Selection():
             test_X = pd.concat([test_n,test_a], ignore_index=True)
             test_targets = test_X['target']
             test_X = test_X.drop(['target'],axis=1)
-            prediction = pipe.score(test_X,test_targets)
-            results.append(prediction)
+
+            prediction = pipe.predict(test_X)
+            pred_prob = pipe.predict_proba(test_X)
+            # prediction = pipe.score(test_X,test_targets)
+            scoress = self.scores(prediction, test_targets, pred_prob, self.perc[i])
+            results.append(scoress)
         return results
 
-    def scores(self, y_pred,y_true, pred_prob):
+    def scores(self, y_pred,y_true, pred_prob, B,test=True):
         accuracy = accuracy_score(y_true, y_pred)
         precision = precision_score(y_true, y_pred)
         recall = recall_score(y_true, y_pred)
-        # auc = roc_auc_score(y_true,pred_prob)
-        auc = 0
-        # r = confusion_matrix(y_true, y_pred)
+
+        auc = roc_auc_score(y_true,pred_prob)
+        # auc = 0
         cm = confusion_matrix(y_true, y_pred, labels=[0,1])
+        tn = cm[0][0]
+        fn = cm[1][0]
+        tp = cm[1][1]
+        fp = cm[0][1]
+        ppv = (tp * B)/ (tp *B + fp *(1-B))
+
         disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=['normal','abnormal'])
         disp.plot()
         plt.savefig(self.savefolder+'/confusion_matrix_'+self.model[0]+self.classifier[0]+".png")
 
         print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall,'\n auc',auc)
-        return accuracy, precision, recall, auc
+        if test == False: 
+            return {'accuracy':accuracy, 'precision':precision, 'recall':recall, 'auc':auc, 'ppv':ppv}
+        return {'accuracy_{}'.format(B):accuracy, 'precision_{}'.format(B):precision, 'recall_{}'.format(B):recall, 'auc_{}'.format(B):auc, 'ppv_{}'.format(B):ppv}
 
     def visualise(self,clf,X,y,train_sizes, filename):
         train_sizes, train_scores, test_scores, fit_times, score_times = learning_curve(estimator=clf, X=X, y=y,
@@ -243,8 +255,8 @@ class Feature_Selection():
         plt.savefig(self.savefolder + '/'+ self.model[0] + '_' + self.classifier[0] +'fit'+ '.png' )
         plt.clf()
 
-    def save_results(result_scores):
-        df = pd.DataFrame(result_scores, columns = ['filter/model', 'classifier','encoder', 'feature_names','accuracy', 'precision', 'recall']+ ['test_perc_'+i for i in self.perc]) 
+    def save_results(self,result_scores):
+        df = pd.DataFrame(result_scores, columns = ['filter/model', 'classifier','encoder', 'feature_names','accuracy', 'precision', 'recall']+ ['test_acc_perc_'+i for i in self.perc] +  ['test_precision_perc_'+i for i in self.perc] +  ['test_recall_perc_'+i for i in self.perc] +  ['test_auc_perc_'+i for i in self.perc]+ ['test_ppv_perc_'+i for i in self.perc]) 
 
         # save pandas dataframe to pickle and add to existing pickle when new user is spawned
         file = self.savefolder+'/scores.pkl'
@@ -272,7 +284,7 @@ if __name__=="__main__":
     parser.add_argument('filename',metavar= 'filename of normal dataset')           # positional argument
     parser.add_argument('filename1',metavar= 'filename of abnormal dataset')
     parser.add_argument('savefile', metavar= 'the file to save the prerocessed dataset')
-    parser.add_argument('--perc', metavar='anomaly percentages that should be used during testing', default=[0.5,0.2,0.01])
+    parser.add_argument('--perc', metavar='anomaly percentages that should be used during testing', default=[0.5,0.2,0.01,0.001,0.0001])
     args = parser.parse_args()
     print(args.perc)
     # load the preprocessed dataset
