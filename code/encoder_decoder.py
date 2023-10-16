@@ -43,7 +43,7 @@ torch.use_deterministic_algorithms(True) # Needed for reproducible results
 
 
 class Encoder(nn.Module):
-    def __init__(self, num_features,num_filters, z_dim ):
+    def __init__(self, num_features,num_filters, z_dim):
         super(Encoder,self).__init__()
         # self.ngpu = ngpu
         self.net = nn.Sequential(
@@ -62,8 +62,8 @@ class Encoder(nn.Module):
 
             nn.Flatten()
         )
-        self.linear1 = nn.Linear(num_filters *2*10,z_dim)
-        self.linear2 = nn.Linear(num_filters *2*10,z_dim)
+        self.linear1 = nn.Linear(num_filters *(((num_features-1)//2)-1)*2,z_dim)
+        self.linear2 = nn.Linear(num_filters *(((num_features-1)//2)-1)*2,z_dim)
 
     def forward(self, input):
         x = self.net(input)
@@ -75,8 +75,9 @@ class Decoder(nn.Module):
     def __init__(self, num_features,num_filters,z_dim):
         super(Decoder, self).__init__()
         # self.ngpu = ngpu
+        self.num_features = num_features
         self.linear = nn.Sequential(
-            nn.Linear(z_dim, num_filters *2*10 ),
+            nn.Linear(z_dim, num_filters*2*(((num_features-1)//2)-1) ),
             nn.LeakyReLU(0.1)
         )
         self.net = nn.Sequential(
@@ -97,13 +98,14 @@ class Decoder(nn.Module):
 
     def forward(self, input, batch_size):
         z = self.linear(input)
-        z = z.reshape(batch_size,40,10)
+        z = z.reshape(batch_size,40,((self.num_features-1)//2)-1)
 
         new = self.net(z)
         return new
 
 class Discriminator(nn.Module):
     def __init__(self, num_features,num_filters,z_dim):
+        self.num_features = num_features
         super(Discriminator, self).__init__()
         # self.ngpu = ngpu
         self.net = nn.Sequential(
@@ -119,17 +121,24 @@ class Discriminator(nn.Module):
             nn.Conv1d(num_filters *2,num_filters*2, kernel_size=3, stride=1, padding=0, bias=False),
             # nn.BatchNorm1d(num_filters*2),
             nn.LeakyReLU(0.2, inplace=True),
-
+        )
+        self.dropout = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(num_filters *2*(((self.num_features-1)//2)-1),z_dim)
+            )
+        self.net2 = nn.Sequential(
             # nn.Conv1d(num_filters *2,1, kernel_size=3, stride=1, padding=0, bias=False),
             # nn.LeakyReLU(0.2,inplace=True),
             nn.Flatten(),
-            nn.Linear(400, 1), # Output layer with a single neuron
+            nn.Linear(num_filters*2*(((self.num_features-1)//2)-1), 1), # Output layer with a single neuron
             nn.Sigmoid()
         )
 
     def forward(self, input, batch_size):
         # print('Discriminator',self.net)
-        input = input.reshape(batch_size,1,23)
+        input = input.reshape(batch_size,1,self.num_features)
         new = self.net(input)
-        return new
+        output = self.dropout(new)
+        new = self.net2(new)
+        return new, output
 

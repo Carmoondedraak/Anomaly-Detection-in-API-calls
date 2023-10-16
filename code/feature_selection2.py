@@ -68,8 +68,9 @@ class Feature_Selection():
                     search_space = self.hyperparameters()
                     pipe = self.pipe()
                     prediction,feature_names, pred_prob, predictions = self.pipes_train(X, y,X_test,y_test, search_space, pipe)
-                    accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob, 0.5, test=False)
-                    res = [filt[0],classifier[0],self.encoder ,feature_names,accuracy,precision, recall] + [x for x in predictions]
+                    scoress = self.scores(prediction,y_test, pred_prob, 0.5, test=False)
+                    res = {'filter/model':filt[0], 'classifier': classifier[0], 'encoder':self.encoder, 'feature_names': feature_names} | scoress | predictions
+
                     self.save_results(res)
                     
                 # see which model works the best using sfs selection 
@@ -82,8 +83,10 @@ class Feature_Selection():
                         search_space = self.hyperparameters()
                         pipe = self.pipe()
                         prediction, feature_names, pred_prob,predictions = self.pipes_train(X,y,X_test,y_test, search_space,pipe)
-                        accuracy, precision, recall, auc = self.scores(prediction,y_test, pred_prob, 0.5, test=False)
+                        scoress = self.scores(prediction,y_test, pred_prob, 0.5, test=False)
                         res = [fs[0],classifier[0],self.encoder,feature_names, accuracy,precision, recall]+[x for x in predictions]
+                        res = {'filter/model':fs[0], 'classifier': classifier[0], 'encoder':self.encoder, 'feature_names': feature_names} | predictions | scoress
+
                         self.save_results(res)
     
     def models(self):
@@ -158,10 +161,13 @@ class Feature_Selection():
         return prediction, X.columns[search.best_estimator_.named_steps['selector'].get_support()], pred_prob, predictions
 
     def pipe_test(self,pipe):
-        results = []
+        results = {}
         for i in range(len(self.perc)):
-            test_a = self.splitter.test_a.sample(frac=self.perc[i])
+            
+            test_a = self.splitter.test_a
             test_n = self.splitter.test_n
+            percentage = ((len(test_a) + len(test_n)) * self.perc[i]) /100
+            test_a = test_a.sample(n=percentage)
             test_X = pd.concat([test_n,test_a], ignore_index=True)
             test_targets = test_X['target']
             test_X = test_X.drop(['target'],axis=1)
@@ -170,7 +176,7 @@ class Feature_Selection():
             pred_prob = pipe.predict_proba(test_X)
             # prediction = pipe.score(test_X,test_targets)
             scoress = self.scores(prediction, test_targets, pred_prob, self.perc[i])
-            results.append(scoress)
+            results = results | scoress
         return results
 
     def scores(self, y_pred,y_true, pred_prob, B,test=True):
@@ -178,8 +184,6 @@ class Feature_Selection():
         precision = precision_score(y_true, y_pred)
         recall = recall_score(y_true, y_pred)
 
-        auc = roc_auc_score(y_true,pred_prob)
-        # auc = 0
         cm = confusion_matrix(y_true, y_pred, labels=[0,1])
         tn = cm[0][0]
         fn = cm[1][0]
@@ -191,10 +195,10 @@ class Feature_Selection():
         disp.plot()
         plt.savefig(self.savefolder+'/confusion_matrix_'+self.model[0]+self.classifier[0]+".png")
 
-        print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall,'\n auc',auc)
+        print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall)
         if test == False: 
-            return {'accuracy':accuracy, 'precision':precision, 'recall':recall, 'auc':auc, 'ppv':ppv}
-        return {'accuracy_{}'.format(B):accuracy, 'precision_{}'.format(B):precision, 'recall_{}'.format(B):recall, 'auc_{}'.format(B):auc, 'ppv_{}'.format(B):ppv}
+            return {'accuracy':accuracy, 'precision':precision, 'recall':recall, 'ppv':ppv}
+        return {'accuracy_{}'.format(B):accuracy, 'precision_{}'.format(B):precision, 'recall_{}'.format(B):recall, 'ppv_{}'.format(B):ppv}
 
     def visualise(self,clf,X,y,train_sizes, filename):
         train_sizes, train_scores, test_scores, fit_times, score_times = learning_curve(estimator=clf, X=X, y=y,
@@ -256,8 +260,8 @@ class Feature_Selection():
         plt.clf()
 
     def save_results(self,result_scores):
-        df = pd.DataFrame(result_scores, columns = ['filter/model', 'classifier','encoder', 'feature_names','accuracy', 'precision', 'recall']+ ['test_acc_perc_'+i for i in self.perc] +  ['test_precision_perc_'+i for i in self.perc] +  ['test_recall_perc_'+i for i in self.perc] +  ['test_auc_perc_'+i for i in self.perc]+ ['test_ppv_perc_'+i for i in self.perc]) 
-
+        # df = pd.DataFrame(result_scores, columns = ['filter/model', 'classifier','encoder', 'feature_names','accuracy', 'precision', 'recall']+ ['test_acc_perc_'+i for i in self.perc] +  ['test_precision_perc_'+i for i in self.perc] +  ['test_recall_perc_'+i for i in self.perc] + ['test_ppv_perc_'+i for i in self.perc]) 
+        df = pd.DataFrame.from_dict(result_scores)
         # save pandas dataframe to pickle and add to existing pickle when new user is spawned
         file = self.savefolder+'/scores.pkl'
         if os.path.isfile(file):
