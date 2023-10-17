@@ -58,11 +58,17 @@ class Data(Dataset):
 
     def test_set_perc(self, abnormal_file, file, perc):
         abnorm = pd.read_pickle(abnormal_file)
-        print(len(abnorm), perc)
-        percentage = int((len(abnorm) / perc)- len(abnorm))
         norm = pd.read_pickle(file)
-        norm = norm.sample(n=percentage)
+
+        if len(abnorm) < 100:
+            print(len(abnorm), perc)
+            percentage = int((len(abnorm) / perc)- len(abnorm))
+            norm = norm.sample(n=percentage)
         
+        else:
+            norm.sample(frac=1-perc)
+            abnorm.sample(frac=perc)
+            
         self.data = pd.concat((norm,abnorm)).fillna(0)
         self.targets = pd.DataFrame([0 for i in range(len(norm))] + [1 for i in range(len(abnorm))],columns=['targets'])
         print(self.data, self.data.shape, self.targets)

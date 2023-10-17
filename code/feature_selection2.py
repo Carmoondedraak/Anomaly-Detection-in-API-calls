@@ -167,8 +167,8 @@ class Feature_Selection():
             test_a = self.splitter.test_a
             test_n = self.splitter.test_n
 
-            test_a = test_a.sample(frac=perc[i])
-            test_n = test_n.sample(frac=1-perc[i])
+            test_a = test_a.sample(frac=self.perc[i])
+            test_n = test_n.sample(frac=1-self.perc[i])
             test_X = pd.concat([test_n,test_a], ignore_index=True)
             test_X = shuffle(test_X).reset_index(drop=True)
 
