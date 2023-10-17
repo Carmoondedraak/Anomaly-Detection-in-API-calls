@@ -75,7 +75,7 @@ if __name__ == '__main__':
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Model hyperparameters
-    parser.add_argument('dirrr', type=str, help='dataset (train, val or test)')
+    # parser.add_argument('dirrr', type=str, help='dataset (train, val or test)')
     parser.add_argument('filename', type=str)
     parser.add_argument('filename1',type=str)
     args = parser.parse_args()
@@ -88,22 +88,22 @@ if __name__ == '__main__':
     numerical = ['time']
 
     # create data preprocessing object
-    data_preprocessor = Data_Preprocess(data_n,data_a)
+    data_preprocessor = Data_Preprocess([data_n,data_a])
 
     # change the values to string and float formats
     data_n = data_preprocessor.change_values(data_n,numerical,categorical_feats)
     data_a = data_preprocessor.change_values(data_a,numerical,categorical_feats)
     data = [data_n,data_a]
-    filenames = ['~/Anomaly-Detection-in-API-calls/data/train.pkl', '~/Anomaly-Detection-in-API-calls/data/val.pkl','~/Anomaly-Detection-in-API-calls/data/test.pkl']
-    filenames_t = ['~/Anomaly-Detection-in-API-calls/data/train_targets.pkl','~/Anomaly-Detection-in-API-calls/data/val_targets.pkl','~/Anomaly-Detection-in-API-calls/data/test_targets.pkl']
+    filenames = ['~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/train.pkl', '~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/val.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/test.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/abnormal_test.pkl']
+    filenames_t = ['~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/train_targets.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/val_targets.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/test_targets.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/abnormal_test_targets.pkl']
     encoder_obj = Encoders()
     encoders = encoder_obj.encoders
 
     splitter = Train_Val_Test_split(only_normal=True)
         
-    if not os.path.exists(args.dirrr):
-    # If it doesn't exist, create it
-        os.makedirs(args.dirrr)
+    # if not os.path.exists(args.dirrr):
+    # # If it doesn't exist, create it
+    #     os.makedirs(args.dirrr)
     
     encoder = 'cat'
 
@@ -111,8 +111,8 @@ if __name__ == '__main__':
     X_a = encoder_obj.choose_encoding(data[1],encoder)
     splitter.split_dataset([X_n,X_a])
 
-    data = [splitter.train_set, splitter.val_set,splitter.test_set]
-    targets = [splitter.train_targets, splitter.val_targets, splitter.test_targets]
+    data = [splitter.train_set, splitter.val_set,splitter.test_set_n,splitter.test_set_a]
+    targets = [splitter.train_targets, splitter.val_targets, splitter.test_targets_n, splitter.test_targets_a]
 
     for i,names in enumerate(filenames):
         data_preprocessor.save_dataset(names, data[i], flag=True )

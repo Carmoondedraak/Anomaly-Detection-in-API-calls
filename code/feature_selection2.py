@@ -185,8 +185,8 @@ class Feature_Selection():
         fn = cm[1][0]
         tp = cm[1][1]
         fp = cm[0][1]
-        ppv = (tp * B)/ (tp *B + fp *(1-B))
-
+        ppv = (tp * B) / (tp *B + fp *(1-B))
+        print('ppv',ppv)
         disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=['normal','abnormal'])
         disp.plot()
         plt.savefig(self.savefolder+'/confusion_matrix_'+self.model[0]+self.classifier[0]+".png")
@@ -296,7 +296,7 @@ if __name__=="__main__":
     numerical = ['time']
 
     # create data preprocessing object
-    data_preprocessor = Data_Preprocess(data_n,data_a)
+    data_preprocessor = Data_Preprocess([data_n,data_a])
 
     # change the values to string and float formats
     data_n = data_preprocessor.change_values(data_n,numerical,categorical_feats)

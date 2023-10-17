@@ -1,3 +1,3 @@
 import pandas as pd
-new = pd.read_pickle('../data/train_targets.pkl')
+new = pd.read_pickle('../data/val_targets.pkl')
 print(new)

@@ -20,10 +20,13 @@ class Data_Preprocess():
         continuous: list of continuous data
         numerical: list of numerical data
     '''
-    def __init__(self, data_n, data_a):
-        self.data_n = copy.deepcopy(data_n)
-        self.data_a = copy.deepcopy(data_a)
-        self.data = [self.data_n,self.data_a]
+    def __init__(self, data):
+        if len(data) > 1:
+            self.data_n = copy.deepcopy(data[0])
+            self.data_a = copy.deepcopy(data[1])
+            self.data = [self.data_n,self.data_a]
+        else:
+            self.data = data
   
     def create_dataset(self, to_keep=set(), data_remove=set(), health=True, even=True, cosine = False,continuous=[],numerical=[]):
         self.to_keep = to_keep
@@ -31,7 +34,8 @@ class Data_Preprocess():
         self.continuous = continuous
         self.numerical = numerical 
         data = self.data
-        self.specific_preprocessing(data)
+        if len(self.to_keep) > 1:
+            self.specific_preprocessing(data)
         if len(self.data_remove) > 0:
             data = self.remove_unessecary_data(data)
             
@@ -53,9 +57,8 @@ class Data_Preprocess():
         '''remove data that has no changing values or needs to be removed'''
         for i in range(len(data)):
             data[i] = data[i].fillna(0)
-            print('hallo')
             for col in data[i].columns:
-                if col in data_remove or len(data[i][col].value_counts()) == 1:
+                if col in self.data_remove or len(data[i][col].value_counts()) == 1:
                     print('dataset', i, 'removed', col,'with only',len(data[i][col].value_counts()), 'specific values')
                     data[i].pop(col)
         print('done removing unnessecary data')
@@ -205,8 +208,13 @@ class Train_Val_Test_split():
         print('lenght of total data', len(data[0]), len(data[1]))
         self.train_set, self.train_targets = self.train(data[0], data[1])
         self.val_set, self.val_targets = self.val(data[0],data[1])
-        self.test_set, self.test_targets = self.test(data[0],data[1])
-        print('Length of train data:', len(self.train_set), sum(self.train_targets),' \n length of validation data', len(self.val_set), sum(self.val_targets), '\n length of the test data', len(self.test_set),sum(self.test_targets))
+        if self.only_normal == True:
+            self.test_set_n, self.test_targets_n, self.test_set_a,self.test_targets_a = self.test(data[0],data[1])
+            print('Length of train data:', len(self.train_set), sum(self.train_targets),' \n length of validation data', len(self.val_set), sum(self.val_targets), '\n length of the test data', len(self.test_set_n),len(self.test_set_a), sum(self.test_targets_n))
+
+        else:
+            self.test_set, self.test_targets = self.test(data[0],data[1])
+            print('Length of train data:', len(self.train_set), sum(self.train_targets),' \n length of validation data', len(self.val_set), sum(self.val_targets), '\n length of the test data', len(self.test_set),sum(self.test_targets))
 
     def train(self, data_n, data_a):
         perc = float(self.percentage.split(':')[0])
@@ -263,13 +271,25 @@ class Train_Val_Test_split():
         self.test_a = self.test_a.drop(self.val_a.index)
         self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
 
-        test = pd.concat([self.test_n,self.test_a], ignore_index=True)
-        test = test.fillna(0)
-        test = shuffle(test).reset_index(drop=True)
-        targets = test['target']
-        self.test_set_t = test
-        test = test.drop(['target'],axis=1)
-        return test, targets
+        if self.only_normal == True:
+            test_n = self.test_n.fillna(0)
+            test_n = shuffle(test_n).reset_index(drop=True)
+            targets_n = test_n['target']
+            test_n = test_n.drop(['target'],axis=1)
+            
+            test_a = self.test_a.fillna(0)
+            test_a = shuffle(test_a).reset_index(drop=True)
+            targets_a = test_a['target']
+            test_a = test_a.drop(['target'],axis=1)
+            return test_n, targets_n, test_a, targets_a
+        else:
+            test = pd.concat([self.test_n,self.test_a], ignore_index=True)
+            test = test.fillna(0)
+            test = shuffle(test).reset_index(drop=True)
+            targets = test['target']
+            self.test_set_t = test
+            test = test.drop(['target'],axis=1)
+            return test, targets
 
 if __name__=="__main__":
     # the parser
