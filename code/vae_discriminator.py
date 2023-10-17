@@ -30,6 +30,7 @@ from torchmetrics.classification import BinaryAccuracy, BinaryRecall, BinaryPrec
 from encoder_decoder import Encoder, Decoder, Discriminator
 from utils import *
 from torch.optim.lr_scheduler import  ReduceLROnPlateau 
+import matplotlib.pyplot as plt
 
 
 class VAEE(pl.LightningModule):
@@ -47,7 +48,7 @@ class VAEE(pl.LightningModule):
         
         self.args =args
         self.save_hyperparameters()
-        print('number of features',num_features)
+        # print('number of features',num_features)
         self.encoder = Encoder(num_features,num_filters,z_dim)
         self.generator = Encoder(num_features, num_filters,z_dim)
         self.decoder = Decoder(num_features, num_filters,z_dim)
@@ -71,6 +72,7 @@ class VAEE(pl.LightningModule):
         self.b = 1
         self.c = 1
         self.unsupervised = args.unsupervised
+        self.vaegan = args.vaegan
         print('encoder network', self.encoder.net)
         print('decoder network', self.decoder.net)
         print('generator network', self.generator.net)
@@ -91,7 +93,7 @@ class VAEE(pl.LightningModule):
         """
 
         batch_size = x[0].shape[0]
-        print('the shape',x[0].shape )
+        # print('the shape',x[0].shape )
         mean, log_std = self.encoder(x[0])
         z_samples = sample_reparameterize(mean, torch.exp(log_std)).to(self.device)
         x_hat = self.decoder(z_samples,batch_size)
@@ -139,15 +141,20 @@ class VAEE(pl.LightningModule):
         regularisation_loss = torch.mean(KLD(mean,log_std))
         adversarial_loss = self.loss1(output_r,output_f)
 
-        # encoder loss between the two encoders
-        encoder_loss = self.loss1(z_samples, z_hat_samples)
-
         # discriminator loss
         discriminator_loss = self.loss(preds,labels)
 
         # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
         elbo = reconstruction_loss + regularisation_loss.detach()
-        loss = encoder_loss * self.a + elbo * self.b + adversarial_loss.detach() * self.c
+        
+        if self.vaegan == True:
+            loss = elbo * self.b + adversarial_loss.detach() * self.c
+        else:
+            # encoder loss between the two encoders
+            encoder_loss = self.loss1(z_samples, z_hat_samples)
+            loss = encoder_loss * self.a + elbo * self.b + adversarial_loss.detach() * self.c
+
+
         bpd = torch.mean(elbo_to_bpd(elbo, batch[0].shape))
 
         # metrics
@@ -181,11 +188,15 @@ class VAEE(pl.LightningModule):
         # schedulers[0].step()
         # schedulers[1].step(self.val_loss)
         # logging
+        self.visualise_latent(z_samples)
+        self.visualise_convolutions()
+        if self.vaegan == False:
+            self.log("train_encoder_loss", encoder_loss, on_step=False, on_epoch=True)
+
         self.log("train_accuracy", accuracy, on_step=True,on_epoch=True)
         self.log("train_reconstruction_loss",reconstruction_loss, on_step=False, on_epoch=True)
         self.log("train_regularization_loss", regularisation_loss, on_step=False, on_epoch=True)
         self.log("train_adversarial_loss", adversarial_loss, on_step=False, on_epoch=True)
-        self.log("train_encoder_loss", encoder_loss, on_step=False, on_epoch=True)
         self.log("train_discriminator_loss", discriminator_loss, on_step=False, on_epoch=True)
         self.log("train_total_loss", loss, on_step=False, on_epoch=True)
         self.log("train_bpd", bpd, on_step=False, on_epoch=True)
@@ -208,11 +219,21 @@ class VAEE(pl.LightningModule):
         L_kl = torch.mean(KLD(mean,log_std))
         L_adv = self.loss1(output_r,output_f)
 
-        # encoder loss between the two encoders
-        L_enc = self.loss1(z_samples, z_hat_samples)
-
         # complete discriminator loss
         L_disc = (self.loss(preds,labels))
+
+
+        # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
+        elbo = - L_con + L_kl.detach()
+        if self.vaegan == True:
+            loss = elbo * self.b + L_adv.detach() * self.c
+        else:
+            # encoder loss between the two encoders
+            L_enc = self.loss1(z_samples, z_hat_samples)
+            loss = L_enc * self.a + elbo * self.b + L_adv.detach() * self.c
+
+        
+
 
         # metrics
         accuracy = self.accuracy(preds, labels)
@@ -225,12 +246,12 @@ class VAEE(pl.LightningModule):
         fp = cm[0][1]
         ppv = (tp * self.B)/ (tp *self.B + fp *(1-self.B))
 
-        # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = - L_con + L_kl.detach()
-        loss = L_enc * self.a + elbo * self.b + L_adv.detach() * self.c
         bpd = torch.mean(elbo_to_bpd(elbo, batch[0].shape))
         self.val_loss = loss
         # logging
+        if self.vaegan == False:
+            self.log("validation_encoder_loss", L_enc, on_step=False, on_epoch=True)
+            
         self.log("validation_accuracy", accuracy, on_step=True,on_epoch=True)
         self.log("validation_precision", precision,on_step=True,on_epoch=True)
         self.log("validation_recall",recall, on_step=False, on_epoch=True)
@@ -238,7 +259,6 @@ class VAEE(pl.LightningModule):
         self.log("validation_reconstruction_loss", L_con, on_step=False, on_epoch=True)
         self.log("validation_regularization_loss", L_kl, on_step=False, on_epoch=True)
         self.log("validation_adversarial_loss", L_adv, on_step=False, on_epoch=True)
-        self.log("validation_encoder_loss", L_enc, on_step=False, on_epoch=True)
         self.log("validation_discriminator_loss", L_disc, on_step=False, on_epoch=True)
         self.log('validation_total_loss', loss, on_step=False, on_epoch=True)
         self.log("val_bpd", bpd, on_step=False, on_epoch=True)
@@ -265,13 +285,18 @@ class VAEE(pl.LightningModule):
         L_con = self.loss2(batch[0],x_hat)
         L_kl = torch.mean(KLD(mean,log_std))
         L_adv = self.loss1(output_r,output_f)
-
-
-        # encoder loss between the two encoders
-        L_enc = self.loss1(z_samples, z_hat_samples)
+        
         # loss for discriminator network 
         L_disc = self.loss(preds,labels)
 
+        # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
+        elbo = - L_con + L_kl
+        if self.vaegan == True:
+            loss = elbo * self.b + L_adv.detach() * self.c
+        else:
+            # encoder loss between the two encoders
+            L_enc = self.loss1(z_samples, z_hat_samples)
+            loss = L_enc * self.a + elbo * self.b + L_adv * self.c
 
         # metrics
         accuracy = self.accuracy(preds,labels)
@@ -284,12 +309,13 @@ class VAEE(pl.LightningModule):
         fp = cm[0][1]
         ppv = (tp * self.B)/ (tp *self.B + fp *(1-self.B))
 
-        # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = - L_con + L_kl
-        loss = L_enc * self.a + elbo * self.b + L_adv * self.c
         bpd = torch.mean(elbo_to_bpd(elbo, batch[0].shape))
         
         # logging
+        if self.vaegan == False:
+            self.log("test_encoder_loss", L_enc, on_step=False, on_epoch=True)
+
+        self.log("test_total_loss",loss, on_step=False, on_epoch=True)
         self.log("test_accuracy", accuracy, on_step=False,on_epoch=True)
         self.log("test_precision", precision,on_step=False,on_epoch=True)
         self.log("test_recall",recall, on_step=False, on_epoch=True)
@@ -297,11 +323,53 @@ class VAEE(pl.LightningModule):
         self.log("test_reconstruction_loss", L_con, on_step=False, on_epoch=True)
         self.log("test_regularization_loss", L_kl, on_step=False, on_epoch=True)
         self.log("test_adversarial_loss", L_adv, on_step=False, on_epoch=True)
-        self.log("test_encoder_loss", L_enc, on_step=False, on_epoch=True)
         self.log("test_discriminator_loss", L_disc, on_step=False, on_epoch=True)
-        self.log("test_total_loss",loss, on_step=False, on_epoch=True)
         self.log("test_bpd", bpd, on_step=False, on_epoch=True)
 
+    def visualise_latent(self,latent_representations):
+        fig = plt.figure(figsize=(10,8))
+
+        plt.scatter(range(latent_representations.shape[0]* latent_representations.shape[1]), latent_representations.detach().numpy(), c='b', marker='o', label='Latent Space')
+        plt.xlabel('Data Points')
+        plt.ylabel('Latent Representations')
+        plt.legend()
+        plt.title('1D VAE Latent Space')
+        plt.clf()
+
+        tensorboard = self.logger.experiment
+        tensorboard.add_figure('latent_space',fig,self.global_step)
+        tensorboard.add_histogram('latent_space_hist',latent_representations,self.global_step)
+
+    def visualise_convolutions(self):
+        tensorboard = self.logger.experiment
+        # for i in range(len(self.encoder.net)):
+        for i,name in enumerate(self.encoder.net.named_children()):
+            if 'Conv1d' in str(name[1]):
+                im = self.encoder.net[i].weight.data.detach().numpy()
+                if im.shape[1] == 1:
+                        im = im.reshape(im.shape[1],im.shape[0],im.shape[2])
+                        print(im.shape)
+                        tensorboard.add_image('encoder_network_activation_{}'.format(i),im,self.global_step)
+                else:
+                    for j in range(im.shape[2]):
+                            im = im[:,:,j]
+                            im = im.reshape(1,im.shape[0],im.shape[1])
+    
+                            tensorboard.add_image('encoder_network_activation_{}_{}'.format(i,j),im,self.global_step)
+
+                # tensorboard.add_image('encoder_network_convolution_{}'.format(i),im,self.global_step)
+            activation = self.encoder.net[1]
+            # if 'LeakyReLU' in str(name[1]):
+                # im = self.encoder.net[i].weight.data.detach().numpy()
+                # tensorboard.add_image('encoder_network_activation_{}'.format(i),im,self.global_step)
+
+        print('hallo')
+        # for name, module in self.decoder.net.named_children():
+        #     print(name,module)
+        # for name,module in self.discriminator.net.named_children():
+        #     print(name,module)
+        # for name, module in self.generator.net.named_children():
+        #     print(name,module)
     # def supervised_forward(self, x):
     #     """
     #     The forward function calculates the VAE-loss for a given batch of images.
