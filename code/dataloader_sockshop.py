@@ -56,20 +56,25 @@ class Data(Dataset):
             label = torch.tensor(label, dtype=torch.float)
         return x, label
 
-    def test_set_perc(self, abnormal_file, file, perc):
+    def test_set_perc(self, abnormal_file, file, perc,real):
         abnorm = pd.read_pickle(abnormal_file)
-        print(len(abnorm), perc)
-        percentage = int((len(abnorm) / perc)- len(abnorm))
         norm = pd.read_pickle(file)
-        norm = norm.sample(n=percentage)
+        print(len(abnorm), perc)
+        if real == True:
+            percentage = int((len(abnorm) / perc)- len(abnorm))
+            norm = norm.sample(n=percentage)
+        else:
+            percentage = 100 - perc
+            abnorm = abnorm.sample(frac=perc)
+            norm = norm.sample(frac=percentage)
         
-        self.data = pd.concat((norm,abnorm)).fillna(0)
+        self.data = pd.concat((norm,abnorm)).reset_index().fillna(0)
         self.targets = pd.DataFrame([0 for i in range(len(norm))] + [1 for i in range(len(abnorm))],columns=['targets'])
         print(self.data, self.data.shape, self.targets)
    
 
 
-def sock_data(batch_size,num_workers,root,names,abnorm_file,perc,transform=ToTensor(), target_transform=False,):
+def sock_data(batch_size,num_workers,root,names,abnorm_file,perc,real, transform=ToTensor(), target_transform=False,):
     filenames = [os.path.join(root, i) for i in names]
     train_set = Data(filenames[0],transform,target_transform)    
     val_set = Data(filenames[1], transform,target_transform)
@@ -78,7 +83,7 @@ def sock_data(batch_size,num_workers,root,names,abnorm_file,perc,transform=ToTen
     test_set = Data(filenames[2], transform,True)
     
     if abnorm_file:
-        test_set.test_set_perc( abnorm_file,filenames[2], perc)
+        test_set.test_set_perc( abnorm_file,filenames[2], perc, real)
 
     train_dataloader =  DataLoader(train_set, batch_size=batch_size,
                         shuffle=True, num_workers=0)

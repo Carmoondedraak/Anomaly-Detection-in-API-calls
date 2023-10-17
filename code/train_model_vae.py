@@ -1,4 +1,4 @@
-################################################################################
+gi################################################################################
 # MIT License
 #
 # Copyright (c) 2023
@@ -89,11 +89,11 @@ def train_vae(args):
     Inputs:
         args - Namespace object from the argument parser
     """
-
+    print('epoch', args.epochs)
     os.makedirs(args.log_dir, exist_ok=True)
     train_loader, val_loader, test_loader = sock_data(batch_size=args.batch_size,
                                                    num_workers=args.num_workers,
-                                                   root=args.data_dir, names = args.dataset_filenames,abnorm_file = args.abnorm_file,perc=args.perc)
+                                                   root=args.data_dir, names = args.dataset_filenames,abnorm_file = args.abnorm_file,perc=args.perc,real = args.real)
 
 
     # Create a PyTorch Lightning trainer with the generation callback
@@ -113,6 +113,7 @@ def train_vae(args):
 
     # Create model
     pl.seed_everything(args.seed)  # To be reproducible
+    print(args.vaegan)
     model = VAEE(num_features= args.num_features,num_filters=args.num_filters,
                 z_dim=args.z_dim,
                 args=args)
@@ -157,10 +158,13 @@ if __name__ == '__main__':
                         help='Dimensionality of latent space')
     parser.add_argument('--num_filters', default=20, type=int,
                         help='Number of channels/filters to use in the CNN encoder/decoder.')
+    
+    parser.add_argument('--perc', default=0.5, help='test set anomaly percentage',type=float)
 
     # Optimizer hyperparameters
     parser.add_argument('--lr', default=1e-3, type=float,
                         help='Learning rate to use')
+    
     parser.add_argument('--batch_size', default=128, type=int,
                         help='Minibatch size')
     parser.add_argument('--b1', default=0.5, type=int,help='b1 size')
@@ -175,20 +179,21 @@ if __name__ == '__main__':
     parser.add_argument('--num_workers', default=4, type=int,
                         help='Number of workers to use in the data loaders. To have a truly deterministic run, this has to be 0. ' + \
                              'For your assignment report, you can use multiple workers (e.g. 4) and do not have to set it to 0.')
-    parser.add_argument('--log_dir', default='VAE_logs', type=str,
+    parser.add_argument('--log_dir', default='VAEGANomaly_logs', type=str,
                         help='Directory where the PyTorch Lightning logs should be created.')
     parser.add_argument('--savefile',default='/model.pt')
     parser.add_argument('--progress_bar', action='store_true',
                         help=('Use a progress bar indicator for interactive experimentation. '
                               'Not to be used in conjuction with SLURM jobs'))
     parser.add_argument('--num_features', default=23, help='number of features in the dataset',type=int)
-    parser.add_argument('--only_test', default=True, help='train and test or only test')
+    parser.add_argument('--only_test', default=False, help='train and test or only test')
     parser.add_argument('--best_model_checkpoint', default='/home/cveenker1/VAE_logs/lightning_logs/version_4185017/checkpoints/epoch=0-step=2688.ckpt', help='checkpoint for the trained model')
     # parser.add_argument('--dataset_filenames', default=['train_real.pkl', 'val_real.pkl','test_real.pkl'], help= 'data files for the dataset')
     parser.add_argument('--dataset_filenames', default=['train.pkl', 'val.pkl','test.pkl'], help= 'data files for the dataset',type=str, nargs='*')
     parser.add_argument('--unsupervised', default=True, help='for unsupervised training: True and supervised training: False',action='store_false')
-    parser.add_argument('--perc', default=0.5, help='test set anomaly percentage',type=float)
     parser.add_argument('--abnorm_file', default='', help='anomaly test set',type=str)
+    parser.add_argument('--real', default=False, help='real data of false data',action='store_true')
+    parser.add_argument('--vaegan', default=False, help='use the vaegan architecture instead of vaeganomaly',action='store_true')
     args = parser.parse_args()
 
     train_vae(args)
