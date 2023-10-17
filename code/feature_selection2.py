@@ -20,7 +20,7 @@ from joblib import dump, load
 
 from category_encoders import *
 from flows import *
-from feature_encodings import *
+from encoding_features import *
 from preprocessing import *
 from visualising_dataset import *
 
@@ -51,9 +51,9 @@ class Feature_Selection():
             for encoder in encoders:
                 self.encoder = encoder
                 print('this enocoder is being used:',encoder)
-                X_n = encoder_obj.choose_encoding(data[0],encoder)
-                X_a = encoder_obj.choose_encoding(data[1],encoder)
-                self.splitter.split_dataset([X_n,X_a])
+                data = self.splitter.add_targets(data[0],data[1])
+                data = encoder_obj.choose_encoding(data,encoder)
+                self.splitter.split_dataset(data)
                 X = pd.concat((self.splitter.train_set,self.splitter.val_set))
                 data_tabling(X)
                 y = pd.concat((self.splitter.train_targets,self.splitter.val_targets))
@@ -166,9 +166,12 @@ class Feature_Selection():
             
             test_a = self.splitter.test_a
             test_n = self.splitter.test_n
-            percentage = ((len(test_a) + len(test_n)) * self.perc[i]) /100
-            test_a = test_a.sample(n=percentage)
+
+            test_a = test_a.sample(frac=perc[i])
+            test_n = test_n.sample(frac=1-perc[i])
             test_X = pd.concat([test_n,test_a], ignore_index=True)
+            test_X = shuffle(test_X).reset_index(drop=True)
+
             test_targets = test_X['target']
             test_X = test_X.drop(['target'],axis=1)
 
@@ -189,11 +192,12 @@ class Feature_Selection():
         fn = cm[1][0]
         tp = cm[1][1]
         fp = cm[0][1]
-        ppv = (tp * B)/ (tp *B + fp *(1-B))
-
+        ppv = (tp * B) / (tp *B + fp *(1-B))
+        print('ppv',ppv)
+        print(tn,fn,tp,fp)
         disp = ConfusionMatrixDisplay(confusion_matrix=cm,display_labels=['normal','abnormal'])
         disp.plot()
-        plt.savefig(self.savefolder+'/confusion_matrix_'+self.model[0]+self.classifier[0]+".png")
+        plt.savefig(self.savefolder+'/confusion_matrix_'+self.model[0]+self.classifier[0]+str(B)+".png")
 
         print('these are the metrics:\n accuracy:',accuracy,'\n precision:',precision,'\n recall',recall)
         if test == False: 
@@ -300,7 +304,7 @@ if __name__=="__main__":
     numerical = ['time']
 
     # create data preprocessing object
-    data_preprocessor = Data_Preprocess(data_n,data_a)
+    data_preprocessor = Data_Preprocess([data_n,data_a])
 
     # change the values to string and float formats
     data_n = data_preprocessor.change_values(data_n,numerical,categorical_feats)
