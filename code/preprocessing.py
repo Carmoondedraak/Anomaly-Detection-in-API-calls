@@ -205,23 +205,23 @@ class Train_Val_Test_split():
         self.only_normal = only_normal
 
     def split_dataset(self, data): 
-        print('lenght of total data', len(data[0]), len(data[1]))
-        self.train_set, self.train_targets = self.train(data[0], data[1])
-        self.val_set, self.val_targets = self.val(data[0],data[1])
+        data_n = data[data['target'] == 0]
+        data_a = data[data['target'] == 1]
+        print('lenght of total data', len(data_n), len(data_a))
+        self.train_set, self.train_targets = self.train(data_n, data_a)
+        self.val_set, self.val_targets = self.val(data_n,data_a)
         if self.only_normal == True:
-            self.test_set_n, self.test_targets_n, self.test_set_a,self.test_targets_a = self.test(data[0],data[1])
+            self.test_set_n, self.test_targets_n, self.test_set_a,self.test_targets_a = self.test(data_n,data_a)
             print('Length of train data:', len(self.train_set), sum(self.train_targets),' \n length of validation data', len(self.val_set), sum(self.val_targets), '\n length of the test data', len(self.test_set_n),len(self.test_set_a), sum(self.test_targets_n))
 
         else:
-            self.test_set, self.test_targets = self.test(data[0],data[1])
+            self.test_set, self.test_targets = self.test(data_n,data_a)
             print('Length of train data:', len(self.train_set), sum(self.train_targets),' \n length of validation data', len(self.val_set), sum(self.val_targets), '\n length of the test data', len(self.test_set),sum(self.test_targets))
 
     def train(self, data_n, data_a):
         perc = float(self.percentage.split(':')[0])
         self.train_n = data_n.sample(frac=perc)
-        self.train_n['target'] = [0 * i for i in range(len(self.train_n))]
         self.train_a = data_a.sample(frac=perc)
-        self.train_a['target'] = [i**0 for i in range(len(self.train_a))]
         print('this here',len(self.train_a), len(self.train_n))
 
         if self.only_normal == True:
@@ -245,12 +245,9 @@ class Train_Val_Test_split():
         print(perc, len(self.val_n))
         self.val_n = self.val_n.sample(frac=perc)
         
-        self.val_n['target'] = [0 * i for i in range(len(self.val_n))]
         self.val_a = data_a.drop(self.train_a.index)
 
         self.val_a = self.val_a.sample(frac=perc)  
-        self.val_a['target'] = [i**0 for i in range(len(self.val_a))]
-
         if self.only_normal == True:
             validation = self.val_n
 
@@ -266,10 +263,8 @@ class Train_Val_Test_split():
     def test(self, data_n, data_a):
         self.test_n = data_n.drop(self.train_n.index)
         self.test_n = self.test_n.drop(self.val_n.index)
-        self.test_n['target'] = [0 * i for i in range(len(self.test_n))]
         self.test_a = data_a.drop(self.train_a.index)
         self.test_a = self.test_a.drop(self.val_a.index)
-        self.test_a['target'] = [i**0 for i in range(len(self.test_a))]
 
         if self.only_normal == True:
             test_n = self.test_n.fillna(0)
@@ -291,6 +286,13 @@ class Train_Val_Test_split():
             test = test.drop(['target'],axis=1)
             return test, targets
 
+    def add_targets(self,data_n,data_a):
+        print(len(data_a))
+        data_a['target'] = [i**0 for i in range(len(data_a))]
+        data_n['target'] = [0 * i for i in range(len(data_n))]
+        data = pd.concat([data_n, data_a], ignore_index=True)
+        return data
+        
 if __name__=="__main__":
     # the parser
     parser = argparse.ArgumentParser(
