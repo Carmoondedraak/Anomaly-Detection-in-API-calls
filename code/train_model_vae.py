@@ -23,12 +23,13 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision.utils import make_grid, save_image
 import pytorch_lightning as pl
-from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks import ModelCheckpoint, LearningRateMonitor
 import math
 from encoder_decoder import Encoder, Decoder, Discriminator
 from utils import *
 from dataloader_sockshop import sock_data
 from vae_discriminator import VAEE
+
 
 def xavier_init(model):
     for name, param in model.named_parameters():
@@ -92,14 +93,17 @@ def train_vae(args):
     os.makedirs(args.log_dir, exist_ok=True)
     train_loader, val_loader, test_loader = sock_data(batch_size=args.batch_size,
                                                    num_workers=args.num_workers,
-                                                   root=args.data_dir)
+                                                   root=args.data_dir, names = args.dataset_filenames,abnorm_file = args.abnorm_file,perc=args.perc)
+
 
     # Create a PyTorch Lightning trainer with the generation callback
     gen_callback = GenerateCallback(save_to_disk=True)
     save_callback = ModelCheckpoint(save_weights_only=True, mode="min", monitor="val_bpd")
+    lr_monitor = LearningRateMonitor(logging_interval='step')
+
     trainer = pl.Trainer(default_root_dir=args.log_dir,
                          max_epochs=args.epochs,
-                         callbacks=[save_callback, gen_callback],
+                         callbacks=[save_callback, gen_callback,lr_monitor],
                          enable_progress_bar=args.progress_bar)
     trainer.logger._default_hp_metric = None  # Optional logging argument that we don't need
     if not args.progress_bar:
@@ -162,7 +166,7 @@ if __name__ == '__main__':
     parser.add_argument('--b1', default=0.5, type=int,help='b1 size')
     parser.add_argument('--b2', default=0.5, type=int, help='b2 size')
     # Other hyperparameters
-    parser.add_argument('--data_dir', default='~/Anomaly-Detection-in-API-calls/data/', type=str,
+    parser.add_argument('--data_dir', default='~/Anomaly-Detection-in-API-calls/data', type=str,
                         help='Directory where to look for the data. For jobs on Lisa, this should be $TMPDIR.')
     parser.add_argument('--epochs', default=80, type=int,
                         help='Max number of epochs')
@@ -177,11 +181,16 @@ if __name__ == '__main__':
     parser.add_argument('--progress_bar', action='store_true',
                         help=('Use a progress bar indicator for interactive experimentation. '
                               'Not to be used in conjuction with SLURM jobs'))
-    parser.add_argument('--num_features', default=128, help='number of features in the dataset')
-    parser.add_argument('--only_test', default=False, help='train and test or only test')
-    parser.add_argument('--best_model_checkpoint', default='VAE_logs/lightning_logs/version_3956971/checkpoints/epoch=79-step=38720.ckpt', help='checkpoint for the trained model')
+    parser.add_argument('--num_features', default=23, help='number of features in the dataset',type=int)
+    parser.add_argument('--only_test', default=True, help='train and test or only test')
+    parser.add_argument('--best_model_checkpoint', default='/home/cveenker1/VAE_logs/lightning_logs/version_4185017/checkpoints/epoch=0-step=2688.ckpt', help='checkpoint for the trained model')
+    # parser.add_argument('--dataset_filenames', default=['train_real.pkl', 'val_real.pkl','test_real.pkl'], help= 'data files for the dataset')
+    parser.add_argument('--dataset_filenames', default=['train.pkl', 'val.pkl','test.pkl'], help= 'data files for the dataset',type=str, nargs='*')
+    parser.add_argument('--unsupervised', default=True, help='for unsupervised training: True and supervised training: False',action='store_false')
+    parser.add_argument('--perc', default=0.5, help='test set anomaly percentage',type=float)
+    parser.add_argument('--abnorm_file', default='', help='anomaly test set',type=str)
     args = parser.parse_args()
 
     train_vae(args)
-
+# vae best VAE_logs/lightning_logs/version_3956971/checkpoints/epoch=79-step=38720.ckpt
 # version_3956971

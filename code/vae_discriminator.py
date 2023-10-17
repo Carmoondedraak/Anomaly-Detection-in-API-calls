@@ -29,6 +29,7 @@ import itertools
 from torchmetrics.classification import BinaryAccuracy, BinaryRecall, BinaryPrecision, BinaryConfusionMatrix
 from encoder_decoder import Encoder, Decoder, Discriminator
 from utils import *
+from torch.optim.lr_scheduler import  ReduceLROnPlateau 
 
 
 class VAEE(pl.LightningModule):
@@ -46,6 +47,7 @@ class VAEE(pl.LightningModule):
         
         self.args =args
         self.save_hyperparameters()
+        print('number of features',num_features)
         self.encoder = Encoder(num_features,num_filters,z_dim)
         self.generator = Encoder(num_features, num_filters,z_dim)
         self.decoder = Decoder(num_features, num_filters,z_dim)
@@ -68,6 +70,7 @@ class VAEE(pl.LightningModule):
         self.a = 1
         self.b = 1
         self.c = 1
+        self.unsupervised = args.unsupervised
         print('encoder network', self.encoder.net)
         print('decoder network', self.decoder.net)
         print('generator network', self.generator.net)
@@ -88,17 +91,17 @@ class VAEE(pl.LightningModule):
         """
 
         batch_size = x[0].shape[0]
-
+        print('the shape',x[0].shape )
         mean, log_std = self.encoder(x[0])
         z_samples = sample_reparameterize(mean, torch.exp(log_std)).to(self.device)
         x_hat = self.decoder(z_samples,batch_size)
         
         z_hat_mean, z_hat_log_std = self.generator(x_hat)
         z_hat_samples = sample_reparameterize(z_hat_mean, torch.exp(z_hat_log_std)).to(self.device)
-        real = self.discriminator(x[0],batch_size)
-        fake = self.discriminator(x_hat, batch_size)
+        real, output_r = self.discriminator(x[0],batch_size)
+        fake, output_f = self.discriminator(x_hat, batch_size)
 
-        return x_hat, z_samples,z_hat_samples, real,fake, mean, log_std 
+        return x_hat, z_samples,z_hat_samples, real,fake, mean, log_std,output_r,output_f
 
     @torch.no_grad()
     def sample(self, batch_size):
@@ -117,33 +120,34 @@ class VAEE(pl.LightningModule):
     def configure_optimizers(self):
         # Creates the optimizers for the generator network and discriminator network
         optimizer_G = torch.optim.Adam(itertools.chain(self.encoder.parameters(), self.decoder.parameters(), self.generator.parameters()), lr=self.args.lr, betas=(self.args.b1, self.args.b2))
+        scheduler_g = ReduceLROnPlateau(optimizer_G,'min')
         optimizer_D = torch.optim.Adam(self.discriminator.parameters(), lr=self.args.lr, betas=(self.args.b1, self.args.b2))
-        return optimizer_G, optimizer_D
+        scheduler_d = ReduceLROnPlateau(optimizer_D, 'min')
+
+        return [{'optimizer':optimizer_D,'lr_scheduler':{'scheduler': scheduler_d, 'monitor':'validation_loss_total'}},{'optimizer':optimizer_G,'lr_scheduler':{'scheduler':scheduler_g,'monitor':'validation_total_loss'}}]
 
     def training_step(self, batch, batch_idx):
         # forwards pass
-        print('label', batch[1])
+        # print('label', batch[1])
         batch_size = batch[0].shape[0]
-        x_hat, z_samples, z_hat_samples, real,fake, mean, log_std = self.forward(batch)
+        x_hat, z_samples, z_hat_samples, real,fake, mean, log_std,output_r,output_f = self.forward(batch)
         preds = torch.cat((real,fake))
         labels = torch.cat((torch.zeros(batch_size, 1, dtype=torch.float32),torch.ones(batch_size, 1, dtype=torch.float32)))
 
         # loss for generator network/VAE
-        generator_loss = self.loss(self.discriminator(x_hat,batch_size), torch.ones(batch_size, 1, dtype=torch.float32 ))
         reconstruction_loss = self.loss2(batch[0],x_hat)
         regularisation_loss = torch.mean(KLD(mean,log_std))
-        vae_loss = reconstruction_loss + regularisation_loss
-        adversarial_loss = self.loss2(real, fake)
+        adversarial_loss = self.loss1(output_r,output_f)
 
         # encoder loss between the two encoders
         encoder_loss = self.loss1(z_samples, z_hat_samples)
 
         # discriminator loss
-        discriminator_loss = ( self.loss(real,torch.zeros(batch_size, 1, dtype=torch.float32)) +  self.loss(fake,torch.ones(batch_size, 1, dtype=torch.float32 ))) * self.lamb
+        discriminator_loss = self.loss(preds,labels)
 
         # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = reconstruction_loss - regularisation_loss.detach()
-        vae_loss = encoder_loss * self.a + elbo * self.b + adversarial_loss.detach() * self.c
+        elbo = reconstruction_loss + regularisation_loss.detach()
+        loss = encoder_loss * self.a + elbo * self.b + adversarial_loss.detach() * self.c
         bpd = torch.mean(elbo_to_bpd(elbo, batch[0].shape))
 
         # metrics
@@ -159,28 +163,31 @@ class VAEE(pl.LightningModule):
 
         # backwards pass
         torch.autograd.set_detect_anomaly(True)
-        optimizer_G, optimizer_D = self.optimizers()
-        
-        self.toggle_optimizer(optimizer_D)
+        optimizers = self.optimizers()
+        schedulers = self.lr_schedulers()
+        self.toggle_optimizer(optimizers[0])
         self.manual_backward(discriminator_loss,retain_graph=True)
-        optimizer_D.step()
-        optimizer_D.zero_grad()
-        self.untoggle_optimizer(optimizer_D)
+        optimizers[0].step()
+        optimizers[0].zero_grad()
+        self.untoggle_optimizer(optimizers[0])
         
-        self.toggle_optimizer(optimizer_G)
-        self.manual_backward(vae_loss,retain_graph=True)
-        optimizer_G.step()
-        optimizer_G.zero_grad()
-        self.untoggle_optimizer(optimizer_G)
+        self.toggle_optimizer(optimizers[1])
+        self.manual_backward(loss,retain_graph=True)
+        optimizers[1].step()
+        optimizers[1].zero_grad()
+        self.untoggle_optimizer(optimizers[1])
 
+        # schedulers[0].step(self.val_loss)
+        # schedulers[0].step()
+        # schedulers[1].step(self.val_loss)
         # logging
-        self.log("train_accuracy", accuracy, on_step=False,on_epoch=True)
+        self.log("train_accuracy", accuracy, on_step=True,on_epoch=True)
         self.log("train_reconstruction_loss",reconstruction_loss, on_step=False, on_epoch=True)
         self.log("train_regularization_loss", regularisation_loss, on_step=False, on_epoch=True)
         self.log("train_adversarial_loss", adversarial_loss, on_step=False, on_epoch=True)
         self.log("train_encoder_loss", encoder_loss, on_step=False, on_epoch=True)
         self.log("train_discriminator_loss", discriminator_loss, on_step=False, on_epoch=True)
-        self.log("train_VAE_loss", vae_loss, on_step=False, on_epoch=True)
+        self.log("train_total_loss", loss, on_step=False, on_epoch=True)
         self.log("train_bpd", bpd, on_step=False, on_epoch=True)
         self.log("train_precision", precision, on_step=False, on_epoch=True)
         self.log("train_recall", recall, on_step=False, on_epoch=True)
@@ -191,22 +198,21 @@ class VAEE(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         # forwards pass
         batch_size = batch[0].shape[0]
-        x_hat, z_samples,z_hat_samples, real,fake, mean, log_std = self.forward(batch)
+        x_hat, z_samples,z_hat_samples, real,fake, mean, log_std,output_r,output_f = self.forward(batch)
         preds = torch.cat((real,fake))
         labels = torch.cat((torch.zeros(batch_size, 1, dtype=torch.float32),torch.ones(batch_size, 1, dtype=torch.float32)))
         
         # loss for generator network/VAE
-        generator_loss = self.loss(self.discriminator(x_hat,batch_size), torch.ones(batch_size, 1, dtype=torch.float32 ))
+        # generator_loss = self.loss(self.discriminator(x_hat,batch_size), torch.ones(batch_size, 1, dtype=torch.float32 ))
         L_con = self.loss2(batch[0],x_hat)
         L_kl = torch.mean(KLD(mean,log_std))
-        vae_loss = L_con + L_kl
-        L_adv = self.loss2(real, fake)
+        L_adv = self.loss1(output_r,output_f)
 
         # encoder loss between the two encoders
         L_enc = self.loss1(z_samples, z_hat_samples)
 
         # complete discriminator loss
-        L_disc = ( self.loss(real,torch.zeros(batch_size, 1, dtype=torch.float32)) +  self.loss(fake,torch.ones(batch_size, 1, dtype=torch.float32 ))) * self.lamb
+        L_disc = (self.loss(preds,labels))
 
         # metrics
         accuracy = self.accuracy(preds, labels)
@@ -220,13 +226,13 @@ class VAEE(pl.LightningModule):
         ppv = (tp * self.B)/ (tp *self.B + fp *(1-self.B))
 
         # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = L_con - L_kl.detach()
-        vae_loss = L_enc * self.a + elbo * self.b + L_adv.detach() * self.c
+        elbo = - L_con + L_kl.detach()
+        loss = L_enc * self.a + elbo * self.b + L_adv.detach() * self.c
         bpd = torch.mean(elbo_to_bpd(elbo, batch[0].shape))
-
+        self.val_loss = loss
         # logging
-        self.log("validation_accuracy", accuracy, on_step=False,on_epoch=True)
-        self.log("validation_precision", precision,on_step=False,on_epoch=True)
+        self.log("validation_accuracy", accuracy, on_step=True,on_epoch=True)
+        self.log("validation_precision", precision,on_step=True,on_epoch=True)
         self.log("validation_recall",recall, on_step=False, on_epoch=True)
         self.log("validation_ppv", ppv, on_step=False, on_epoch=True)
         self.log("validation_reconstruction_loss", L_con, on_step=False, on_epoch=True)
@@ -234,35 +240,44 @@ class VAEE(pl.LightningModule):
         self.log("validation_adversarial_loss", L_adv, on_step=False, on_epoch=True)
         self.log("validation_encoder_loss", L_enc, on_step=False, on_epoch=True)
         self.log("validation_discriminator_loss", L_disc, on_step=False, on_epoch=True)
-        self.log('validation_vae_loss', vae_loss, on_step=False, on_epoch=True)
+        self.log('validation_total_loss', loss, on_step=False, on_epoch=True)
         self.log("val_bpd", bpd, on_step=False, on_epoch=True)
 
     def test_step(self, batch, batch_idx):
         # forwards pass
         batch_size = batch[0].shape[0]
-        x_hat, z_samples,z_hat_samples, real,fake, mean, log_std = self.forward(batch)
+        x_hat, z_samples,z_hat_samples, real,fake, mean, log_std,output_r,output_f = self.forward(batch)
 
         # loss for generator network
         batch[1] = batch[1].reshape(batch_size,1)
-        generator_loss = self.loss(self.discriminator(batch[0],batch_size),batch[1])
+        # generator_loss = self.loss(self.discriminator(batch[0],batch_size),batch[1])
 
+        if self.unsupervised == False:
+            print('hierr')
+            preds = real
+            labels = batch[1]
+
+        else: 
+            preds = torch.cat((real,fake))
+            labels = torch.cat((torch.zeros(batch_size, 1, dtype=torch.float32),torch.ones(batch_size, 1, dtype=torch.float32)))
         # loss for VAE
+        
         L_con = self.loss2(batch[0],x_hat)
         L_kl = torch.mean(KLD(mean,log_std))
-        vae_loss = L_con + L_kl
-        L_adv = self.loss2(real,fake)
+        L_adv = self.loss1(output_r,output_f)
+
 
         # encoder loss between the two encoders
         L_enc = self.loss1(z_samples, z_hat_samples)
         # loss for discriminator network 
-        L_disc = self.loss(real,batch[1])
+        L_disc = self.loss(preds,labels)
+
 
         # metrics
-        print(real, batch[1])
-        accuracy = self.accuracy(real, batch[1])
-        precision = self.precision(real,batch[1])
-        recall = self.recall(real, batch[1])
-        cm = self.CM(real,batch[1])
+        accuracy = self.accuracy(preds,labels)
+        precision = self.precision(preds,labels)
+        recall = self.recall(preds,labels)
+        cm = self.CM(preds,labels)
         tn = cm[0][0]
         fn = cm[1][0]
         tp = cm[1][1]
@@ -270,8 +285,8 @@ class VAEE(pl.LightningModule):
         ppv = (tp * self.B)/ (tp *self.B + fp *(1-self.B))
 
         # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = L_con - L_kl.detach()
-        L_vae = L_enc * self.a + elbo * self.b + L_adv.detach() * self.c
+        elbo = - L_con + L_kl
+        loss = L_enc * self.a + elbo * self.b + L_adv * self.c
         bpd = torch.mean(elbo_to_bpd(elbo, batch[0].shape))
         
         # logging
@@ -284,7 +299,7 @@ class VAEE(pl.LightningModule):
         self.log("test_adversarial_loss", L_adv, on_step=False, on_epoch=True)
         self.log("test_encoder_loss", L_enc, on_step=False, on_epoch=True)
         self.log("test_discriminator_loss", L_disc, on_step=False, on_epoch=True)
-        self.log("test_vae_loss", L_vae, on_step=False, on_epoch=True)
+        self.log("test_total_loss",loss, on_step=False, on_epoch=True)
         self.log("test_bpd", bpd, on_step=False, on_epoch=True)
 
     # def supervised_forward(self, x):
