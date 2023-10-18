@@ -97,7 +97,7 @@ class VAEE(pl.LightningModule):
         mean, log_std = self.encoder(x[0])
         z_samples = sample_reparameterize(mean, torch.exp(log_std)).to(self.device)
         x_hat = self.decoder(z_samples,batch_size)
-        
+        # print('x_hat', x_hat.shape)
         z_hat_mean, z_hat_log_std = self.generator(x_hat)
         z_hat_samples = sample_reparameterize(z_hat_mean, torch.exp(z_hat_log_std)).to(self.device)
         real, output_r = self.discriminator(x[0],batch_size)
@@ -224,7 +224,7 @@ class VAEE(pl.LightningModule):
 
 
         # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = - L_con + L_kl.detach()
+        elbo = L_con + L_kl.detach()
         if self.vaegan == True:
             loss = elbo * self.b + L_adv.detach() * self.c
         else:
@@ -290,7 +290,7 @@ class VAEE(pl.LightningModule):
         L_disc = self.loss(preds,labels)
 
         # complete generator loss with a,b,c as regularisation terms. Combination of the VAE and AAE loss funtions
-        elbo = - L_con + L_kl
+        elbo = L_con + L_kl
         if self.vaegan == True:
             loss = elbo * self.b + L_adv.detach() * self.c
         else:

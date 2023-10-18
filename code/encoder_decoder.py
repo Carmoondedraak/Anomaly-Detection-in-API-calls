@@ -68,6 +68,7 @@ class Encoder(nn.Module):
 
     def forward(self, input):
         x = self.net(input)
+        # print('encoder input',x.shape)
         mean = self.linear1(x)
         log_std = self.linear2(x)
         return mean, log_std
@@ -100,7 +101,8 @@ class Decoder(nn.Module):
 
     def forward(self, input, batch_size):
         z = self.linear(input)
-        z = z.reshape(batch_size,self.num_filters*2,((self.num_features-1)//2)-1)
+        # print('decoder',z.shape)
+        z = z.reshape(batch_size,self.num_filters*2,((self.num_features-1)//2)-1) 
 
         new = self.net(z)
         return new
@@ -138,6 +140,7 @@ class Discriminator(nn.Module):
 
     def forward(self, input, batch_size):
         # print('Discriminator',self.net)
+        # print(input.shape)
         input = input.reshape(batch_size,1,self.num_features)
         new = self.net(input)
         output = self.dropout(new)

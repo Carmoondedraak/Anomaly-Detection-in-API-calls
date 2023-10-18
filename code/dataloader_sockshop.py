@@ -71,6 +71,8 @@ class Data(Dataset):
         print('abnormal',abnorm)
         self.data = pd.concat((norm,abnorm)).reset_index(drop=True).fillna(0)
         self.targets = pd.DataFrame([0 for i in range(len(norm))] + [1 for i in range(len(abnorm))],columns=['targets'])   
+        print('dataset',self.data)
+        print('targets',self.targets)
 
 
 def sock_data(batch_size,num_workers,root,names,abnorm_file,perc,real, transform=ToTensor(), target_transform=False,):
