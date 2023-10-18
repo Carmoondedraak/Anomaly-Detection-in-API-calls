@@ -9,9 +9,9 @@ from feature_encodings import *
 from preprocessing import *
 from visualising_dataset import *
 class Encoders():
-    def __init__(self):
+    def __init__(self, filepath):
         self.encoders = ['cat','one_hot', 'woe', 'freq']
-        
+        self.filepath = filepath
     def choose_encoding(self, data, name):
         target = data['target']
         data = data.drop(columns='target')
@@ -100,10 +100,14 @@ class Encoders():
 
     def categorical_encoding(self, df):
         '''encode full dataframe as categorical encoding'''
-
+        key_dict = {}
         df = copy.deepcopy(df)
         for col in df.columns:
-            df[col] = pd.factorize(df[col])[0] + 1
+            df[col], uniques = pd.factorize(df[col])
+            df[col] += 1
+            key_dict[col] = {k+1:v for (k,v) in enumerate(uniques)} 
+        with open(self.filepath.split('.')[0] + '_cat.pkl', "wb") as file:
+            pickle.dump(key_dict,file)
         return df
 
 class Filters():
