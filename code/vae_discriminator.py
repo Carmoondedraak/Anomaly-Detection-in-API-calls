@@ -348,22 +348,21 @@ class VAEE(pl.LightningModule):
                 im = self.encoder.net[i].weight.data.detach().numpy()
                 if im.shape[1] == 1:
                         im = im.reshape(im.shape[1],im.shape[0],im.shape[2])
-                        print(im.shape)
+                        # print(im.shape)
                         tensorboard.add_image('encoder_network_activation_{}'.format(i),im,self.global_step)
                 else:
                     for j in range(im.shape[2]):
-                            im = im[:,:,j]
-                            im = im.reshape(1,im.shape[0],im.shape[1])
+                            # im = im[:,:,j]
+                            im = im.reshape(3,40,((im.shape[0]*im.shape[1]*im.shape[2])//3)//40)
     
                             tensorboard.add_image('encoder_network_activation_{}_{}'.format(i,j),im,self.global_step)
 
-                # tensorboard.add_image('encoder_network_convolution_{}'.format(i),im,self.global_step)
             activation = self.encoder.net[1]
             # if 'LeakyReLU' in str(name[1]):
                 # im = self.encoder.net[i].weight.data.detach().numpy()
                 # tensorboard.add_image('encoder_network_activation_{}'.format(i),im,self.global_step)
 
-        print('hallo')
+        # print('hallo')
         # for name, module in self.decoder.net.named_children():
         #     print(name,module)
         # for name,module in self.discriminator.net.named_children():

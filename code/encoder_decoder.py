@@ -77,6 +77,7 @@ class Decoder(nn.Module):
         super(Decoder, self).__init__()
         # self.ngpu = ngpu
         self.num_features = num_features
+        self.num_filters = num_filters
         self.linear = nn.Sequential(
             nn.Linear(z_dim, num_filters*2*(((num_features-1)//2)-1) ),
             nn.LeakyReLU(0.1)
@@ -99,7 +100,7 @@ class Decoder(nn.Module):
 
     def forward(self, input, batch_size):
         z = self.linear(input)
-        z = z.reshape(batch_size,40,((self.num_features-1)//2)-1)
+        z = z.reshape(batch_size,self.num_filters*2,((self.num_features-1)//2)-1)
 
         new = self.net(z)
         return new
