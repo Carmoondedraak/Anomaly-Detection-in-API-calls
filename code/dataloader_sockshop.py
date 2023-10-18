@@ -56,36 +56,21 @@ class Data(Dataset):
             label = torch.tensor(label, dtype=torch.float)
         return x, label
 
-    def test_set_perc(self, abnormal_file, file, perc,real):
+    def test_set_perc(self, abnormal_file, file, perc):
         abnorm = pd.read_pickle(abnormal_file)
         norm = pd.read_pickle(file)
-<<<<<<< HEAD
-
         if len(abnorm) < 100:
-            print(len(abnorm), perc)
+            print('percentage',len(abnorm), perc)
             percentage = int((len(abnorm) / perc)- len(abnorm))
             norm = norm.sample(n=percentage)
         
         else:
-            norm.sample(frac=1-perc)
-            abnorm.sample(frac=perc)
-            
-        self.data = pd.concat((norm,abnorm)).fillna(0)
-=======
-        print(len(abnorm), perc)
-        if real == True:
-            percentage = int((len(abnorm) / perc)- len(abnorm))
-            norm = norm.sample(n=percentage)
-        else:
-            percentage = 100 - perc
+            norm =norm.sample(frac=1-perc)
             abnorm = abnorm.sample(frac=perc)
-            norm = norm.sample(frac=percentage)
-        
-        self.data = pd.concat((norm,abnorm)).reset_index().fillna(0)
->>>>>>> 261863e4059784f72e6f7f377cb18e351f05514e
-        self.targets = pd.DataFrame([0 for i in range(len(norm))] + [1 for i in range(len(abnorm))],columns=['targets'])
-        print(self.data, self.data.shape, self.targets)
-   
+        print(norm)
+        print('abnormal',abnorm)
+        self.data = pd.concat((norm,abnorm)).reset_index(drop=True).fillna(0)
+        self.targets = pd.DataFrame([0 for i in range(len(norm))] + [1 for i in range(len(abnorm))],columns=['targets'])   
 
 
 def sock_data(batch_size,num_workers,root,names,abnorm_file,perc,real, transform=ToTensor(), target_transform=False,):
@@ -97,7 +82,7 @@ def sock_data(batch_size,num_workers,root,names,abnorm_file,perc,real, transform
     test_set = Data(filenames[2], transform,True)
     
     if abnorm_file:
-        test_set.test_set_perc( abnorm_file,filenames[2], perc, real)
+        test_set.test_set_perc( abnorm_file,filenames[2], perc)
 
     train_dataloader =  DataLoader(train_set, batch_size=batch_size,
                         shuffle=True, num_workers=0)

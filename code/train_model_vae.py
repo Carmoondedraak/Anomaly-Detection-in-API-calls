@@ -1,4 +1,4 @@
-gi################################################################################
+################################################################################
 # MIT License
 #
 # Copyright (c) 2023
@@ -113,7 +113,6 @@ def train_vae(args):
 
     # Create model
     pl.seed_everything(args.seed)  # To be reproducible
-    print(args.vaegan)
     model = VAEE(num_features= args.num_features,num_filters=args.num_filters,
                 z_dim=args.z_dim,
                 args=args)
@@ -126,14 +125,11 @@ def train_vae(args):
     
 
     # Testing
-    # torch.save(model.state_dict(), args.log_dir + args.savefile)
     if args.only_test == True:
         model = VAEE.load_from_checkpoint(args.best_model_checkpoint)
     else:
         model = VAEE.load_from_checkpoint(trainer.checkpoint_callback.best_model_path)
-    # with open('my_model.pth', 'rb') as f:
-        # buffer = io.BytesIO(f.read())
-    # model = torch.load(args.log_dir + args.savefile)
+
     test_result = trainer.test(model, dataloaders=test_loader, verbose=True)
 
     # Manifold generation
@@ -170,7 +166,7 @@ if __name__ == '__main__':
     parser.add_argument('--b1', default=0.5, type=int,help='b1 size')
     parser.add_argument('--b2', default=0.5, type=int, help='b2 size')
     # Other hyperparameters
-    parser.add_argument('--data_dir', default='~/Anomaly-Detection-in-API-calls/data', type=str,
+    parser.add_argument('--data_dir', default='~/Anomaly-Detection-in-API-calls/data/synthetic_data2', type=str,
                         help='Directory where to look for the data. For jobs on Lisa, this should be $TMPDIR.')
     parser.add_argument('--epochs', default=80, type=int,
                         help='Max number of epochs')
@@ -185,17 +181,17 @@ if __name__ == '__main__':
     parser.add_argument('--progress_bar', action='store_true',
                         help=('Use a progress bar indicator for interactive experimentation. '
                               'Not to be used in conjuction with SLURM jobs'))
-    parser.add_argument('--num_features', default=23, help='number of features in the dataset',type=int)
+    parser.add_argument('--num_features', default=21, help='number of features in the dataset',type=int)
     parser.add_argument('--only_test', default=False, help='train and test or only test')
-    parser.add_argument('--best_model_checkpoint', default='/home/cveenker1/VAE_logs/lightning_logs/version_4185017/checkpoints/epoch=0-step=2688.ckpt', help='checkpoint for the trained model')
+    parser.add_argument('--best_model_checkpoint', default='/home/cveenker1/VAEganomal/lightning_logs/version_4202815/checkpoints/epoch=0-step=484.ckpt', help='checkpoint for the trained model')
     # parser.add_argument('--dataset_filenames', default=['train_real.pkl', 'val_real.pkl','test_real.pkl'], help= 'data files for the dataset')
     parser.add_argument('--dataset_filenames', default=['train.pkl', 'val.pkl','test.pkl'], help= 'data files for the dataset',type=str, nargs='*')
-    parser.add_argument('--unsupervised', default=True, help='for unsupervised training: True and supervised training: False',action='store_false')
-    parser.add_argument('--abnorm_file', default='', help='anomaly test set',type=str)
+    parser.add_argument('--unsupervised', default=False, help='for unsupervised training: True, it then uses only created labels during self supervision and supervised training for using labels during testing: False',action='store_true')
+    parser.add_argument('--abnorm_file', default='~/Anomaly-Detection-in-API-calls/data/synthetic_data2/abnormal_test.pkl', help='anomaly test set',type=str)
     parser.add_argument('--real', default=False, help='real data of false data',action='store_true')
     parser.add_argument('--vaegan', default=False, help='use the vaegan architecture instead of vaeganomaly',action='store_true')
     args = parser.parse_args()
 
     train_vae(args)
 # vae best VAE_logs/lightning_logs/version_3956971/checkpoints/epoch=79-step=38720.ckpt
-# version_3956971
+# version_3956971#/home/cveenker1/VAE_logs/lightning_logs/version_4185017/checkpoints/epoch=0-step=2688.ckpt'
