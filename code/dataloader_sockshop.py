@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 import os
 import pandas as pd
 from flows import *
-from feature_encodings import *
+from encoding_features import *
 from preprocessing import *
 from visualising_dataset import *
 from torch.utils.data import DataLoader
@@ -120,7 +120,7 @@ if __name__ == '__main__':
     data = [data_n,data_a]
     filenames = ['~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/train.pkl', '~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/val.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/test.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/abnormal_test.pkl']
     filenames_t = ['~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/train_targets.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/val_targets.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/test_targets.pkl','~/Documents/Anomaly-Detection-in-API-calls/data/synthetic_data2/abnormal_test_targets.pkl']
-    encoder_obj = Encoders()
+    encoder_obj = Encoders('../data/synthetic_data2/key_dict.pkl')
     encoders = encoder_obj.encoders
 
     splitter = Train_Val_Test_split(only_normal=True)
@@ -130,10 +130,10 @@ if __name__ == '__main__':
     #     os.makedirs(args.dirrr)
     
     encoder = 'cat'
+    data = splitter.add_targets(data[0],data[1])
+    data = encoder_obj.choose_encoding(data,encoder)
 
-    X_n = encoder_obj.choose_encoding(data[0],encoder)
-    X_a = encoder_obj.choose_encoding(data[1],encoder)
-    splitter.split_dataset([X_n,X_a])
+    splitter.split_dataset(data)
 
     data = [splitter.train_set, splitter.val_set,splitter.test_set_n,splitter.test_set_a]
     targets = [splitter.train_targets, splitter.val_targets, splitter.test_targets_n, splitter.test_targets_a]

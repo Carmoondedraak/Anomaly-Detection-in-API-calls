@@ -221,13 +221,13 @@ class Train_Val_Test_split():
     def train(self, data_n, data_a):
         perc = float(self.percentage.split(':')[0])
         self.train_n = data_n.sample(frac=perc)
-        self.train_a = data_a.sample(frac=perc)
-        print('this here',len(self.train_a), len(self.train_n))
+        print('this here', len(self.train_n), len(data_n))
 
         if self.only_normal == True:
             train = self.train_n
 
-        else:    
+        else:
+            self.train_a = data_a.sample(frac=perc)
             train = pd.concat([self.train_n,self.train_a], ignore_index=True)
         
         train = train.fillna(0)
@@ -239,19 +239,19 @@ class Train_Val_Test_split():
 
     def val(self, data_n, data_a):
         perc = float(self.percentage.split(':')[1])
-       
         self.val_n = data_n.drop(self.train_n.index)
+        print(len(data_n),len(self.val_n))
         perc = ((len(data_n) * perc) /len(self.val_n))
-        print(perc, len(self.val_n))
+        print('percentage',perc, len(self.val_n))
         self.val_n = self.val_n.sample(frac=perc)
         
-        self.val_a = data_a.drop(self.train_a.index)
 
-        self.val_a = self.val_a.sample(frac=perc)  
         if self.only_normal == True:
             validation = self.val_n
 
-        else:    
+        else:
+            self.val_a = data_a.drop(self.train_a.index)
+            self.val_a = self.val_a.sample(frac=perc)      
             validation = pd.concat([self.val_n,self.val_a], ignore_index=True)
         validation = validation.fillna(0)
         validation = shuffle(validation).reset_index(drop=True)
@@ -263,21 +263,25 @@ class Train_Val_Test_split():
     def test(self, data_n, data_a):
         self.test_n = data_n.drop(self.train_n.index)
         self.test_n = self.test_n.drop(self.val_n.index)
-        self.test_a = data_a.drop(self.train_a.index)
-        self.test_a = self.test_a.drop(self.val_a.index)
+
 
         if self.only_normal == True:
             test_n = self.test_n.fillna(0)
             test_n = shuffle(test_n).reset_index(drop=True)
             targets_n = test_n['target']
             test_n = test_n.drop(['target'],axis=1)
-            
+            self.test_a = data_a
             test_a = self.test_a.fillna(0)
             test_a = shuffle(test_a).reset_index(drop=True)
+            if len(test_a) > len(test_n):
+                test_a = test_a[:len(test_n)]
+                print(test_a)
             targets_a = test_a['target']
             test_a = test_a.drop(['target'],axis=1)
             return test_n, targets_n, test_a, targets_a
         else:
+            self.test_a = data_a.drop(self.train_a.index)
+            self.test_a = self.test_a.drop(self.val_a.index)
             test = pd.concat([self.test_n,self.test_a], ignore_index=True)
             test = test.fillna(0)
             test = shuffle(test).reset_index(drop=True)
