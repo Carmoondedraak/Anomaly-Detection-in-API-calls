@@ -2,7 +2,7 @@
 import pandas as pd
 import json
 from preprocessing import *
-from feature_encodings import *
+from encoding_features import *
 
 df = pd.read_excel(r'~/Downloads/All-Messages-search-result.xlsx')
 
@@ -178,39 +178,46 @@ class Train_Val_Test_split_Real():
 # Data_p = Data_Preprocess([abnormal])
 # preprocess(abnormal_file, Data_p,'../data/preprocessed_abnormal_real_world_dataset.pkl')
 
-filenames = ['../data/train_real.pkl', '../data/val_real.pkl','../data/test_real.pkl', ]
-target_names = ['../data/train_real_targets.pkl', '../data/val_real_targets.pkl','../data/test_real_targets.pkl']
+filenames = ['../data/real_data2/train_real.pkl', '../data/real_data2/val_real.pkl','../data/real_data2/test_real.pkl','../data/real_data2/abnormal_test_real.pkl' ]
+target_names = ['../data/real_data2/train_real_targets.pkl', '../data/real_data2/val_real_targets.pkl','../data/real_data2/test_real_targets.pkl','../data/real_data2/abnormal_test_real_targets.pkl']
 
 
 # dataset 
-data1 = pd.read_pickle('../data/preprocessed_real_world_dataset.pkl')
-data2 = pd.read_pickle('../data/preprocessed_abnormal_real_world_dataset.pkl')
-encoder_obj = Encoders()
+data_n = pd.read_pickle('../data/preprocessed_real_world_dataset.pkl')
+data_a = pd.read_pickle('../data/preprocessed_abnormal_real_world_dataset.pkl')
+
+Data_p = Data_Preprocess([data_n])
+
+encoder_obj = Encoders('../data/real_data2/keys_dict.pkl')
 encoders = encoder_obj.encoders
 
-# splitter = Train_Val_Test_split_Real()
+splitter = Train_Val_Test_split(only_normal=True)
 
 encoder = 'cat'
 
-
+data = splitter.add_targets(data_n,data_a)
 data = encoder_obj.choose_encoding(data,encoder)
-Data_p.save_dataset('../data/real_data/abnormal_test_real.pkl', data,flag=True)
 print(data)
-# df = read_pickle('')
-# splitter.split_dataset(data)
-# train = splitter.train_set
-# train_targets = splitter.train_targets
-# val = splitter.val_set
-# val_targets = splitter.val_targets
-# test = splitter.test_set
-# test_targets = splitter.test_targets
 
-# Data_p.save_dataset(filenames[0],train,flag=True)
-# Data_p.save_dataset(target_names[0],train_targets,flag=True)
+splitter.split_dataset(data)
 
-# Data_p.save_dataset(filenames[1],val,flag=True)
-# Data_p.save_dataset(target_names[1], val_targets,flag=True)
+train = splitter.train_set
+train_targets = splitter.train_targets
+val = splitter.val_set
+val_targets = splitter.val_targets
+test = splitter.test_set_n
+test_targets= splitter.test_targets_n
+test_a = splitter.test_set_a
+test_targets_a= splitter.test_targets_a
 
-# Data_p.save_dataset(filenames[2],test,flag=True)
-# Data_p.save_dataset(target_names[2], test_targets,flag=True)
+Data_p.save_dataset(filenames[0],train,flag=True)
+Data_p.save_dataset(target_names[0],train_targets,flag=True)
 
+Data_p.save_dataset(filenames[1],val,flag=True)
+Data_p.save_dataset(target_names[1], val_targets,flag=True)
+
+Data_p.save_dataset(filenames[2],test,flag=True)
+Data_p.save_dataset(target_names[2], test_targets,flag=True)
+
+Data_p.save_dataset(filenames[3],test_a,flag=True)
+Data_p.save_dataset(target_names[3], test_targets_a,flag=True)
